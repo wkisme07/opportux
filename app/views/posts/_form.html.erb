@@ -1,0 +1,26 @@
+<%= form_for @post, :html => {:class => 'form'} do |f| %>
+  <div class="field-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => 'text-field', :required => true %>
+  </div>
+  <div class="field-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, :class => 'text-field', :required => true %>
+  </div>
+  <div class="field-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => 'text-field', :required => true %>
+  </div>
+  <div class="field-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, :required => @post.id.blank? %>
+  </div>
+  <div class="post-image-thumb">
+    <%= image_tag @post.image_url(:thumb), :alt => 'thumb' %>
+  </div>
+
+  <div class="field-group">
+    <%= f.submit 'Upload' %>
+    <%= link_to 'Cancel', (:back || root_path) %>
+  </div>
+<% end %>

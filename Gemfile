@@ -16,6 +16,7 @@ gem 'devise'
 gem "cancan"
 gem 'whenever', :require => false
 gem 'recaptcha', :require => 'recaptcha/rails'
+gem 'acts-as-taggable-on', '~> 2.3.1'
 
 
 # Gems used only for assets and not required
@@ -43,6 +44,7 @@ gem 'jquery-rails'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'passenger'
 
 # To use debugger
 # gem 'debugger'

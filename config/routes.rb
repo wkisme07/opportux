@@ -10,8 +10,16 @@ Opportux::Application.routes.draw do
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :home
+
+  get '/posts/review/:id' => 'posts#review', :as => 'review_posts'
+  get '/posts/publish/:id' => 'posts#publish', :as => 'publish_posts'
+  resources :posts do
+    collection do
+      get   :review
+      get   :publish
+    end
+  end
 
   # Sample resource route with options:
   #   resources :products do
@@ -48,7 +56,7 @@ Opportux::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 
