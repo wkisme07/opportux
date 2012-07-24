@@ -5,11 +5,11 @@ class CreatePosts < ActiveRecord::Migration
       t.integer   :status
 
       t.string    :title
-      t.string    :image
-      t.string    :categories
+      t.integer   :category_id
+      t.integer   :city_id
 
-      t.string    :name
-      t.string    :email
+      t.text      :description
+      t.text      :description_2
 
       t.timestamps
     end

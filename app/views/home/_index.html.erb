@@ -1,0 +1,10 @@
+<div class="post-lists-container">
+  <ul class="post-lists">
+    <% @posts.each do |post| %>
+      <li>
+        <%= render :partial => 'posts/detail.html', :locals => {:post => post} %>
+      </li>
+    <% end unless @posts.blank? %>
+  </ul>
+
+</div>

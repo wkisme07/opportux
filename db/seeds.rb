@@ -5,3 +5,24 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+if Category.all.blank?
+  puts "Prepopulate Categories ..."
+  Category.create(
+    {:code => 'b', :name => 'Bussiness'},
+    {:code => 'p', :name => 'People'}
+  )
+end
+
+if City.all.blank?
+  puts "Prepopulate Countries ..."
+  ActiveRecord::Base.connection.execute "LOAD DATA LOCAL INFILE '#{Rails.root}/db/migrate/GeoWorldMap/Countries.txt' INTO TABLE countries
+    FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;"
+
+  ActiveRecord::Base.connection.execute "LOAD DATA LOCAL INFILE '#{Rails.root}/db/migrate/GeoWorldMap/Regions.txt' INTO TABLE regions
+    FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;"
+
+  puts "Prepopulate Cities ..."
+  ActiveRecord::Base.connection.execute "LOAD DATA LOCAL INFILE '#{Rails.root}/db/migrate/GeoWorldMap/Cities.txt' INTO TABLE cities
+    FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;"
+end

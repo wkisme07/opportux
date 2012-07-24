@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Opportux</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield :css %>
+</head>
+<body>
+<div class="wrapper">
+  <%= render :partial => 'layouts/header.html' %>
+
+  <div class="top-thumb-container">
+    <ul class="top-thumb">
+      <% @top_thumbs.each do |top| %>
+        <li>
+          <%= link_to image_tag(top.image_url(:medium), :alt => 'image'), '#' %>
+        </li>
+      <% end if !@top_thumbs.blank? && controller_name == 'home' %>
+    </ul>
+
+  </div>
+
+  <div class="content">
+    <div class="main-content">
+      <%= yield %>
+    </div>
+
+    <div class="right-content">
+      <div class="most-commented-container">
+        <ul class="most-commented">
+          <% @most_commenteds.each do |mc| %>
+            <li><%= link_to truncate(mc.title), '#' %></li>
+          <% end if !@most_commented.blank? && controller_name == 'home' %>
+        </ul>
+      </div>
+
+      <div class="advertise-container">
+        <span class="adv" style="display: block;padding: 20px 0;text-align: center;">Advertise Here</span>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+
+  <div class="footer">
+    <span class="copyright">Copyright &copy; 2012 Opportux</span>
+
+    <ul class="footer-menu">
+      <li><%= link_to 'menu', '#' %></li>
+      <li><%= link_to 'menu', '#' %></li>
+      <li><%= link_to 'menu', '#' %></li>
+    </ul>
+
+    <div class="clear"></div>
+  </div>
+
+  <%= yield :js %>
+</div>
+  
+</body>
+</html>

@@ -8,56 +8,417 @@
   <%= yield :css %>
 </head>
 <body>
-<div class="wrapper">
-  <%= render :partial => 'layouts/header.html' %>
+  <div class="wrapper">
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="header-logo">
+          <%= link_to image_tag('logo-header.png', :alt => 'Opportux'), root_path %>
+        </div>
+        <div class="header-separator"></div>
 
-  <div class="top-thumb-container">
-    <ul class="top-thumb">
-      <% @top_thumbs.each do |top| %>
+        <div class="header-menu facetweet">
+          <%= link_to image_tag('header-facebook.png', :alt => 'f'), '#', :class => 'h-face' %>
+          <%= link_to image_tag('header-twitter.png', :alt => 't'), '#', :class => 'h-tweet' %>
+        </div>
+
+        <div class="header-menu category">
+          <%= link_to("#{image_tag('header-bussiness.png', :alt => 'B')} <span>Bussiness</span>".html_safe, '#', :class => 'active') %>
+          <%= link_to("#{image_tag('header-people.png', :alt => 'P')} <span>People</span>".html_safe, '#') %>
+          <%= link_to("#{image_tag('header-upload.png', :alt => 'U')} <span>Upload</span>".html_safe, '#') %>
+        </div>
+
+        <div class="header-menu user-menu">
+          <%= link_to "Login", '#' %>
+          <span class="umenu"></span>
+        </div>
+        <div class="header-separator right"></div>
+
+        <div class="header-menu header-search">
+          <%= link_to image_tag('header-search.png', :alt => 'S'), '#', :class => 'h-search' %>
+        </div>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+
+    <div class="search-form-container">
+      <%= form_for 'search', :url => '#search', :class => 'search-form' do |f| %>
+        <div class="search-field-container">
+          <span class="s-image">&nbsp;</span>
+          <%= f.text_field 'search', :class => 'search-field', :placeholder => "Search" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="top-thumb-container">
+      <ul class="top-thumbs">
         <li>
-          <%= link_to image_tag(top.image_url(:medium), :alt => 'image'), '#' %>
+          <div class="item-thumb">
+            <div class="thumb-img">
+              <%= link_to image_tag('dummy/item-thum.png'), '', :class => 'item-thumb-img' %>
+            </div>
+
+            <div class="thumb-info">
+              <span class="thumb-author">From <%= link_to "Melisa Alexander", '#' %></span>
+              <span class="thumb-desc">
+                Lorem Ipsum adalah contoh teks atau dummy dalam industri.
+              </span>
+            </div>
+
+            <span class="thumb-stat thumb-view">320</span>
+            <span class="thumb-stat thumb-comment">18</span>
+            <span class="thumb-stat thumb-time">1 hr ago</span>
+            <div class="clear"></div>
+          </div>
         </li>
-      <% end if !@top_thumbs.blank? && controller_name == 'home' %>
-    </ul>
 
-  </div>
+        <li>
+          <div class="item-thumb">
+            <div class="thumb-img">
+              <%= link_to image_tag('dummy/top-thum-2.png'), '', :class => 'item-thumb-img' %>
+            </div>
 
-  <div class="content">
-    <div class="main-content">
-      <%= yield %>
+            <div class="thumb-info">
+              <span class="thumb-author">From <%= link_to "Melisa Alexander", '#' %></span>
+              <span class="thumb-desc">
+                Lorem Ipsum adalah contoh teks atau dummy dalam industri.
+              </span>
+            </div>
+
+            <span class="thumb-stat thumb-view">320</span>
+            <span class="thumb-stat thumb-comment">18</span>
+            <span class="thumb-stat thumb-time">1 hr ago</span>
+            <div class="clear"></div>
+          </div>
+        </li>
+
+        <li>
+          <div class="item-thumb">
+            <div class="thumb-img">
+              <%= link_to image_tag('dummy/item-thum.png'), '', :class => 'item-thumb-img' %>
+            </div>
+
+            <div class="thumb-info">
+              <span class="thumb-author">From <%= link_to "Melisa Alexander", '#' %></span>
+              <span class="thumb-desc">
+                Lorem Ipsum adalah contoh teks atau dummy dalam industri.
+              </span>
+            </div>
+
+            <span class="thumb-stat thumb-view">320</span>
+            <span class="thumb-stat thumb-comment">18</span>
+            <span class="thumb-stat thumb-time">1 hr ago</span>
+            <div class="clear"></div>
+          </div>
+        </li>
+
+        <li>
+          <div class="item-thumb">
+            <div class="thumb-img">
+              <%= link_to image_tag('dummy/top-thum-2.png'), '', :class => 'item-thumb-img' %>
+            </div>
+
+            <div class="thumb-info">
+              <span class="thumb-author">From <%= link_to "Melisa Alexander", '#' %></span>
+              <span class="thumb-desc">
+                Lorem Ipsum adalah contoh teks atau dummy dalam industri.
+              </span>
+            </div>
+
+            <span class="thumb-stat thumb-view">320</span>
+            <span class="thumb-stat thumb-comment">18</span>
+            <span class="thumb-stat thumb-time">1 hr ago</span>
+            <div class="clear"></div>
+          </div>
+        </li>
+      </ul>
+      <div class="clear"></div>
     </div>
+    
+    <div class="content-wrapper">
+      <div class="main-content">
+        <ul class="item-list dashboard-list">
+          <li>
+            <div class="item-view-info">
+              <span>2</span> views
+            </div>
 
-    <div class="right-content">
-      <div class="most-commented-container">
-        <ul class="most-commented">
-          <% @most_commenteds.each do |mc| %>
-            <li><%= link_to truncate(mc.title), '#' %></li>
-          <% end if !@most_commented.blank? && controller_name == 'home' %>
+            <div class="item-img-container">
+              <%= link_to image_tag('no-image.png'), '#', :class => 'item-img' %>
+            </div>
+
+            <div class="item-info">
+              <div class="item-title"><%= link_to "Lorem Ipsum adalah contoh teks atau dummy", '#' %></div>
+              <div class="item-autor"> by <%= link_to 'Tubagus Salamudin A', '#' %></div>
+              <div class="item-location">Jakarta</div>
+              <div class="item-category">
+                <%= link_to 'Design', '#' %>
+              </div>
+              <div class="clear"></div>
+
+              <div class="item-stat">
+                <span class="item-time">2 hr ago</span>
+                <span class="item-comment">12 Comments</span>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="clear"></div>
+
+            <div class="item-desc">
+              <p>
+                Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf.
+              </p>
+
+              <%= link_to 'View More', '#', :class => 'view-more' %>
+            </div>
+          </li>
+
+          <li>
+            <div class="item-view-info">
+              <span>2</span> views
+            </div>
+
+            <div class="item-img-container">
+              <%= link_to image_tag('dummy/item-image.png'), '#', :class => 'item-img' %>
+            </div>
+
+            <div class="item-info">
+              <div class="item-title"><%= link_to "Lorem Ipsum adalah contoh teks atau dummy", '#' %></div>
+              <div class="item-autor"> by <%= link_to 'Tubagus Salamudin A', '#' %></div>
+              <div class="item-location">Jakarta</div>
+              <div class="item-category">
+                <%= link_to 'Design', '#' %>
+              </div>
+              <div class="clear"></div>
+
+              <div class="item-stat">
+                <span class="item-time">2 hr ago</span>
+                <span class="item-comment">12 Comments</span>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="clear"></div>
+
+            <div class="item-desc">
+              <p>
+                Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf.
+              </p>
+
+              <%= link_to 'View More', '#', :class => 'view-more' %>
+            </div>
+          </li>
+          <li>
+            <div class="item-view-info">
+              <span>2</span> views
+            </div>
+
+            <div class="item-img-container">
+              <%= link_to image_tag('dummy/item-image.png'), '#', :class => 'item-img' %>
+            </div>
+
+            <div class="item-info">
+              <div class="item-title"><%= link_to "Lorem Ipsum adalah contoh teks atau dummy", '#' %></div>
+              <div class="item-autor"> by <%= link_to 'Tubagus Salamudin A', '#' %></div>
+              <div class="item-location">Jakarta</div>
+              <div class="item-category">
+                <%= link_to 'Design', '#' %>
+              </div>
+              <div class="clear"></div>
+
+              <div class="item-stat">
+                <span class="item-time">2 hr ago</span>
+                <span class="item-comment">12 Comments</span>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="clear"></div>
+
+            <div class="item-desc">
+              <p>
+                Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf.
+              </p>
+
+              <%= link_to 'View More', '#', :class => 'view-more' %>
+            </div>
+          </li>
+          <li>
+            <div class="item-view-info">
+              <span>2</span> views
+            </div>
+
+            <div class="item-img-container">
+              <%= link_to image_tag('dummy/item-image.png'), '#', :class => 'item-img' %>
+            </div>
+
+            <div class="item-info">
+              <div class="item-title"><%= link_to "Lorem Ipsum adalah contoh teks atau dummy", '#' %></div>
+              <div class="item-autor"> by <%= link_to 'Tubagus Salamudin A', '#' %></div>
+              <div class="item-location">Jakarta</div>
+              <div class="item-category">
+                <%= link_to 'Design', '#' %>
+              </div>
+              <div class="clear"></div>
+
+              <div class="item-stat">
+                <span class="item-time">2 hr ago</span>
+                <span class="item-comment">12 Comments</span>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="clear"></div>
+
+            <div class="item-desc">
+              <p>
+                Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf.
+              </p>
+
+              <%= link_to 'View More', '#', :class => 'view-more' %>
+            </div>
+          </li>
         </ul>
+        <div class="clear"></div>
+
       </div>
 
-      <div class="advertise-container">
-        <span class="adv" style="display: block;padding: 20px 0;text-align: center;">Advertise Here</span>
+      <div class="right-content">
+        <%= link_to 'SIGN UP', '#', :class => 'sign-up-link' %>
+
+        <div class="big-adv">
+          <%= link_to image_tag('dummy/adv-big.png', :alt => ''), '#' %>
+        </div>
+
+        <div class="medium-adv-container">
+          <div class="medium-adv"><%= link_to image_tag('dummy/adv-medium-1.png', :alt => ''), '#' %></div>
+          <div class="medium-adv"><%= link_to image_tag('dummy/adv-medium-2.png', :alt => ''), '#' %></div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="most-view-container">
+          <div class="most-view-title">Most View</div>
+          
+          <ul class="most-view-list">
+            <li><%= link_to 'Lorem Ipsum adalah contoh teks', '#' %></li>
+            <li><%= link_to 'Lorem Ipsum adalah contoh teks', '#' %></li>
+            <li><%= link_to 'Lorem Ipsum adalah contoh teks', '#' %></li>
+            <li><%= link_to 'Lorem Ipsum adalah contoh teks', '#' %></li>
+            <li class="last"><%= link_to 'Lorem Ipsum adalah contoh teks', '#' %></li>
+          </ul>
+        </div>
+
+        <div class="little-adv">
+          <div class="little-adv-title">SPONSORED</div>
+
+          <ul class="little-adv-list">
+            <li>
+              <div class="adv-img">
+                <%= link_to image_tag('dummy/adv-little.png', :alt => ''), '#' %>
+              </div>
+
+              <div class="little-adv-info">
+                <span class="little-adv-info-title"><%= link_to 'Motor Ninja', '#' %></span>
+                <span class="little-adv-desc">
+                  <p>
+                    Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting.
+                  </p>
+                </span>
+              </div>
+              <div class="clear"></div>
+            </li>
+            <li>
+              <div class="adv-img">
+                <%= link_to image_tag('dummy/adv-little.png', :alt => ''), '#' %>
+              </div>
+
+              <div class="little-adv-info">
+                <span class="little-adv-info-title"><%= link_to 'Motor Ninja', '#' %></span>
+                <span class="little-adv-desc">
+                  <p>
+                    Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting.
+                  </p>
+                </span>
+              </div>
+              <div class="clear"></div>
+            </li>
+            <li>
+              <div class="adv-img">
+                <%= link_to image_tag('dummy/adv-little.png', :alt => ''), '#' %>
+              </div>
+
+              <div class="little-adv-info">
+                <span class="little-adv-info-title"><%= link_to 'Motor Ninja', '#' %></span>
+                <span class="little-adv-desc">
+                  <p>
+                    Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting.
+                  </p>
+                </span>
+              </div>
+              <div class="clear"></div>
+            </li>
+            <li>
+              <div class="adv-img">
+                <%= link_to image_tag('dummy/adv-little.png', :alt => ''), '#' %>
+              </div>
+
+              <div class="little-adv-info">
+                <span class="little-adv-info-title"><%= link_to 'Motor Ninja', '#' %></span>
+                <span class="little-adv-desc">
+                  <p>
+                    Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting.
+                  </p>
+                </span>
+              </div>
+              <div class="clear"></div>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+      <div class="clear"></div>
+
+    </div>
+
+    <div class="about-info-wrapper">
+      <div class="about-info">
+        <%= link_to image_tag('back-to-top.png', :alt => 'Back to top'), '#', :class => 'back-to-top' %>
+
+        <div class="about-us">
+          <%= image_tag 'logo.png', :alt => 'Opportux', :class => 'footer-logo' %>
+
+          <p>
+            Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf.
+          </p>
+        </div>
+
+        <div class="contact-us">
+          <span class="footer-title">Contact Us</span>
+
+          <p>
+            Email: andre.budiman@gmail.com<br />
+            Address: Jl Jend Sudirman kav 59, Jakarta, Indonesia<br />
+            Phone: 021-892836492
+          </p>
+        </div>
+        <div class="clear"></div>
       </div>
     </div>
 
-    <div class="clear"></div>
-  </div>
+    <div class="footer-wrapper">
+      <div class="footer">
+        <span class="copy-right">Copyright &copy; Opportux.com</span>
 
-  <div class="footer">
-    <span class="copyright">Copyright &copy; 2012 Opportux</span>
+        <div class="footer-menu">
+          <%= link_to 'Disclaimer', '#' %>
+          <%= link_to 'Policy', '#' %>
+        </div>
 
-    <ul class="footer-menu">
-      <li><%= link_to 'menu', '#' %></li>
-      <li><%= link_to 'menu', '#' %></li>
-      <li><%= link_to 'menu', '#' %></li>
-    </ul>
+        <div class="footer-right">Designed by <%= link_to 'Salamud.in', 'http://salamud.in' %></div>
+        <div class="clear"></div>
+      </div>
+    </div>
 
-    <div class="clear"></div>
   </div>
 
   <%= yield :js %>
-</div>
-  
 </body>
 </html>
