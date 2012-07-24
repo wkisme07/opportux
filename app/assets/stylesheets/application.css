@@ -13,7 +13,7 @@
  */
 
 body{
-  font-family: "Helvetica Neue";
+  font-family: "Calibri";
   font-size: 12px;
   line-height: 15px;
 }
@@ -57,7 +57,7 @@ a{
   box-shadow: 0px 1px 5px #1c1424;
 
   color: #fff;
-  font-family: "Helvetica Neue";
+  font-family: "Calibri";
   font-weight: bold;
   float: left;
   height: 27px;
@@ -137,7 +137,7 @@ a{
   background: #f8f8f8;
   border: none;
   color: #666;
-  font-family: "Helvetica Neue";
+  font-family: "Calibri";
   font-size: 12px;
   height: 22px;
   padding: 2px 0;
@@ -234,6 +234,7 @@ ul.item-list li{
 
 .item-img-container{ float: left; }
 .item-img-container, .item-img-container img{
+  border-radius: 5px 0 0;
   height: 219px;
   overflow: hidden;
   width: 340px;
@@ -296,7 +297,7 @@ ul.item-list li{
 .item-desc{
   color: #2b2929;
   font-size: 14px;
-  font-family: "Myriad Pro";
+  font-family: "Calibri";
   line-height: 16px;
   margin: 10px 15px;
 }
@@ -309,6 +310,7 @@ ul.item-list li{
   border-radius: 15px;
   color: #fff;
   font-size: 12px;
+  font-style: italic;
   padding: 8px 15px;
   text-shadow: 0px 1px 3px #ccc;
 }
@@ -323,11 +325,13 @@ ul.item-list li{
   background: -o-linear-gradient(top, #e56c0b, #ba4717);
   background: -ms-linear-gradient(top, #e56c0b, #ba4717);
   border-radius: 15px;
+  box-shadow: 0px 1px 2px #e56c0b;
   color: #fff;
   display: block;
   font-size: 14px;
   padding: 10px 0;
   text-align: center;
+  text-shadow: 0px 1px 2px #aaa;
 }
 .big-adv{
   height: 230px;
@@ -343,38 +347,40 @@ ul.item-list li{
 }
 
 .most-view-container{
-  background: #f7f7f7;
+  background: #fff;
   border-radius: 5px;
   box-shadow: 0px 1px 5px #ccc;
   margin: 20px 0;
   width: 280px;
 }
 .most-view-title{
+  background: -moz-linear-gradient(top, #f3f3f3 0%, #ffffff);
+  background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#ffffff));
+  background: -o-linear-gradient(top, #f3f3f3, #ffffff);
+  background: -ms-linear-gradient(top, #f3f3f3, #ffffff);
+
   border-bottom: 1px solid #f0f0f0;
+  border-radius: 5px 5px 0 0;
   color: #333;
   display: block;
   padding: 16px 15px 15px;
   text-transform: uppercase;
 }
 ul.most-view-list{
+  background: #fff;
+  border-radius: 0 0 5px 5px;
   color: #333;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.most-view-list li{
-  border-bottom: 1px solid #f0f0f0;
-}
+.most-view-list li{ border-bottom: 1px solid #f0f0f0; }
 .most-view-list li a{
-  background: -moz-linear-gradient(top, #ffffff 0%, #f7f7f7);
-  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f7f7f7));
-  background: -o-linear-gradient(top, #ffffff, #f7f7f7);
-  background: -ms-linear-gradient(top, #ffffff, #f7f7f7);
-
   color: #333;
   display: block;
   padding: 16px 15px 15px;
 }
+.most-view-list li:last-child, .most-view-list li:last-child a{ border-radius: 0 0 5px 5px; }
 
 .little-adv{
   width: 280px;

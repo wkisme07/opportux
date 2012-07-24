@@ -23,8 +23,8 @@
 
         <div class="header-menu category">
           <%= link_to("#{image_tag('header-bussiness.png', :alt => 'B')} <span>Bussiness</span>".html_safe, '#', :class => 'active') %>
-          <%= link_to("#{image_tag('header-people.png', :alt => 'P')} <span>People</span>".html_safe, '#') %>
-          <%= link_to("#{image_tag('header-upload.png', :alt => 'U')} <span>Upload</span>".html_safe, '#') %>
+          <%= link_to("#{image_tag('header-people.png', :alt => 'P')} <span>People</span>".html_safe, '#', :class => '') %>
+          <%= link_to("#{image_tag('header-upload.png', :alt => 'U')} <span>Upload</span>".html_safe, '#', :class => '') %>
         </div>
 
         <div class="header-menu user-menu">
@@ -412,7 +412,7 @@
           <%= link_to 'Policy', '#' %>
         </div>
 
-        <div class="footer-right">Designed by <%= link_to 'Salamud.in', 'http://salamud.in' %></div>
+        <div class="footer-right">Designed by <%= link_to 'Salamud.in', 'http://salamud.in', :target => '_blank' %></div>
         <div class="clear"></div>
       </div>
     </div>
