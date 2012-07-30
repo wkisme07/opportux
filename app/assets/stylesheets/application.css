@@ -887,7 +887,7 @@ a.add-image{
 
 .detail-image-container{
   background: #eee;
-  height: 423px;
+  /*height: 423px;*/
   overflow: hidden;
   width: 640px;
 }
