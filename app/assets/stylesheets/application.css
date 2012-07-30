@@ -885,11 +885,16 @@ a.add-image{
 .item-action a.publish-link, .item-action a.publish-link{ color: green; }
 .item-action a.edit-link{ color: #feb84a; }
 
-.detail-image-container, .detail-image-container img{
+.detail-image-container{
+  background: #eee;
   height: 423px;
+  overflow: hidden;
   width: 640px;
 }
-.detail-image-container{ overflow: hidden; }
+.detail-image-container img{
+  margin: 0 auto;
+  width: 640px;
+}
 
 .detail-stat{
   background: url(bg-dt-pattern.png) repeat-x transparent;
