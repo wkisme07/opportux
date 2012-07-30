@@ -952,6 +952,9 @@ a.add-image{
 }
 .detail-photos a.detail-thumb:hover{ opacity: 1; }
 
+.post-comment-container{
+  padding: 10px;
+}
 
 /* CHOSEN */
 .chzn-container-single .chzn-single{
