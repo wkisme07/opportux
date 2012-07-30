@@ -63,7 +63,7 @@
     <%= link_to_add_fields "Add Another Image", f, :post_images %>
 
     <div class="field-group form-action right-el">
-      <%= link_to 'Cancel', root_path, :class => 'cancel-link' %>
+      <%= link_to 'Cancel', (action_name == 'edit' ? detail_path(@post.slug) : root_path), :class => 'cancel-link' %>
       <%= f.submit 'Upload', :class => 'button-link' %>
     </div>
     <div class="clear"></div>

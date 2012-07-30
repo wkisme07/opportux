@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :top_thumbs, :top_views, :city_options, :category_options, :can_like?, :can_view?, :can_renew?
 
-  http_basic_authenticate_with :name => "opportux", :password => "123opportux"
+  # http_basic_authenticate_with :name => "opportux", :password => "123opportux"
 
 protected
 
