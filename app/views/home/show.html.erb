@@ -47,9 +47,26 @@
     <span class="item-time"><%= "#{time_ago_in_words(@post.created_at)} ago" %></span>
     <span class="item-like"><%= pluralize(@post.like, 'Like') %></span>
 
-    <div class="social-media right-el">
-      <%#= facebook_like %>
+    <div class="social-media-container">
+      <div class="social-media pint-button">
+        <%= pin_it_button(
+          media: "#{request.protocol}#{request.host_with_port}#{@post.main_image.image_url}",
+          description: @post.description, url: detail_url(@post.slug)
+        ) %>
+      </div>
+
+      <div class="social-media twitter-button">
+        <%= tweet_button(:count => 'horizontal') %>
+      </div>
+
+      <div class="social-media fb-button">
+        <div class="fb-like" data-href="<%= detail_url(@post.slug) %>" data-send="true" 
+          data-layout="button_count" data-width="130" data-show-faces="false">
+        </div>
+      </div>
+      <div class="clear"></div>
     </div>
+
     <div class="clear"></div>
   </div>
 
@@ -84,3 +101,9 @@
     <div class="fb-comments" data-href="<%= detail_path(@post.slug) %>" data-num-posts="5" data-width="620"></div>
   </div>
 </div>
+
+<style type="text/css">
+.pint-button iframe{
+  width: 50px !important;
+}
+</style>

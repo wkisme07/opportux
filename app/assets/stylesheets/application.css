@@ -906,9 +906,13 @@ a.add-image{
   padding: 0 18px;
 }
 
-.social-media{
-  margin: -7px 0 0;
+.social-media-container{
+  float: right;
+  height: 20px;
+  margin: -3px 0 0;
+  width: auto;
 }
+.social-media{ float: left; }
 
 .detail-description-info{
   border-width: 1px 0;

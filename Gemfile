@@ -21,6 +21,8 @@ gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'rails3-jquery-autocomplete'
 
+gem 'pin_it'
+gem "tweet-button"
 
 # Gems used only for assets and not required
 # in production environments by default.

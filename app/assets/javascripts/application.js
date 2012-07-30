@@ -15,6 +15,7 @@
 //= require jquery-ui
 //= require jquery.facebox
 //= require autocomplete-rails
+//= require pin_it
 //= require_tree .
 
 $(document).ready(function(){
