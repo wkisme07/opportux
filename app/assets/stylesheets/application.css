@@ -906,6 +906,10 @@ a.add-image{
   padding: 0 18px;
 }
 
+.social-media{
+  margin: -7px 0 0;
+}
+
 .detail-description-info{
   border-width: 1px 0;
   border-style: solid;

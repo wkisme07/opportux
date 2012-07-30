@@ -46,6 +46,10 @@
   <div class="detail-stat">
     <span class="item-time"><%= "#{time_ago_in_words(@post.created_at)} ago" %></span>
     <span class="item-like"><%= pluralize(@post.like, 'Like') %></span>
+
+    <div class="social-media right-el">
+      <%#= facebook_like %>
+    </div>
     <div class="clear"></div>
   </div>
 
@@ -77,6 +81,6 @@
 
 
   <div class="post-comment-container">
-    <div class="fb-comments" data-href="<%= detail_url(@post.slug) %>" data-num-posts="5" data-width="620"></div>
+    <div class="fb-comments" data-href="<%= detail_path(@post.slug) %>" data-num-posts="5" data-width="620"></div>
   </div>
 </div>
