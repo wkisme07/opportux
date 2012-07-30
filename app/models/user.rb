@@ -34,7 +34,8 @@ class User < ActiveRecord::Base
         uid: auth.uid,
         email: auth.info.email,
         password: pwd,
-        password_confirmation: pwd
+        password_confirmation: pwd,
+        agreement: true
       )
     else
       user.update_attributes(:provider => auth.provider, :uid => auth.uid)
