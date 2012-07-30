@@ -21,10 +21,10 @@
     </div>
 
     <div class="item-action">
-      <% if current_user && can?(:manage, Post) %>
-        <%= link_to('Publish', publish_posts_path(@post.slug), :class => 'publish-link') unless @post.published? %>
+      <% if can?(:manage, @post) %>
+        <%= link_to('Publish', publish_posts_path(@post.slug), :class => 'publish-link') if !@post.published? %>
 
-        <%= link_to 'Edit', edit_post_path(@post.slug), :class => 'edit-link' %>
+        <%= link_to('Edit', edit_post_path(@post.slug), :class => 'edit-link') if can?(:edit, @post) %>
 
         <%= link_to('Renew', renew_posts_path(:slug => @post.slug), :class => 'renew-link') if can_renew?(@post) %>
 

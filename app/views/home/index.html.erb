@@ -17,12 +17,12 @@
         <div class="item-title"><%= link_to post.title, home_path(post.slug) %></div>
 
         <div class="item-action">
-          <% if current_user && can?(:manage, Post) %>
+          <% if can?(:manage, post) %>
             <%= link_to('Publish', publish_posts_path(post.slug), :class => 'publish-link') unless post.published? %>
 
             <%= link_to('Renew', renew_posts_path(:slug => post.slug), :class => 'renew-link') if can_renew?(post) %>
 
-            <%= link_to 'Edit', edit_post_path(post.slug), :class => 'edit-link' %>
+            <%= link_to('Edit', edit_post_path(post.slug), :class => 'edit-link') if can?(:edit, post) %>
 
             <%= link_to 'Remove', post_path(post.slug), :class => 'remove-link', :method => 'delete',
               :confirm => 'Are you sure you want to remove this post?' %>
