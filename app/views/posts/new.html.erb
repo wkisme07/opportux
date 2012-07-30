@@ -51,6 +51,12 @@
           <%= pi.file_field :image, :class => 'file-field' %>
           <%= pi.hidden_field :main_image, :value => pidx == 0 %>
           <div class="clear"></div>
+
+          <% if pi.object.image_url %>
+            <div class="edit-thumb-img">
+              <%= image_tag pi.object.image_url(:thumb), :alt => 'thumb' %>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>

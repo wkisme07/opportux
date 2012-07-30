@@ -839,6 +839,17 @@ a.add-image{
   padding: 5px 10px 0;
 }
 
+.edit-thumb-img{
+  height: 81px;
+  margin: 10px 0 5px 10px;
+  overflow: hidden;
+  width: 145px;
+}
+.edit-thumb-img img{
+  margin: 0 auto;
+  width: 145px;
+}
+
 /* ITEM DETAIL */
 .item-detail-container{
   background: #fff;
