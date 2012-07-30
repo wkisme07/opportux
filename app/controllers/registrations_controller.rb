@@ -1,11 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
+  before_filter :select_layout
   layout false
 
   # GET /resource/sign_up
   def new
     resource = build_resource({})
     respond_with(resource) do |format|
-      format.html
+      format.html{ render :layout => @layout }
       format.js{
         render :layout => false
       }
@@ -50,4 +51,12 @@ class RegistrationsController < Devise::RegistrationsController
       end
     end
   end
+
+  protected
+
+    # select layout
+    def select_layout
+      @xhr = request.xhr? ? true : false
+      @layout = request.xhr? || request.format == 'text/javascript' ? false : 'application'
+    end
 end

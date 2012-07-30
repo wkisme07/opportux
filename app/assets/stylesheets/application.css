@@ -652,6 +652,11 @@ span.field-desc{
   background: #fff;
   padding: 20px;
 }
+.signup-form{
+  background: #fff;
+  border-radius: 5px;
+}
+.signup-form.not-xhr{ box-shadow: 0px 1px 5px #ccc; }
 
 .login-form-container{ background: #fff; }
 .login-form-container.not-xhr{

@@ -3,8 +3,6 @@ class SessionsController < Devise::SessionsController
   layout false
 
   def new
-    @xhr = request.xhr? ? true : false
-
     resource = build_resource
     clean_up_passwords(resource)
     respond_with(resource, serialize_options(resource)) do |format|
@@ -62,6 +60,7 @@ class SessionsController < Devise::SessionsController
 
     # select layout
     def select_layout
+      @xhr = request.xhr? ? true : false
       @layout = request.xhr? || request.format == 'text/javascript' ? false : 'application'
     end
 end
