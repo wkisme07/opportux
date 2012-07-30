@@ -23,11 +23,9 @@ class User < ActiveRecord::Base
 # Class Method
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first ||
+      User.where(["email = ? AND provide IS NULL AND uid IS NULL", auth.extra.raw_info.name]).try(:first)
     unless user
-logger.info "+++++++++++++++++++++++++++++++++++++++"
-      pwd = Devise.friendly_token[0,20]
-
       user = User.create(
         fullname: auth.extra.raw_info.name,
         provider: auth.provider,
@@ -36,10 +34,9 @@ logger.info "+++++++++++++++++++++++++++++++++++++++"
         password: pwd,
         password_confirmation: pwd
       )
+    else
+      user.update_attributes(:provider => auth.provider, :uid => auth.uid)
     end
-
-logger.info "---------------------------------------"
-logger.info user.inspect
 
     user
   end
