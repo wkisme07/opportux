@@ -1,0 +1,41 @@
+<div class="top-thumb-container">
+  <ul class="top-thumbs">
+    <% top_thumbs.each do |tt| %>
+      <li>
+        <div class="item-thumb">
+          <div class="thumb-img">
+            <%= link_to image_tag(tt.main_image.image_url(:medium)), home_path(tt.slug), :class => 'item-thumb-img' %>
+          </div>
+
+          <div class="thumb-info">
+            <div class="thumb-author">From <%= link_to tt.user.fullname, '#' %></div>
+            <div class="thumb-desc">
+              <%= simple_format(truncate(tt.description, :length => 100).html_safe) %>
+            </div>
+          </div>
+
+          <span class="thumb-stat thumb-view"><%= tt.view || 0 %></span>
+          <span class="thumb-stat thumb-like"><%= tt.like || 0 %></span>
+          <span class="thumb-stat thumb-time"><%= "#{time_ago_in_words(tt.created_at)} ago" %></span>
+          <div class="clear"></div>
+        </div>
+      </li>
+    <% end unless top_thumbs.blank? %>
+
+    <% (1..(4-top_thumbs.count)).each do || %>
+      <li>
+        <div class="item-thumb">
+          <div class="thumb-img">
+            <%= link_to '', '#thumb', :class => 'item-thumb-img' %>
+          </div>
+
+          <div class="thumb-info">
+            <div class="thumb-author"></div>
+            <div class="thumb-desc"></div>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <div class="clear"></div>
+</div>

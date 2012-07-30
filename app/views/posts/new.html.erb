@@ -1,4 +1,66 @@
-<div class="new-post-container">
-  <%= render :partial => 'form' %>
+<div class="form-container upload-form-container">
+  <h2>Upload</h2>
+
+  <%= form_for @post, :html => {:class => 'form'} do |f| %>
+    <div class="field-group">
+      <%= f.label :title, 'Post Title*' %>
+      <%= f.text_field :title, :class => 'text-field', :required => 'required' %>
+    </div>
+    <div class="field-group">
+      <%= f.label :city_id, 'Location*' %>
+      <%= f.select :city_id, options_for_select(city_options, @post.city_id || 4010), {}, {:class => 'selectbox chzn-select', :required => 'required'} %>
+    </div>
+    <div class="field-group">
+      <%= f.label :category_id, 'Category*' %>
+      <%= f.select :category_id, options_for_select(category_options, @post.category_id), {}, {:class => 'selectbox chzn-select', :required => 'required'} %>
+    </div>
+    <div class="field-group">
+      <%= f.label :tag, 'Tags*' %>
+      <%= f.autocomplete_field :tag_list, autocomplete_tag_name_posts_path, "data-delimiter" => ', ', "data-id-element" => '#tag-list-container', :class => 'text-field' %>
+      <span class="field-desc">Use autocomplete and separated by comma</span>
+
+      <div id="tag-list-container">
+        <% @post.tag_list.each do |tag| %>
+          <%= link_to tag, '#', :class => 'tag-list' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="field-group">
+      <%= f.label :description, 'Description*' %>
+      <%= f.text_area :description, :rows => 5, :class => 'text-area wysiwyg', :required => 'required' %>
+    </div>
+    <div class="field-group">
+      <%= f.label :deal, 'Deal' %>
+      <%= f.text_area :deal, :rows => 5, :class => 'text-area wysiwyg', :required => 'required' %>
+    </div>
+    
+    <%= f.fields_for :post_images do |pi| %>
+      <% pidx = pi.object_name.gsub(/[^0-9]+/,'').to_i %>
+      <div class="field-group image-group">
+        <div class="fake-file-input-container">
+          <%= link_to_remove_fields("x", pi) unless pidx == 0 %>
+
+          <%= pi.label '', (pidx == 0 ? "Main Image*" : "Image") %>
+          <%= text_field_tag 'file', '', :id => "file-#{pidx}", :class => 'fake-file-input', :readonly => 'readonly' %>
+          <div class="fake-choose">
+            <span>Choose File</span>
+          </div>
+          <div class="clear"></div>
+          <span class="field-desc">Allowed file .JPG, .JPEG, .GIF or .PNG</span>
+
+          <%= pi.file_field :image, :class => 'file-field' %>
+          <%= pi.hidden_field :main_image, :value => pidx == 0 %>
+          <div class="clear"></div>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to_add_fields "Add Another Image", f, :post_images %>
+
+    <div class="field-group form-action right-el">
+      <%= link_to 'Cancel', root_path, :class => 'cancel-link' %>
+      <%= f.submit 'Upload', :class => 'button-link' %>
+    </div>
+    <div class="clear"></div>
+  <% end %>
 </div>
 

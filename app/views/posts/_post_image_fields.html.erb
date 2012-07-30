@@ -1,0 +1,17 @@
+<div class="field-group image-group">
+  <div class="fake-file-input-container">
+    <%= link_to_remove_fields("x", f) %>
+
+    <%= f.label '', "Image" %>
+    <%= text_field_tag 'file', '', :class => 'fake-file-input', :readonly => 'readonly' %>
+    <div class="fake-choose">
+      <span>Choose File</span>
+    </div>
+    <div class="clear"></div>
+    <span class="field-desc">Allowed file .JPG, .JPEG, .GIF or .PNG</span>
+
+    <%= f.file_field :image, :class => 'file-field' %>
+    <%= f.hidden_field :main_image, :value => false %>
+    <div class="clear"></div>
+  </div>
+</div>

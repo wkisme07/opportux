@@ -8,10 +8,10 @@
 
 if Category.all.blank?
   puts "Prepopulate Categories ..."
-  Category.create(
-    {:code => 'b', :name => 'Bussiness'},
+  Category.create([
+    {:code => 'b', :name => 'Business'},
     {:code => 'p', :name => 'People'}
-  )
+  ])
 end
 
 if City.all.blank?

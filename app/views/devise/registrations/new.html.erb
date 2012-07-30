@@ -1,0 +1,45 @@
+<div class="devise-form signup-form">
+  <h2>Sign up</h2>
+
+  <div class="flash">
+    <% flash.each do |type, message| -%>
+      <div class="message <%= type %>">
+        <p><%= message.html_safe %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :remote => true, :class => 'form') do |f| %>
+
+    <div class="field-group">
+      <%= f.label :fullname %>
+      <%= f.text_field :fullname, :class => 'text-field' %>
+    </div>
+
+    <div class="field-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, :class => 'text-field' %>
+    </div>
+
+    <div class="field-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, :class => 'text-field' %>
+    </div>
+
+    <div class="field-group">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, :class => 'text-field' %>
+    </div>
+
+    <div class="remember-me">
+      <%= f.check_box :agreement, :required => 'required' %> <%= f.label 'I Agree with opportux terms and conditions', :class => 'inline-label' %>
+    </div>
+
+    <div class="field-group form-action">
+      <%= f.submit "Sign up", :class => 'button-link' %>
+    </div>
+  <% end %>
+
+</div>
+
+

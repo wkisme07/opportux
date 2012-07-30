@@ -1,0 +1,63 @@
+<%= content_for :top_thumb do %>
+  <%= render :partial => '/layouts/top-thumbs.html' %>
+<% end %>
+
+<ul class="item-list dashboard-list">
+  <% @posts.each_with_index do |post, idx| %>
+    <li>
+      <div class="item-view-info">
+        <span><%= post.view || 0 %></span> views
+      </div>
+
+      <div class="item-img-container">
+        <%= link_to image_tag(post.main_image.image_url(:list)), home_path(post.slug), :class => 'item-img' %>
+      </div>
+
+      <div class="item-info">
+        <div class="item-title"><%= link_to post.title, home_path(post.slug) %></div>
+
+        <div class="item-action">
+          <% if current_user && can?(:manage, Post) %>
+            <%= link_to('Publish', publish_posts_path(post.slug), :class => 'publish-link') unless post.published? %>
+
+            <%= link_to('Renew', renew_posts_path(:slug => post.slug), :class => 'renew-link') if can_renew?(post) %>
+
+            <%= link_to 'Edit', edit_post_path(post.slug), :class => 'edit-link' %>
+
+            <%= link_to 'Remove', post_path(post.slug), :class => 'remove-link', :method => 'delete',
+              :confirm => 'Are you sure you want to remove this post?' %>
+          <% else %>
+
+            <%= link_to('Like', like_posts_path(post.slug), :class => 'like-link') if can_like?(post) %>
+            <%= link_to 'x Report', '#report', :class => 'report-link' %>
+          <% end %>
+        </div>
+
+        <div class="item-autor"> by <%= link_to post.user.fullname, '#' %></div>
+        <div class="item-location"><%= post.location.name %></div>
+        <div class="item-category">
+          <% post.tag_list.each do |tag| %>
+            <%= link_to tag, '#', :class => 'tag-list' %>
+          <% end %>
+        </div>
+        <div class="clear"></div>
+
+        <div class="item-stat">
+          <span class="item-time"><%= "#{time_ago_in_words(post.created_at)} ago" %></span>
+          <span class="item-like"><%= pluralize(post.like, 'Like') %></span>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+
+      <div class="item-desc">
+        <p>
+          <%= truncate(post.description, :length => 150).html_safe %>
+        </p>
+
+        <%= link_to 'View More', home_path(post.slug), :class => 'view-more' %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<div class="clear"></div>

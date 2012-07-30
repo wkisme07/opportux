@@ -1,5 +1,5 @@
 Opportux::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations", :passwords => 'passwords' }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -12,14 +12,32 @@ Opportux::Application.routes.draw do
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
-  resources :home
+  get '/p/:slug' => 'home#show', :as => 'detail'
+  get '/p/:slug' => 'home#show', :as => 'home'
+  get '/business' => 'home#business', :as => 'business'
+  get '/people' => 'home#people', :as => 'people'
 
-  get '/posts/review/:id' => 'posts#review', :as => 'review_posts'
-  get '/posts/publish/:id' => 'posts#publish', :as => 'publish_posts'
+  resources :home do
+    collection do
+      get   :show_info
+      get   :business
+      get   :people
+    end
+  end
+
+  get '/uploads' => 'posts#new', :as => 'new_post'
+  get '/p/review/:slug' => 'posts#review', :as => 'review_posts'
+  get '/p/publish/:slug' => 'posts#publish', :as => 'publish_posts'
+  get '/p/renew/:slug' => 'posts#renew', :as => 'renew_posts'
+  get '/p/like/:slug' => 'posts#like', :as => 'like_posts'
+
   resources :posts do
     collection do
+      get   :like
+      get   :renew
       get   :review
       get   :publish
+      get   :autocomplete_tag_name
     end
   end
 

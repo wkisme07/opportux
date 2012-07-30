@@ -13,10 +13,13 @@ gem 'will_paginate'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'devise'
+gem "omniauth-facebook"
 gem "cancan"
 gem 'whenever', :require => false
 gem 'recaptcha', :require => 'recaptcha/rails'
+
 gem 'acts-as-taggable-on', '~> 2.3.1'
+gem 'rails3-jquery-autocomplete'
 
 
 # Gems used only for assets and not required

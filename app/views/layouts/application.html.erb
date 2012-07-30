@@ -22,22 +22,38 @@
         </div>
 
         <div class="header-menu category">
-          <%= link_to("#{image_tag('header-bussiness.png', :alt => 'B')} <span>Bussiness</span>".html_safe, '#', :class => 'active') %>
-          <%= link_to("#{image_tag('header-people.png', :alt => 'P')} <span>People</span>".html_safe, '#', :class => '') %>
-          <%= link_to("#{image_tag('header-upload.png', :alt => 'U')} <span>Upload</span>".html_safe, '#', :class => '') %>
+          <%= link_to("#{image_tag('header-bussiness.png', :alt => 'B')} <span>Business</span>".html_safe, 
+            business_path, :class => ('active' if controller_name == 'home' && action_name == 'business')) %>
+          <%= link_to("#{image_tag('header-people.png', :alt => 'P')} <span>People</span>".html_safe, 
+            people_path, :class => ('active' if controller_name == 'home' && action_name == 'people')) %>
+          <%= link_to("#{image_tag('header-upload.png', :alt => 'U')} <span>Upload</span>".html_safe, 
+            new_post_path, :class => ('active' if controller_name == 'posts' && action_name == 'new')) %>
         </div>
 
-        <div class="header-menu user-menu">
-          <%= link_to "Login", '#' %>
-          <span class="umenu"></span>
+        <div class="header-menu user-menu <%= 'header-login-link' unless current_user %>">
+          <% unless current_user %>
+            <%= link_to "Login", new_user_session_path, :rel => 'facebox' %>
+          <% else %>
+            <%= link_to "#{truncate(current_user.fullname, :length => 25)}<span class='umenu'></span>".html_safe, "#", :id => 'umenu-link' %>
+            <div class="clear"></div>
+
+            <div id="hmenu-container" class="hmenu-container">
+              <ul>
+                <li><%= link_to 'Dashboad', '#dashboard' %></li>
+                <li><%= link_to 'Setting', '#setting' %></li>
+                <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %></li>
+              </ul>
+            </div>
+            <div class="clear"></div>
+          <% end %>
         </div>
         <div class="header-separator right"></div>
 
         <div class="header-menu header-search">
           <%= link_to image_tag('header-search.png', :alt => 'S'), '#', :class => 'h-search' %>
         </div>
-
         <div class="clear"></div>
+
       </div>
     </div>
 
@@ -50,238 +66,15 @@
       <% end %>
     </div>
 
-    <div class="top-thumb-container">
-      <ul class="top-thumbs">
-        <li>
-          <div class="item-thumb">
-            <div class="thumb-img">
-              <%= link_to image_tag('dummy/item-thum.png'), '', :class => 'item-thumb-img' %>
-            </div>
-
-            <div class="thumb-info">
-              <span class="thumb-author">From <%= link_to "Melisa Alexander", '#' %></span>
-              <span class="thumb-desc">
-                Lorem Ipsum adalah contoh teks atau dummy dalam industri.
-              </span>
-            </div>
-
-            <span class="thumb-stat thumb-view">320</span>
-            <span class="thumb-stat thumb-comment">18</span>
-            <span class="thumb-stat thumb-time">1 hr ago</span>
-            <div class="clear"></div>
-          </div>
-        </li>
-
-        <li>
-          <div class="item-thumb">
-            <div class="thumb-img">
-              <%= link_to image_tag('dummy/top-thum-2.png'), '', :class => 'item-thumb-img' %>
-            </div>
-
-            <div class="thumb-info">
-              <span class="thumb-author">From <%= link_to "Melisa Alexander", '#' %></span>
-              <span class="thumb-desc">
-                Lorem Ipsum adalah contoh teks atau dummy dalam industri.
-              </span>
-            </div>
-
-            <span class="thumb-stat thumb-view">320</span>
-            <span class="thumb-stat thumb-comment">18</span>
-            <span class="thumb-stat thumb-time">1 hr ago</span>
-            <div class="clear"></div>
-          </div>
-        </li>
-
-        <li>
-          <div class="item-thumb">
-            <div class="thumb-img">
-              <%= link_to image_tag('dummy/item-thum.png'), '', :class => 'item-thumb-img' %>
-            </div>
-
-            <div class="thumb-info">
-              <span class="thumb-author">From <%= link_to "Melisa Alexander", '#' %></span>
-              <span class="thumb-desc">
-                Lorem Ipsum adalah contoh teks atau dummy dalam industri.
-              </span>
-            </div>
-
-            <span class="thumb-stat thumb-view">320</span>
-            <span class="thumb-stat thumb-comment">18</span>
-            <span class="thumb-stat thumb-time">1 hr ago</span>
-            <div class="clear"></div>
-          </div>
-        </li>
-
-        <li>
-          <div class="item-thumb">
-            <div class="thumb-img">
-              <%= link_to image_tag('dummy/top-thum-2.png'), '', :class => 'item-thumb-img' %>
-            </div>
-
-            <div class="thumb-info">
-              <span class="thumb-author">From <%= link_to "Melisa Alexander", '#' %></span>
-              <span class="thumb-desc">
-                Lorem Ipsum adalah contoh teks atau dummy dalam industri.
-              </span>
-            </div>
-
-            <span class="thumb-stat thumb-view">320</span>
-            <span class="thumb-stat thumb-comment">18</span>
-            <span class="thumb-stat thumb-time">1 hr ago</span>
-            <div class="clear"></div>
-          </div>
-        </li>
-      </ul>
-      <div class="clear"></div>
-    </div>
+    <%= yield :top_thumb %>
     
     <div class="content-wrapper">
       <div class="main-content">
-        <ul class="item-list dashboard-list">
-          <li>
-            <div class="item-view-info">
-              <span>2</span> views
-            </div>
-
-            <div class="item-img-container">
-              <%= link_to image_tag('no-image.png'), '#', :class => 'item-img' %>
-            </div>
-
-            <div class="item-info">
-              <div class="item-title"><%= link_to "Lorem Ipsum adalah contoh teks atau dummy", '#' %></div>
-              <div class="item-autor"> by <%= link_to 'Tubagus Salamudin A', '#' %></div>
-              <div class="item-location">Jakarta</div>
-              <div class="item-category">
-                <%= link_to 'Design', '#' %>
-              </div>
-              <div class="clear"></div>
-
-              <div class="item-stat">
-                <span class="item-time">2 hr ago</span>
-                <span class="item-comment">12 Comments</span>
-                <div class="clear"></div>
-              </div>
-            </div>
-            <div class="clear"></div>
-
-            <div class="item-desc">
-              <p>
-                Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf.
-              </p>
-
-              <%= link_to 'View More', '#', :class => 'view-more' %>
-            </div>
-          </li>
-
-          <li>
-            <div class="item-view-info">
-              <span>2</span> views
-            </div>
-
-            <div class="item-img-container">
-              <%= link_to image_tag('dummy/item-image.png'), '#', :class => 'item-img' %>
-            </div>
-
-            <div class="item-info">
-              <div class="item-title"><%= link_to "Lorem Ipsum adalah contoh teks atau dummy", '#' %></div>
-              <div class="item-autor"> by <%= link_to 'Tubagus Salamudin A', '#' %></div>
-              <div class="item-location">Jakarta</div>
-              <div class="item-category">
-                <%= link_to 'Design', '#' %>
-              </div>
-              <div class="clear"></div>
-
-              <div class="item-stat">
-                <span class="item-time">2 hr ago</span>
-                <span class="item-comment">12 Comments</span>
-                <div class="clear"></div>
-              </div>
-            </div>
-            <div class="clear"></div>
-
-            <div class="item-desc">
-              <p>
-                Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf.
-              </p>
-
-              <%= link_to 'View More', '#', :class => 'view-more' %>
-            </div>
-          </li>
-          <li>
-            <div class="item-view-info">
-              <span>2</span> views
-            </div>
-
-            <div class="item-img-container">
-              <%= link_to image_tag('dummy/item-image.png'), '#', :class => 'item-img' %>
-            </div>
-
-            <div class="item-info">
-              <div class="item-title"><%= link_to "Lorem Ipsum adalah contoh teks atau dummy", '#' %></div>
-              <div class="item-autor"> by <%= link_to 'Tubagus Salamudin A', '#' %></div>
-              <div class="item-location">Jakarta</div>
-              <div class="item-category">
-                <%= link_to 'Design', '#' %>
-              </div>
-              <div class="clear"></div>
-
-              <div class="item-stat">
-                <span class="item-time">2 hr ago</span>
-                <span class="item-comment">12 Comments</span>
-                <div class="clear"></div>
-              </div>
-            </div>
-            <div class="clear"></div>
-
-            <div class="item-desc">
-              <p>
-                Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf.
-              </p>
-
-              <%= link_to 'View More', '#', :class => 'view-more' %>
-            </div>
-          </li>
-          <li>
-            <div class="item-view-info">
-              <span>2</span> views
-            </div>
-
-            <div class="item-img-container">
-              <%= link_to image_tag('dummy/item-image.png'), '#', :class => 'item-img' %>
-            </div>
-
-            <div class="item-info">
-              <div class="item-title"><%= link_to "Lorem Ipsum adalah contoh teks atau dummy", '#' %></div>
-              <div class="item-autor"> by <%= link_to 'Tubagus Salamudin A', '#' %></div>
-              <div class="item-location">Jakarta</div>
-              <div class="item-category">
-                <%= link_to 'Design', '#' %>
-              </div>
-              <div class="clear"></div>
-
-              <div class="item-stat">
-                <span class="item-time">2 hr ago</span>
-                <span class="item-comment">12 Comments</span>
-                <div class="clear"></div>
-              </div>
-            </div>
-            <div class="clear"></div>
-
-            <div class="item-desc">
-              <p>
-                Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf.
-              </p>
-
-              <%= link_to 'View More', '#', :class => 'view-more' %>
-            </div>
-          </li>
-        </ul>
-        <div class="clear"></div>
-
+        <%= yield %>
       </div>
 
       <div class="right-content">
-        <%= link_to 'SIGN UP', '#', :class => 'sign-up-link' %>
+        <%= link_to 'SIGN UP', new_registration_path('user'), :class => 'sign-up-link', :rel => 'facebox' unless current_user %>
 
         <div class="big-adv">
           <%= link_to image_tag('dummy/adv-big.png', :alt => ''), '#' %>
@@ -293,17 +86,17 @@
           <div class="clear"></div>
         </div>
 
-        <div class="most-view-container">
-          <div class="most-view-title">Most View</div>
-          
-          <ul class="most-view-list">
-            <li><%= link_to 'Lorem Ipsum adalah contoh teks', '#' %></li>
-            <li><%= link_to 'Lorem Ipsum adalah contoh teks', '#' %></li>
-            <li><%= link_to 'Lorem Ipsum adalah contoh teks', '#' %></li>
-            <li><%= link_to 'Lorem Ipsum adalah contoh teks', '#' %></li>
-            <li class="last"><%= link_to 'Lorem Ipsum adalah contoh teks', '#' %></li>
-          </ul>
-        </div>
+        <% unless top_views.blank? %>
+          <div class="most-view-container">
+            <div class="most-view-title">Most View</div>
+            
+            <ul class="most-view-list">
+              <% top_views.each_with_index do |tv, tvi| %>
+                <li><%= link_to truncate(tv.title, :length => 50), home_path(tv.slug) %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
         <div class="little-adv">
           <div class="little-adv-title">SPONSORED</div>
@@ -408,8 +201,8 @@
         <span class="copy-right">Copyright &copy; Opportux.com</span>
 
         <div class="footer-menu">
-          <%= link_to 'Disclaimer', '#' %>
-          <%= link_to 'Policy', '#' %>
+          <%= link_to 'Disclaimer', '#disclaimer' %>
+          <%= link_to 'Policy', '#policy' %>
         </div>
 
         <div class="footer-right">Designed by <%= link_to 'Salamud.in', 'http://salamud.in', :target => '_blank' %></div>
@@ -420,5 +213,15 @@
   </div>
 
   <%= yield :js %>
+
+  <% if flash %>
+    <div class="home-message-container">
+      <% flash.each do |type, message| -%>
+        <div class="home-message <%= type %>">
+          <%= message.html_safe %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </body>
 </html>
