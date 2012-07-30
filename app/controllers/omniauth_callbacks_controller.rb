@@ -8,6 +8,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, :event => :authentication
     else
       session["devise.facebook_data"] = request.env["omniauth.auth"].except('extra')
+      flash[:alert] = @user.errors.try(:full_messages).try(:join, '<br />')
       redirect_to new_user_registration_url
     end
   end

@@ -52,6 +52,11 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def cancel
+    expire_session_data_after_sign_in!
+    redirect_to root_path || new_registration_path(resource_name)
+  end
+
   protected
 
     # select layout
