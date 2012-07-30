@@ -307,10 +307,15 @@ ul.item-list li{
 }
 
 .item-img-container{ float: left; }
-.item-img-container, .item-img-container img{
+.item-img-container{
+  background: #eee;
   border-radius: 5px 0 0;
   height: 219px;
   overflow: hidden;
+  width: 340px;
+}
+.item-img-container img{
+  margin: 0 auto;
   width: 340px;
 }
 .item-info{
