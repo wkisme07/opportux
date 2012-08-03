@@ -60,7 +60,7 @@
       </div>
 
       <div class="social-media fb-button">
-        <div class="fb-like" data-href="<%= detail_url(@post.slug) %>" data-send="true" 
+        <div class="fb-like" data-href="<%= detail_url(@post.slug) %>" data-send="true"
           data-layout="button_count" data-width="130" data-show-faces="false">
         </div>
       </div>
@@ -98,7 +98,7 @@
 
 
   <div class="post-comment-container">
-    <div class="fb-comments" data-href="<%= detail_path(@post.slug) %>" data-num-posts="5" data-width="620"></div>
+    <div class="fb-comments" data-href="<%= detail_url(@post.slug) %>" data-num-posts="5" data-width="620"></div>
   </div>
 </div>
 
