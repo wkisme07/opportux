@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :top_thumbs, :top_views, :city_options, :category_options, :can_like?, :can_view?, :can_renew?
+  helper_method :top_thumbs, :top_views, :city_options, :category_options, :can_like?, :can_view?, :can_renew?, :fb_meta
 
   # http_basic_authenticate_with :name => "opportux", :password => "123opportux"
 
@@ -46,5 +46,30 @@ protected
   # can renew
   def can_renew?(post)
     post.published? && post.renew.to_date != Date.today
+  end
+
+  # fb-meta
+  def fb_meta(post)
+    if !post.blank? && !post.try(:id).try("blank?")
+      @fb_meta = "
+        <meta property='og:title' content='Tempatnya Cari Peluang' />
+        <meta property='og:type' content='activity' />
+        <meta property='og:site_name' content='Opportux' />
+        <meta property='fb:admins' content='1679013992' />
+        <meta property='og:url' content='#{detail_url(post.slug || 'new')}' />
+        <meta property='og:image' content='http://opportux.com/#{post.main_image.image_url}' />
+        <meta property='og:description' content='#{post.description}' />
+      "
+    else
+      @fb_meta = "
+        <meta property='og:title' content='Tempatnya Cari Peluang' />
+        <meta property='og:type' content='activity' />
+        <meta property='og:url' content='http://opportux.com' />
+        <meta property='og:image' content='http://opportux.com/assets/logo.png' />
+        <meta property='og:site_name' content='Opportux' />
+        <meta property='fb:admins' content='1679013992' />
+        <meta property='og:description' content='Tempatnya Cari Peluang' />
+      "
+    end
   end
 end
