@@ -31,6 +31,7 @@ Opportux::Application.routes.draw do
   end
 
   get '/uploads' => 'posts#new', :as => 'new_post'
+  get '/p/:slug/edit' => 'posts#edit', :as => 'edit_post'
   get '/p/review/:slug' => 'posts#review', :as => 'review_posts'
   get '/p/publish/:slug' => 'posts#publish', :as => 'publish_posts'
   get '/p/renew/:slug' => 'posts#renew', :as => 'renew_posts'

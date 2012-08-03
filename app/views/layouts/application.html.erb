@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head prefix="<%= "og: http://ogp.me/ns# opp-dev: http://ogp.me/ns/fb/opp-dev#" %>">
   <meta name="google-site-verification" content="PHRMF4_1ZKfeSFTOUJdXJq-5unYmLeVmexpqs8-nvgk" />
   <meta property="og:title" content="Tempatnya Cari Peluang" />
   <meta property="og:type" content="activity" />
@@ -41,11 +41,11 @@
         </div>
 
         <div class="header-menu category">
-          <%= link_to("#{image_tag('header-bussiness.png', :alt => 'B')} <span>Business</span>".html_safe, 
+          <%= link_to("#{image_tag('header-bussiness.png', :alt => 'B')} <span>Business</span>".html_safe,
             business_path, :class => ('active' if controller_name == 'home' && action_name == 'business')) %>
-          <%= link_to("#{image_tag('header-people.png', :alt => 'P')} <span>People</span>".html_safe, 
+          <%= link_to("#{image_tag('header-people.png', :alt => 'P')} <span>People</span>".html_safe,
             people_path, :class => ('active' if controller_name == 'home' && action_name == 'people')) %>
-          <%= link_to("#{image_tag('header-upload.png', :alt => 'U')} <span>Upload</span>".html_safe, 
+          <%= link_to("#{image_tag('header-upload.png', :alt => 'U')} <span>Upload</span>".html_safe,
             new_post_path, :class => ('active' if controller_name == 'posts' && action_name == 'new')) %>
         </div>
 
@@ -86,7 +86,7 @@
     </div>
 
     <%= yield :top_thumb %>
-    
+
     <div class="content-wrapper">
       <div class="main-content">
         <%= yield %>
@@ -108,7 +108,7 @@
         <% unless top_views.blank? %>
           <div class="most-view-container">
             <div class="most-view-title">Most View</div>
-            
+
             <ul class="most-view-list">
               <% top_views.each_with_index do |tv, tvi| %>
                 <li><%= link_to truncate(tv.title, :length => 50), home_path(tv.slug) %></li>
