@@ -52,7 +52,7 @@ protected
   def fb_meta(post)
     if !post.blank? && !post.try(:id).try("blank?")
       @fb_meta = "
-        <meta property='og:title' content='Tempatnya Cari Peluang' />
+        <meta property='og:title' content='#{post.title}' />
         <meta property='og:type' content='activity' />
         <meta property='og:site_name' content='Opportux' />
         <meta property='fb:admins' content='1679013992' />
