@@ -53,7 +53,7 @@
 
             <div id="hmenu-container" class="hmenu-container">
               <ul>
-                <li><%= link_to 'Dashboad', '#dashboard' %></li>
+                <li><%= link_to 'Dashboad', user_path(current_user.slug) %></li>
                 <li><%= link_to 'Setting', '#setting' %></li>
                 <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %></li>
               </ul>
@@ -72,10 +72,10 @@
     </div>
 
     <div class="search-form-container">
-      <%= form_for 'search', :url => '#search', :class => 'search-form' do |f| %>
+      <%= form_for 'search', :url => root_path, :html => {:class => 'search-form', :method => :get} do |f| %>
         <div class="search-field-container">
           <span class="s-image">&nbsp;</span>
-          <%= f.text_field 'search', :class => 'search-field', :placeholder => "Search" %>
+          <%= f.text_field 'term', :class => 'search-field', :placeholder => "Search", :value => (params[:search][:term] if params[:search]) %>
         </div>
       <% end %>
     </div>

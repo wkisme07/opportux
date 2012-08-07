@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, ImageUploader
   mount_uploader :cover, ImageUploader
 
+  before_save :complete_data
+
 # Class Method
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
@@ -53,4 +55,10 @@ class User < ActiveRecord::Base
   end
 
 # Instant Method
+
+  # complete data
+  def complete_data
+    self.slug = Digest::SHA1.hexdigest(self.email.to_s).slice(0, 8) if self.slug.blank?
+  end
+
 end

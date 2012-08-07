@@ -60,3 +60,5 @@ module Opportux
     config.assets.version = '1.0'
   end
 end
+
+WillPaginate.per_page = 10

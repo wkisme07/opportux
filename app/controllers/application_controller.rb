@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :top_thumbs, :top_views, :city_options, :category_options, :can_like?, :can_view?, :can_renew?, :fb_meta
+  helper_method :top_thumbs, :top_views, :city_options, :category_options,
+    :can_like?, :can_view?, :can_renew?, :can_report?, :fb_meta
 
   # http_basic_authenticate_with :name => "opportux", :password => "123opportux"
 
@@ -41,6 +42,12 @@ protected
   def can_view?(post)
     pviews = post.pviews
     pviews.blank? || (current_user ? !pviews.map(&:user_id).include?(current_user.id) : !pviews.map(&:ip_address).include?(request.ip))
+  end
+
+  # can view?
+  def can_report?(post)
+    reports = post.reports
+    reports.blank? || (current_user ? !reports.map(&:user_id).include?(current_user.id) : !reports.map(&:ip_address).include?(request.ip))
   end
 
   # can renew

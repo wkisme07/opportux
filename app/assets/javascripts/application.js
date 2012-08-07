@@ -122,6 +122,7 @@ $(document).ready(function(){
 
 });
 
+
 $.extend($.facebox.settings, {
   modal : true
 });
@@ -133,14 +134,24 @@ $(document).bind('loading.facebox', function(){
   })
 });
 
+
+
 function remove_fields(link){
+  var img_count = $('.image-group:visible').size() - 1;
+
   $(link).prev("input[type=hidden]").val("1");
   $(link).parent().parent().hide();
 }
 
 function add_fields(link, association, content){
-  var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g")
-  $(link).before(content.replace(regexp, new_id));
+  var img_count = $('.image-group:visible').size() + 1;
+
+  if (img_count < 6){
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_" + association, "g")
+    $(link).before(content.replace(regexp, new_id));
+  }else{
+    alert('Five (5) images maximum per upload.');
+  }
 }
 

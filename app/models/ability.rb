@@ -34,6 +34,9 @@ class Ability
       can :edit, Post, :user_id => user.id
       can :update, Post, :user_id => user.id
       can :destroy, Post, :user_id => user.id
+
+      can :edit, User, :user_id => user.id
+      can :update, User, :id => user.id
     end
   end
 end

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 # @author Wawan Kurniawan <ones07@gmail.com>
   autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
 
-  before_filter :find_post, :only => [:edit, :update, :destroy, :review, :publish, :renew, :like]
+  before_filter :find_post, :only => [:edit, :update, :destroy, :review, :publish, :renew, :like, :report]
   before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy, :review, :publish, :renew]
 
   # new post
@@ -57,7 +57,7 @@ class PostsController < ApplicationController
     redirect_to detail_path(@post.slug)
   end
 
-  # renew pots
+  # like pots
   def like
     if @post.likes.create(:user_id => current_user.try(:id), :ip_address => request.ip)
       flash[:notice] = "You like this post"
@@ -65,7 +65,18 @@ class PostsController < ApplicationController
       flash[:notice] = "Like failed"
     end
 
-    redirect_to detail_path(@post.slug)
+    redirect_to :back || detail_path(@post.slug)
+  end
+
+  # report pots
+  def report
+    if @post.post_reports.create(:user_id => current_user.try(:id), :ip_address => request.ip)
+      flash[:notice] = "Your report has been sent to opportux admin."
+    else
+      flash[:notice] = "Report post failed failed"
+    end
+
+    redirect_to :back || detail_path(@post.slug)
   end
 
   # edit post
@@ -91,7 +102,7 @@ class PostsController < ApplicationController
   end
 
 protected
-  
+
   # find post
   def find_post
     @post = Post.find_by_slug(params[:slug] || params[:id]) || Post.find_by_id(params[:id])
@@ -101,7 +112,7 @@ protected
   # build post images
   def build_post_images
     pis = @post.post_images.count
-    pis = pis == 0 ? 4 : pis
+    pis = pis == 0 ? 3 : pis
     (1..pis).each do
       @post.post_images.build
     end

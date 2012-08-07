@@ -35,6 +35,10 @@ namespace :symlinks do
   task :database_yml, :roles => :app do
     run "ln -sfn #{shared_path}/database.yml #{release_path}/config/database.yml"
   end
+
+  task :symlink_uploads do
+     run "ln -snf #{shared_path}/uploads #{release_path}/public/uploads"
+   end
 end
 
 namespace :assets do

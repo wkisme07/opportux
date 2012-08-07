@@ -7,14 +7,14 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string  :address
       t.string  :phone
       t.string  :profile
-      
+
       t.string  :facebook
       t.string  :twitter
       t.string  :website
 
       t.string  :avatar
       t.string  :cover
-      
+
       t.string :encrypted_password, :null => false, :default => ""
 
       ## Recoverable

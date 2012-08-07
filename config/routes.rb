@@ -1,7 +1,7 @@
 Opportux::Application.routes.draw do
   devise_for :users, :controllers => {
-    :sessions => "sessions", 
-    :registrations => "registrations", 
+    :sessions => "sessions",
+    :registrations => "registrations",
     :passwords => "passwords",
     :omniauth_callbacks => "omniauth_callbacks"
   }
@@ -36,9 +36,11 @@ Opportux::Application.routes.draw do
   get '/p/publish/:slug' => 'posts#publish', :as => 'publish_posts'
   get '/p/renew/:slug' => 'posts#renew', :as => 'renew_posts'
   get '/p/like/:slug' => 'posts#like', :as => 'like_posts'
+  get '/p/report/:slug' => 'posts#report', :as => 'report_posts'
 
   resources :posts do
     collection do
+      get   :report
       get   :like
       get   :renew
       get   :review
@@ -46,6 +48,15 @@ Opportux::Application.routes.draw do
       get   :autocomplete_tag_name
     end
   end
+
+
+  get '/u/:slug' => 'users#show', :as => "user"
+  get '/u/:slug/edit' => 'users#edit', :as => "edit_user"
+  put '/u/:slug/update' => 'users#update', :as => "update_user"
+
+  resources :users, :only => [:show, :edit, :update] do
+  end
+
 
   # Sample resource route with options:
   #   resources :products do

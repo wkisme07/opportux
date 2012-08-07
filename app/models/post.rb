@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
   has_many :post_images
   has_many :likes
   has_many :pviews
+  has_many :post_reports
 
   acts_as_ordered_taggable
   attr_accessible :user_id, :slug, :status, :title, :tag_list,
@@ -31,11 +32,26 @@ class Post < ActiveRecord::Base
 
   # all published posts
   def self.all_published
-    where('status = 1').order('renew DESC')
+    where('status = 1').order('renew, created_at DESC')
   end
 
-  # location
+  def self.search(params)
+    term = !params.blank? && !params[:term].blank? ? params[:term] : ''
+
+    unless term.blank?
+      where(["status = 1 AND (title LIKE ? OR description LIKE ? OR
+        id IN (SELECT taggable_id FROM taggings WHERE taggable_type = 'Post' AND tag_id IN
+          (SELECT id FROM tags WHERE name LIKE ?))
+      )", "%#{term}%", "%#{term}%", "%#{term}%"])
+    else
+      all_published
+    end
+  end
+
+  # alias
   alias :location :city
+  alias :views :pviews
+  alias :reports :post_reports
 
   # like
   def like
@@ -46,7 +62,7 @@ class Post < ActiveRecord::Base
   def view
     pviews.try(:count) || 0
   end
-  
+
   # images
   def images
     post_images

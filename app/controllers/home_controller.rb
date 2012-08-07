@@ -3,7 +3,8 @@ class HomeController < ApplicationController
 
   # front-page
   def index
-    @posts = Post.all_published
+    ps = params[:tag] ? Post.all_published.tagged_with(params[:tag], :wild => true) : Post.search(params[:search])
+    @posts  = ps.paginate(:page => params[:page])
   end
 
   # show detail post
