@@ -12,10 +12,10 @@
 
       <div class="user-name"><%= @user.fullname %></div>
       <ul class="user-detail">
-        <% if @user.address %><li class="location"><%= @user.address %></li><% end %>
-        <% if @user.facebook %><li class="facebook"><%= @user.facebook %></li><% end %>
-        <% if @user.twitter %><li class="twitter"><%= @user.twitter %></li><% end %>
-        <% if @user.website %><li class="website"><%= @user.website %></li><% end %>
+        <% unless @user.address.blank? %><li class="location"><%= @user.address %></li><% end %>
+        <% unless @user.facebook.blank? %><li class="facebook"><%= @user.facebook %></li><% end %>
+        <% unless @user.twitter.blank? %><li class="twitter"><%= @user.twitter %></li><% end %>
+        <% unless @user.website.blank? %><li class="website"><%= @user.website %></li><% end %>
       </ul>
     </div>
 
