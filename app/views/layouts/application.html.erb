@@ -2,11 +2,16 @@
 <html>
 <head prefix="<%= "og: http://ogp.me/ns# opp-dev: http://ogp.me/ns/fb/opp-dev#" %>">
   <meta name="google-site-verification" content="PHRMF4_1ZKfeSFTOUJdXJq-5unYmLeVmexpqs8-nvgk" />
-  <%= fb_meta(@post).html_safe %>
   <% if !@post.blank? && !@post.try(:id).blank? %>
+    <meta property='og:site_name' content='Opportux' />
+    <meta property='og:title' content='<%= @post.title %>' />
+    <meta property='og:url' content='<%= detail_url(@post.slug || 'new') %>' />
+    <meta property='og:type' content='image' />
+    <meta property='fb:admins' content='1679013992' />
+    <meta property='og:image' content='http://opportux.com/<%= @post.main_image.image_url %>' />
     <meta property='og:description' content='<%= @post.description %>' />
   <% else %>
-
+    <%= raw fb_meta %>
   <% end %>
 
   <title>Opportux</title>

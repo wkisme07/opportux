@@ -56,27 +56,16 @@ protected
   end
 
   # fb-meta
-  def fb_meta(post)
-    if !post.blank? && !post.try(:id).try("blank?")
-      @fb_meta = "
-        <meta property='og:title' content='#{post.title}' />
-        <meta property='og:type' content='activity' />
-        <meta property='og:site_name' content='Opportux' />
-        <meta property='fb:admins' content='1679013992' />
-        <meta property='og:url' content='#{detail_url(post.slug || 'new')}' />
-        <meta property='og:image' content='http://opportux.com/#{post.main_image.image_url}' />
-      "
-    else
-      @fb_meta = "
-        <meta property='og:title' content='Tempatnya Cari Peluang' />
-        <meta property='og:type' content='activity' />
-        <meta property='og:url' content='http://opportux.com' />
-        <meta property='og:image' content='http://opportux.com/assets/logo.png' />
-        <meta property='og:site_name' content='Opportux' />
-        <meta property='fb:admins' content='1679013992' />
-        <meta property='og:description' content='Tempatnya Cari Peluang' />
-      "
-    end
+  def fb_meta
+    @fb_meta = "
+      <meta property='og:site_name' content='Opportux' />
+      <meta property='og:title' content='Tempatnya Cari Peluang' />
+      <meta property='og:url' content='http://opportux.com' />
+      <meta property='og:type' content='image' />
+      <meta property='fb:admins' content='1679013992' />
+      <meta property='og:image' content='http://opportux.com/assets/logo.png' />
+      <meta property='og:description' content='Tempatnya Cari Peluang' />
+    "
   end
 
   # find post
