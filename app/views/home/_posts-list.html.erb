@@ -29,8 +29,10 @@
               :confirm => 'Are you sure you want to remove this post?' %>
           <% else %>
 
-            <%= link_to('Like', like_posts_path(post.slug), :class => 'like-link') if can_like?(post) %>
-            <%= link_to('x Report', report_posts_path(post.slug), :class => 'report-link') if can_report?(post) %>
+            <% if can_like?(post) && can_report?(post) %>
+              <%= link_to('Like', like_posts_path(post.slug), :class => 'like-link') %>
+              <%= link_to('x Report', report_posts_path(post.slug), :class => 'report-link') %>
+            <% end %>
           <% end %>
         </div>
 

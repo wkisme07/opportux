@@ -37,7 +37,7 @@ class PostsController < ApplicationController
 
   # publish post
   def publish
-    if @post.update_attribute('status', 1)
+    if @post.update_attributes(:status => 1, :renew => Time.now, :created_date => Time.now)
       flash[:notice] = "Upload saved"
       redirect_to root_path
     else
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Renew failed"
     end
 
-    redirect_to detail_path(@post.slug)
+    redirect_to :back || detail_path(@post.slug)
   end
 
   # like pots
@@ -106,7 +106,6 @@ protected
   # find post
   def find_post
     @post = Post.find_by_slug(params[:slug] || params[:id]) || Post.find_by_id(params[:id])
-    tag_cloud
   end
 
   # build post images

@@ -9,7 +9,7 @@ protected
 
   # top thumbs
   def top_thumbs
-    @top_thumbs = Post.where("status = 1").order('created_at DESC').limit(4)
+    @top_thumbs = Post.where("status = 1").order('created_at DESC, renew DESC').limit(4)
   end
 
   # top views
@@ -78,5 +78,15 @@ protected
         <meta property='og:description' content='Tempatnya Cari Peluang' />
       "
     end
+  end
+
+  # find post
+  def find_post
+    @post = Post.find_by_slug(params[:slug] || params[:id]) || Post.find_by_id(params[:id])
+  end
+
+  # Cancan Access Denied
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
   end
 end

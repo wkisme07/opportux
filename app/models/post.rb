@@ -32,7 +32,7 @@ class Post < ActiveRecord::Base
 
   # all published posts
   def self.all_published
-    where('status = 1').order('renew DESC')
+    where('status = 1').order('renew DESC, created_at DESC')
   end
 
   def self.search(params)

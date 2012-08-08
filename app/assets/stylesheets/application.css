@@ -1146,11 +1146,11 @@ a.add-image{
   border: 2px solid #aaa;
   border-radius: 999px 999px 999px 999px;
   box-shadow: 0px 1px 5px #ccc;
+  float: left;
   height: 79px;
   margin: 20px 15px 0 -44px;
   overflow: hidden;
   padding: 2px;
-  position: absolute;
   width: 79px;
 }
 .user-avatar img{
@@ -1172,6 +1172,8 @@ ul.user-detail{
 ul.user-detail li{
   font-size: 14px;
   padding: 5px 0 4px 25px;
+  word-wrap: break-word;
+  width: 190px;
 }
 ul.user-detail li.location{ background: url(bg-user-location.png) no-repeat 0px 6px transparent; }
 ul.user-detail li.facebook{ background: url(bg-user-facebook.png) no-repeat 0px 6px transparent; }
