@@ -38,8 +38,10 @@
         <%= link_to('Publish', publish_posts_path(@post.slug), :class => 'publish-link') if !@post.published? %>
       <% else %>
 
-        <%= link_to('Like', like_posts_path(@post.slug), :class => 'like-link') if can_like?(@post) %>
-        <%= link_to('x Report', report_posts_path(@post.slug), :class => 'report-link') if can_report?(@post) %>
+        <% if can_like?(@post) && can_report?(@post) %>
+          <%= link_to('Like', like_posts_path(@post.slug), :class => 'like-link') if can_like?(@post) %>
+          <%= link_to('x Report', report_posts_path(@post.slug), :class => 'report-link') if can_report?(@post) %>
+        <% end %>
       <% end %>
     </div>
     <div class="clear"></div>
