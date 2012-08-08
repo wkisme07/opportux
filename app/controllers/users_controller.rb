@@ -4,7 +4,11 @@ class UsersController < ApplicationController
 
   # show
   def show
-    @posts = @user.posts.order("renew, created_at DESC").paginate(:page => params[:page])
+    if current_user == @user
+      @posts = @user.posts.order("renew, created_at DESC").paginate(:page => params[:page])
+    else
+      @posts = @user.posts.where("status = 1").order("renew, created_at DESC").paginate(:page => params[:page])
+    end
   end
 
   # edit
