@@ -3,6 +3,11 @@
 <head prefix="<%= "og: http://ogp.me/ns# opp-dev: http://ogp.me/ns/fb/opp-dev#" %>">
   <meta name="google-site-verification" content="PHRMF4_1ZKfeSFTOUJdXJq-5unYmLeVmexpqs8-nvgk" />
   <%= fb_meta(@post).html_safe %>
+  <% if !@post.blank? && !@post.try(:id).blank? %>
+    <meta property='og:description' content='<%= @post.description %>' />
+  <% else %>
+
+  <% end %>
 
   <title>Opportux</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>

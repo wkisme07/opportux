@@ -65,7 +65,6 @@ protected
         <meta property='fb:admins' content='1679013992' />
         <meta property='og:url' content='#{detail_url(post.slug || 'new')}' />
         <meta property='og:image' content='http://opportux.com/#{post.main_image.image_url}' />
-        <meta property='og:description' content='#{post.description}' />
       "
     else
       @fb_meta = "
