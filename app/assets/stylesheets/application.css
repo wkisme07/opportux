@@ -908,7 +908,7 @@ a.add-image{
 }
 .user-thumb-image{
   border-radius: 999px 999px 999px 999px;
-  margin: -15px 0 0 -5px;
+  margin: -5px 0 0 -5px;
   width: 90px;
 }
 .author-info{
@@ -1155,7 +1155,7 @@ a.add-image{
 }
 .user-avatar img{
   border-radius: 999px 999px 999px 999px;
-  margin: -15px 0 0 -5px;
+  margin: -5px 0 0 -5px;
   width: 90px;
 }
 .user-info-container .user-name{
