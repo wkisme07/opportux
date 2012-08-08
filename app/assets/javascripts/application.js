@@ -60,18 +60,23 @@ $(document).ready(function(){
   });
 
   // User Menu
-  $('#umenu-link').click(function(event){
+  $('#umenu-link > span').click(function(event){
     event.preventDefault();
-    $(this).toggleClass('active');
-    $('.hmenu-container').slideToggle();
+    if ($('.hmenu-container').is(':visible')){
+      $('.hmenu-container').slideUp();
+      $(this).removeClass('active');
+    }else{
+      $('.hmenu-container').slideDown();
+      $(this).addClass('active');
+    }
   });
-
   $('html').click(function(event){
     target = $(event.target);
     target_id = target.attr('id');
     target_class = target.attr('class');
 
-    if(target_id != 'umenu-link' && target_id != 'hmenu-container'){
+    if(target_id != 'umenu-link' && target_id != 'hmenu-container' &&
+       target_id != 'umenu-avtr' && target_id != 'umenu-name' && target_id != 'umenu-arrow'){
       $('#umenu-link').removeClass('active');
       $('.hmenu-container').slideUp();
     }

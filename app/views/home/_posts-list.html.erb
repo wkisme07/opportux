@@ -4,6 +4,11 @@
       <div class="item-view-info">
         <span><%= post.view || 0 %></span> views
       </div>
+      <% unless post.published? %>
+        <div class="draft">
+          <span>Draft</span>
+        </div>
+      <% end %>
 
       <div class="item-img-container">
         <%= link_to image_tag(post.main_image.image_url(:list)), home_path(post.slug), :class => 'item-img' %>
@@ -29,7 +34,7 @@
           <% end %>
         </div>
 
-        <div class="item-autor"> by <%= link_to post.user.fullname, '#' %></div>
+        <div class="item-autor"> by <%= link_to post.user.fullname, user_path(post.user.slug) %></div>
         <div class="item-location"><%= post.location.name %></div>
         <div class="item-category">
           <% post.tag_list.each do |tag| %>

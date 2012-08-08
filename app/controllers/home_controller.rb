@@ -22,13 +22,13 @@ class HomeController < ApplicationController
 
   # business
   def business
-    @posts = Post.all_published.where("category_id = 1")
+    @posts = Post.all_published.where("category_id = 1").paginate(:page => params[:page])
     render :index
   end
 
   # people
   def people
-    @posts = Post.all_published.where("category_id = 2")
+    @posts = Post.all_published.where("category_id = 2").paginate(:page => params[:page])
     render :index
   end
 end

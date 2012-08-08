@@ -33,7 +33,7 @@
       <%= f.label :deal, 'Deal' %>
       <%= f.text_area :deal, :rows => 5, :class => 'text-area wysiwyg', :required => 'required' %>
     </div>
-    
+
     <%= f.fields_for :post_images do |pi| %>
       <% pidx = pi.object_name.gsub(/[^0-9]+/,'').to_i %>
       <div class="field-group image-group">

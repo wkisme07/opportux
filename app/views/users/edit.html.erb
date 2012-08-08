@@ -1,0 +1,85 @@
+<div class="form-container user-setting-container">
+  <h2>Settings</h2>
+  <span class="form-desc">Here you can control your settings and change your information</span>
+
+  <%= form_for @user, :url => update_user_path(@user.slug), :html => {:class => 'form', :method => :put} do |f| %>
+    <div class="field-group image-group user-image-group">
+      <div class="current-image avatar">
+        <%= f.label 'avatar' %>
+        <% avtr = @user.avatar? ? @user.avatar_url(:medium) : 'default-user-avatar.png' %>
+        <%= image_tag avtr, :alt => 'avatar' %>
+      </div>
+
+      <div class="fake-file-input-container">
+        <%= f.label 'avatar', 'Upload new one' %>
+        <%= text_field_tag 'file', '', :class => 'fake-file-input', :readonly => 'readonly' %>
+        <div class="fake-choose">
+          <span>Choose File</span>
+        </div>
+        <div class="clear"></div>
+        <span class="field-desc">Allowed file .JPG, .JPEG, .GIF or .PNG</span>
+
+        <%= f.file_field :avatar, :class => 'file-field' %>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="field-group image-group user-image-group cover-img">
+      <div class="current-image cover">
+        <%= f.label 'cover' %>
+        <% cover = @user.cover? ? @user.cover_url(:medium) : 'default-user-cover.png' %>
+        <%= image_tag cover, :alt => 'cover' %>
+      </div>
+
+      <div class="fake-file-input-container">
+        <%= f.label 'cover', 'Upload new one' %>
+        <%= text_field_tag 'file', '', :class => 'fake-file-input', :readonly => 'readonly' %>
+        <div class="fake-choose">
+          <span>Choose File</span>
+        </div>
+        <div class="clear"></div>
+        <span class="field-desc">Allowed file .JPG, .JPEG, .GIF or .PNG</span>
+
+        <%= f.file_field :cover, :class => 'file-field' %>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+
+    <div class="field-group">
+      <%= f.label :fullname, 'Fullname*' %>
+      <%= f.text_field :fullname, :class => 'text-field', :required => 'required' %>
+    </div>
+    <div class="field-group">
+      <%= f.label :email, 'Email*' %>
+      <%= f.email_field :email, :class => 'text-field', :required => 'required' %>
+    </div>
+    <div class="field-group">
+      <%= f.label :address, 'Address' %>
+      <%= f.text_area :address, :rows => 5, :class => 'text-area', :required => 'required' %>
+    </div>
+    <div class="field-group">
+      <%= f.label :facebook, 'Facebook' %>
+      <%= f.url_field :facebook, :class => 'text-field', :required => 'required' %>
+      <span class="field-desc">http://www.facebook.com/yourname</span>
+    </div>
+    <div class="field-group">
+      <%= f.label :twitter, 'Twitter' %>
+      <%= f.url_field :twitter, :class => 'text-field', :required => 'required' %>
+      <span class="field-desc">http://www.twitter.com/yourname</span>
+    </div>
+    <div class="field-group">
+      <%= f.label :website, 'Website' %>
+      <%= f.url_field :website, :class => 'text-field', :required => 'required' %>
+      <span class="field-desc">http://www.yoursite.com</span>
+    </div>
+
+    <div class="field-group form-action right-el">
+      <%= link_to 'Cancel', (:back || user_path(@user.path)), :class => 'cancel-link' %>
+      <%= f.submit 'Save', :class => 'button-link' %>
+    </div>
+    <div class="clear"></div>
+  <% end %>
+
+</div>

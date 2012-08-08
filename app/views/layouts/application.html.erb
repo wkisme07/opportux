@@ -41,20 +41,23 @@
           <%= link_to("#{image_tag('header-people.png', :alt => 'P')} <span>People</span>".html_safe,
             people_path, :class => ('active' if controller_name == 'home' && action_name == 'people')) %>
           <%= link_to("#{image_tag('header-upload.png', :alt => 'U')} <span>Upload</span>".html_safe,
-            new_post_path, :class => ('active' if controller_name == 'posts' && action_name == 'new')) %>
+            new_post_path, :class => ('active' if controller_name == 'posts' && ['new', 'create'].include?(action_name))) %>
         </div>
 
         <div class="header-menu user-menu <%= 'header-login-link' unless current_user %>">
           <% unless current_user %>
             <%= link_to "Login", new_user_session_path, :rel => 'facebox' %>
           <% else %>
-            <%= link_to "#{truncate(current_user.fullname, :length => 25)}<span class='umenu'></span>".html_safe, "#", :id => 'umenu-link' %>
+            <%= link_to "<span class='menu-user-avatar'>#{image_tag current_user.avatar_url(:thumb), :id => 'umenu-avtr'}</span>
+                <span class='uname' id='umenu-name'>#{truncate(current_user.fullname, :length => 25)}</span>
+                <span class='umenu' id='umenu-arrow'></span>".html_safe,
+              "#", :id => 'umenu-link' %>
             <div class="clear"></div>
 
             <div id="hmenu-container" class="hmenu-container">
               <ul>
                 <li><%= link_to 'Dashboad', user_path(current_user.slug) %></li>
-                <li><%= link_to 'Setting', '#setting' %></li>
+                <li><%= link_to 'Setting', edit_user_path(current_user.slug) %></li>
                 <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %></li>
               </ul>
             </div>
@@ -81,6 +84,7 @@
     </div>
 
     <%= yield :top_thumb %>
+    <%= yield :user_profile %>
 
     <div class="content-wrapper">
       <div class="main-content">

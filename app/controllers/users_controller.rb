@@ -7,6 +7,21 @@ class UsersController < ApplicationController
     @posts = @user.posts.order("renew, created_at DESC").paginate(:page => params[:page])
   end
 
+  # edit
+  def edit
+  end
+
+  # update
+  def update
+    if @user.update_attributes(params[:user])
+      flash[:notice] = "Your data has been updated"
+      redirect_to user_path(@user.slug)
+    else
+      flash[:notice] = @user.errors.try(:full_messages).try(:join, '<br />')
+      render :edit
+    end
+  end
+
   protected
 
     # find user

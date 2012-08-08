@@ -2,14 +2,20 @@
   <div class="item-view-info">
     <span><%= @post.view || 0 %></span> views
   </div>
+  <% unless @post.published? %>
+    <div class="draft">
+      <span>Draft</span>
+    </div>
+  <% end %>
 
   <div class="author-container">
     <div class="author-image">
-      <%= image_tag 'dummy/user-thumb-image.png', :alt => 'avtr', :class => 'user-thumb-image' %>
+      <% avtr = @post.user.avatar? ? @post.user.avatar_url(:medium) : 'default-user-avatar.png' %>
+      <%= image_tag avtr, :alt => 'avtr', :class => 'user-thumb-image' %>
     </div>
 
     <div class="author-info">
-      <%= link_to @post.user.fullname, '#', :class => 'author-name-link' %>
+      <%= link_to @post.user.fullname, user_path(@post.user.slug), :class => 'author-name-link' %>
 
       <div class="item-location"><%= @post.location.name %></div>
       <div class="item-category">

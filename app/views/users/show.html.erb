@@ -1,18 +1,26 @@
-<div class="user-profile-container">
-  <div class="cover-photo-container">
-    <%= image_tag '', :alt => 'Cover Photo' %>
+<%= content_for :user_profile do %>
+  <div class="user-profile-container">
+    <div class="cover-photo-container">
+      <%= image_tag @user.cover_url(:large), :alt => 'Cover Photo' %>
+    </div>
+
+    <div class="user-info-container">
+      <div class="user-avatar">
+        <% avtr = @user.avatar? ? @user.avatar_url(:medium) : 'default-user-avatar.png' %>
+        <%= image_tag avtr, :alt => 'avtr' %>
+      </div>
+
+      <div class="user-name"><%= @user.fullname %></div>
+      <ul class="user-detail">
+        <% if @user.address %><li class="location"><%= @user.address %></li><% end %>
+        <% if @user.facebook %><li class="facebook"><%= @user.facebook %></li><% end %>
+        <% if @user.twitter %><li class="twitter"><%= @user.twitter %></li><% end %>
+        <% if @user.website %><li class="website"><%= @user.website %></li><% end %>
+      </ul>
+    </div>
+
+    <div class="clear"></div>
   </div>
-
-  <div class="user-info-container">
-    <div class="user-avatar"></div>
-
-    <div class="user-name"></div>
-    <ul class="user-detail">
-      <li></li>
-    </ul>
-  </div>
-
-  <div class="clear"></div>
-</div>
+<% end %>
 
 <%= render :partial => '/home/posts-list.html' %>

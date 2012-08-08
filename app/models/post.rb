@@ -32,7 +32,7 @@ class Post < ActiveRecord::Base
 
   # all published posts
   def self.all_published
-    where('status = 1').order('renew, created_at DESC')
+    where('status = 1').order('renew DESC')
   end
 
   def self.search(params)
@@ -42,7 +42,7 @@ class Post < ActiveRecord::Base
       where(["status = 1 AND (title LIKE ? OR description LIKE ? OR
         id IN (SELECT taggable_id FROM taggings WHERE taggable_type = 'Post' AND tag_id IN
           (SELECT id FROM tags WHERE name LIKE ?))
-      )", "%#{term}%", "%#{term}%", "%#{term}%"])
+      )", "%#{term}%", "%#{term}%", "%#{term}%"]).order('renew DESC')
     else
       all_published
     end
