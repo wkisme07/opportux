@@ -48,8 +48,8 @@
           <% unless current_user %>
             <%= link_to "Login", new_user_session_path, :rel => 'facebox' %>
           <% else %>
-            <%= link_to "<span class='menu-user-avatar'>#{image_tag current_user.avatar_url(:thumb), :id => 'umenu-avtr'}</span>
-                <span class='uname' id='umenu-name'>#{truncate(current_user.fullname, :length => 25)}</span>
+            <% av = current_user.avatar? ? "<span class='menu-user-avatar'>#{image_tag current_user.avatar_url(:thumb), :id => 'umenu-avtr'}</span>" : '' %>
+            <%= link_to "#{av}<span class='uname' id='umenu-name'>#{truncate(current_user.fullname, :length => 25)}</span>
                 <span class='umenu' id='umenu-arrow'></span>".html_safe,
               "#", :id => 'umenu-link' %>
             <div class="clear"></div>
