@@ -432,6 +432,7 @@ ul.item-list li:hover .item-action a{ display: block; }
 
   border-radius: 15px;
   color: #fff !important;
+  font-family: Calibri !important;
   font-size: 12px !important;
   font-style: italic !important;
   line-height: 14px !important;
