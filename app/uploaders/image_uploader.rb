@@ -67,4 +67,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  # get geometry
+  def geometry
+    if (@file)
+      img = ::Magick::Image::read(@file.file).first
+      @geometry = [ img.columns, img.rows ]
+    else
+      @geometry = [0, 0]
+    end
+  end
+
+  # width
+  def width
+    @geometry.try(:first)
+  end
 end

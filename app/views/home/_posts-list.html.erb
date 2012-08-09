@@ -11,7 +11,7 @@
       <% end %>
 
       <div class="item-img-container">
-        <%= link_to image_tag(post.main_image.image_url(:list)), home_path(post.slug), :class => 'item-img' %>
+        <%= link_to image_tag(post.main_image.best_version(:list)), home_path(post.slug), :class => 'item-img' %>
       </div>
 
       <div class="item-info">
