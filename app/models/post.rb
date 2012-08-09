@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
 
   acts_as_ordered_taggable
   attr_accessible :user_id, :slug, :status, :title, :tag_list,
-    :category_id, :city_id, :description, :deal,
+    :category_id, :city_id, :description, :deal, :created_at, :updated_at,
     :renew, :view, :like, :report, :post_images_attributes
 
   validates :user_id, :title, :category_id, :city_id, :description, :presence => true
