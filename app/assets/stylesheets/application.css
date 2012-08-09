@@ -224,13 +224,15 @@ ul.top-thumbs{
 }
 .top-thumbs li:last-child{ margin-right: 0; }
 .top-thumbs li .thumb-img, .top-thumbs li .thumb-img img{ border-radius: 5px 5px 0px 0px; }
-.top-thumbs li .thumb-img > a, .top-thumbs li .thumb-img > a img{
+.top-thumbs li .thumb-img > a{
   background: #eee;
   display: block;
   height: 165px;
+  overflow: hidden;
   text-align: center;
   width: 220px;
 }
+.top-thumbs li .thumb-img > a img{ width: 220px; }
 
 .thumb-info{
   border-bottom: 1px solid #ccc;
