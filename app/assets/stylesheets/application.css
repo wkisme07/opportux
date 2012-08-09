@@ -431,11 +431,12 @@ ul.item-list li:hover .item-action a{ display: block; }
   background: -ms-linear-gradient(top, #31b5e0, #31b5e0);
 
   border-radius: 15px;
-  color: #fff;
-  font-size: 12px;
-  font-style: italic;
-  padding: 8px 15px;
-  text-shadow: 0px 1px 3px #ccc;
+  color: #fff !important;
+  font-size: 12px !important;
+  font-style: italic !important;
+  line-height: 14px !important;
+  padding: 8px 15px !important;
+  text-shadow: 0px 1px 3px #ccc !important;
 }
 .view-more:hover{ box-shadow: 0px 0px 5px #ccc; }
 
