@@ -48,7 +48,8 @@
   </div>
 
   <div class="detail-image-container">
-    <%= image_tag @post.main_image.best_version(:large), :class => 'image' %>
+    <% img = @pi.present? ? @pi : @post.main_image %>
+    <%= image_tag img.best_version(:large), :class => 'image', :id => "img-#{img.id}" %>
   </div>
 
   <div class="detail-stat">
@@ -82,16 +83,16 @@
     <div class="detail-info-tab">
       <ul>
         <li>
-          <%= link_to 'Description', show_info_home_index_path(:slug => @post.slug, :info => 'description'),
-            :id => 'description', :class => 'active' %>
+          <%= link_to 'Description', detail_path(:slug => @post.slug, :info => 'description'),
+            :id => 'description', :class => ('active' if @temp == 'description') %>
         </li><!--
      --><li>
-          <%= link_to 'Deal', @post.deal.blank? ? '#deal' : show_info_home_index_path(:slug => @post.slug, :info => 'deal'),
-            :id => 'deal', :class => '' %>
+          <%= link_to 'Deal', detail_path(:slug => @post.slug, :info => 'deal'),
+            :id => 'deal', :class => ('active' if @temp == 'deal') %>
         </li><!--
      --><li>
-          <%= link_to 'Photos', @post.images.count == 0 ? '#photos' : show_info_home_index_path(:slug => @post.slug, :info => 'photos'),
-            :id => 'photos', :class => '' %>
+          <%= link_to 'Photos', detail_path(:slug => @post.slug, :info => 'photo'),
+            :id => 'photos', :class => ('active' if @temp == 'photo') %>
         </li>
       </ul>
       <div class="clear"></div>
@@ -99,7 +100,7 @@
 
     <h2><%= @post.title %></h2>
     <div class="detail-info">
-      <%= render :partial => '/home/detail-description.html' %>
+      <%= render :partial => "/home/detail-#{@temp}.html" %>
     </div>
 
   </div>

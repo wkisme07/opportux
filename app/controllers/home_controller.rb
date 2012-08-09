@@ -12,13 +12,17 @@ class HomeController < ApplicationController
   # show detail post
   def show
     @post = Post.find_by_slug(params[:slug])
+    @temp = params[:info] || 'description'
+
     @post.pviews.create(:user_id => current_user.try(:id), :ip_address => request.ip) if can_view?(@post)
   end
 
-  # detail info
-  def show_info
+  # change picture
+  def photo
     @post = Post.find_by_slug(params[:slug])
-    @temp = params[:info]
+    @pi = PostImage.find_by_id(params[:id])
+    @temp = 'photo'
+    render :show unless request.xhr?
   end
 
   # business

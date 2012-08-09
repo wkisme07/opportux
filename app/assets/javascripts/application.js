@@ -114,7 +114,8 @@ $(document).ready(function(){
       dcon.show();
     }else{
       $.ajax({
-        url: $(this).attr('href')
+        url: $(this).attr('href'),
+        dataType: 'script'
       });
     }
   });

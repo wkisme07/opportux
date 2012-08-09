@@ -1,0 +1,11 @@
+<% if @pi && !@pi.id.blank? %>
+  $('.detail-image-container > img').hide();
+
+  large_image = $('.detail-image-container > #img-<%= @pi.id %>');
+  if(large_image.length){
+    large_image.show();
+  }else{
+    $('.detail-image-container').append("<img src='<%= @pi.best_version(:large) %>' class='image' id='img-<%= @pi.id %>'>");
+  }
+
+<% end %>

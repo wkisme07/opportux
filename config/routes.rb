@@ -19,12 +19,13 @@ Opportux::Application.routes.draw do
 
   get '/p/:slug' => 'home#show', :as => 'detail'
   get '/p/:slug' => 'home#show', :as => 'home'
+  get '/p/:slug/photo/:id' => 'home#photo', :as => 'photo'
   get '/business' => 'home#business', :as => 'business'
   get '/people' => 'home#people', :as => 'people'
 
   resources :home do
     collection do
-      get   :show_info
+      get   :photo
       get   :business
       get   :people
     end
