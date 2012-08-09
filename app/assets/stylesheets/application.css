@@ -225,7 +225,8 @@ ul.top-thumbs{
 .top-thumbs li:last-child{ margin-right: 0; }
 .top-thumbs li .thumb-img, .top-thumbs li .thumb-img img{ border-radius: 5px 5px 0px 0px; }
 .top-thumbs li .thumb-img > a{
-  background: #eee;
+  background: #fafafa;
+  border-radius: 5px 5px 0 0;
   display: block;
   height: 165px;
   overflow: hidden;
@@ -340,17 +341,18 @@ ul.item-list li .draft, .item-detail-container .draft{
   margin: 12px 0 0;
 }
 
-.item-img-container{ float: left; }
 .item-img-container{
-  background: #eee;
+  background: #fafafa;
   border-radius: 5px 0 0;
+  float: left;
   height: 219px;
   overflow: hidden;
   width: 340px;
 }
 .item-img-container img{
+  display: block;
   margin: 0 auto;
-  width: 340px;
+  max-width: 340px;
 }
 .item-info{
   float: left;
@@ -1188,6 +1190,49 @@ ul.user-detail li.location{ background: url(bg-user-location.png) no-repeat 0px 
 ul.user-detail li.facebook{ background: url(bg-user-facebook.png) no-repeat 0px 6px transparent; }
 ul.user-detail li.twitter{ background: url(bg-user-twitter.png) no-repeat 0px 7px transparent; }
 ul.user-detail li.website{ background: url(bg-user-website.png) no-repeat 0px 6px transparent; }
+
+.utab{
+  background: -moz-linear-gradient(top, #fafafa 0%, #f6f6f6);
+  background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#f6f6f6));
+  background: -o-linear-gradient(top, #fafafa, #f6f6f6);
+  background: -ms-linear-gradient(top, #fafafa, #f6f6f6);
+
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: block;
+  margin: 20px 0 20px;
+}
+.utab a{
+  display: inline-block;
+  color: #31b5e0;
+  margin-left: -3px;
+  padding: 8px 20px 7px;
+  text-shadow: 0px 1px #f3f3f3;
+  position: relative;
+}
+.utab a:first-child{
+  border-radius: 5px 0 0 5px;
+  border-right: 1px solid #ccc;
+  margin-left: 0;
+}
+
+.utab a:hover, .utab a.active{
+  background: #31b5e0;
+  color: #fff;
+}
+.utab a.active:after{
+  border-color: #31B5E0 transparent;
+  border-style: solid;
+  border-width: 0 20px 12px;
+  bottom: auto;
+  content: "";
+  display: block;
+  left: auto;
+  position: absolute;
+  right: 0px;
+  top: -12px;
+  width: 0;
+}
 
 /* USER SETTING */
 .user-setting-container{

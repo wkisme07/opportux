@@ -37,6 +37,7 @@ class Ability
 
       can :edit, User, :user_id => user.id
       can :update, User, :id => user.id
+      can :read_draft, User, :id => user.id
     end
   end
 end

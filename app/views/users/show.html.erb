@@ -23,4 +23,11 @@
   </div>
 <% end %>
 
+<% if current_user && current_user.id == @user.id %>
+  <div class="utab">
+    <%= link_to "All", user_path(@user.slug), :class => ('active' if action_name == 'show') %>
+    <%= link_to "Draft", user_draft_path(@user.slug), :class => ('active' if action_name == 'draft') %>
+  </div>
+<% end %>
+
 <%= render :partial => '/home/posts-list.html' %>

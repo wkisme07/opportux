@@ -11,6 +11,13 @@ class UsersController < ApplicationController
     end
   end
 
+  # draft
+  def draft
+    authorize! :read_draft, @user
+    @posts = @user.posts.where("status = 0").paginate(:page => params[:page])
+    render :show
+  end
+
   # edit
   def edit
   end
