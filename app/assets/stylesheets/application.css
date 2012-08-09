@@ -28,7 +28,7 @@ a:active, a:focus{ outline: none; }
 .wrapper{
   background-image: url(bg-wrapper.png), url(bg-body.png);
   background-repeat: repeat-x, repeat;
-  background-position: 0px -60px, 0px 0px;
+  background-position: 0px -30px, 0px 0px;
   margin: 0 auto;
   width: 100%;
 }
@@ -232,7 +232,11 @@ ul.top-thumbs{
   text-align: center;
   width: 220px;
 }
-.top-thumbs li .thumb-img > a img{ width: 220px; }
+.top-thumbs li .thumb-img > a img{
+  display: block;
+  margin: 0 auto;
+  max-width: 220px;
+}
 
 .thumb-info{
   border-bottom: 1px solid #ccc;
@@ -945,8 +949,9 @@ a.add-image{
   width: 640px;
 }
 .detail-image-container img{
+  display: block;
   margin: 0 auto;
-  width: 640px;
+  max-width: 640px;
 }
 
 .detail-stat{
@@ -1147,9 +1152,9 @@ a.add-image{
 }
 .user-avatar{
   background: #fff;
-  border: 2px solid #aaa;
+  border: 3px solid white;
   border-radius: 999px 999px 999px 999px;
-  box-shadow: 0px 1px 5px #ccc;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25);
   float: left;
   height: 79px;
   margin: 20px 15px 0 -44px;
