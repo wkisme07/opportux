@@ -37,7 +37,7 @@ class HomeController < ApplicationController
 
     # can read draft
     def can_read_draft?
-      if @post && @post.status != 1 && current_user.id != @post.user_id
+      if @post && @post.status != 1 && current_user.try(:id) != @post.user_id
         flash[:alert] = "You are not authorize to access this page."
         redirect_to root_path
       end
