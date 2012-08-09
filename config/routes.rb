@@ -53,6 +53,7 @@ Opportux::Application.routes.draw do
   get '/u/:slug' => 'users#show', :as => "user"
   get '/u/:slug/edit' => 'users#edit', :as => "edit_user"
   put '/u/:slug/update' => 'users#update', :as => "update_user"
+  get '/u/:slug/draft' => 'users#draft', :as => "user_draft"
 
   resources :users, :only => [:show, :edit, :update] do
   end
