@@ -37,7 +37,7 @@ class PostsController < ApplicationController
 
   # publish post
   def publish
-    if @post.update_attributes(:status => 1, :renew => Time.now, :created_date => Time.now)
+    if @post.update_attributes(:status => 1, :renew => Time.now, :created_at => Time.now)
       flash[:notice] = "Upload saved"
       redirect_to root_path
     else
