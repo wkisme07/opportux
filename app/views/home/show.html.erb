@@ -93,14 +93,14 @@
           <%= link_to 'Description', detail_path(:slug => @post.slug, :info => 'description'),
             :id => 'description', :class => ('active' if @temp == 'description') %>
         </li><!--
-     --><li>
+     --><% unless @post.deal.blank? %><li>
           <%= link_to 'Deal', detail_path(:slug => @post.slug, :info => 'deal'),
             :id => 'deal', :class => ('active' if @temp == 'deal') %>
-        </li><!--
-     --><li>
+        </li><% end %><!--
+     --><% if @post.images.count > 1 %><li>
           <%= link_to 'Photos', detail_path(:slug => @post.slug, :info => 'photo'),
             :id => 'photos', :class => ('active' if @temp == 'photo') %>
-        </li>
+        </li><% end %>
       </ul>
       <div class="clear"></div>
     </div>

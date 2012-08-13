@@ -121,11 +121,30 @@ $(document).ready(function(){
   });
 
   // file field
-  $('.file-field').change(function(event){
+  $('.file-field').live('change', function(event){
     file_val = $(this).val();
     $(this).parent().children('.fake-file-input').val(file_val);
   });
 
+  // datail photo
+  $('#detail-photos > a').live('click', function(event){
+    event.preventDefault();
+    arr_url = $(this).attr('href').split('/');
+    id = arr_url[arr_url.length - 1];
+    img = $('#img-'+id);
+    img_height = img.length ? img.height() : 465;
+
+    $('.detail-image-container').css('min-height', img_height);
+    $('.detail-image-container > img').hide();
+    if (img.length){
+      img.show();
+    }else{
+      $.ajax({
+        url: $(this).attr('href'),
+        dataType: 'script'
+      });
+    }
+  });
 });
 
 

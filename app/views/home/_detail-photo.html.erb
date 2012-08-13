@@ -4,25 +4,3 @@
   <% end %>
   <div class="clear"></div>
 </div>
-
-<script type="text/javascript">
-$(document).ready(function(){
-  // datail photo
-  $('#detail-photos > a').click(function(event){
-    event.preventDefault();
-    arr_url = $(this).attr('href').split('/');
-    id = arr_url[arr_url.length - 1];
-    img = $('#img-'+id);
-
-    $('.detail-image-container > img').hide();
-    if (img.length){
-      img.show();
-    }else{
-      $.ajax({
-        url: $(this).attr('href'),
-        dataType: 'script'
-      });
-    }
-  });
-});
-</script>
