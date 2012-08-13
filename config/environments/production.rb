@@ -66,4 +66,13 @@ Opportux::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.action_mailer.default_url_options = { :host => 'www.opportux.com' }
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :authentication => :plain,
+    :port => '587',
+    :domain => "opportux.com",
+    :user_name => "no-reply@opportux.com",
+    :password => "123opportux"
+  }
 end

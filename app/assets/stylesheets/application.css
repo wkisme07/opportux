@@ -1274,7 +1274,7 @@ span.form-desc{ color: #999; }
   overflow: hidden;
   width: 80px;
 }
-.current-image.avatar{ height: 100px; }
+.current-image img{ height: 100px; }
 .cover-img{ margin-bottom: 40px; }
 .user-image-group .fake-file-input-container{
   float: left;

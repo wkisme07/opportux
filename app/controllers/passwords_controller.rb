@@ -17,6 +17,7 @@ class PasswordsController < Devise::PasswordsController
 
         format.html{ redirect_to after_sending_reset_password_instructions_path_for(resource_name) }
         format.js{
+          @xhr = true
           @temp = 'devise/sessions/new.html'
           render '/layouts/facebox-reprocess', :layout => false
         }
@@ -27,6 +28,7 @@ class PasswordsController < Devise::PasswordsController
       respond_with(resource) do |format|
         format.html{}
         format.js{
+          @xhr = true
           @temp = 'devise/passwords/new.html'
           render '/layouts/facebox-reprocess', :layout => false
         }
