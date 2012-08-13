@@ -1045,6 +1045,8 @@ a.add-image{
 
 .detail-photos{ background: #fff; }
 .detail-photos a.detail-thumb{
+  background: #efefef;
+  border: 1px solid #ccc;
   display: block;
   float: left;
   height: 105px;
