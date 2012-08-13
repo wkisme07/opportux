@@ -96,6 +96,7 @@ $(document).ready(function(){
   }
 
   // detail tab link
+  var tab_request = Array();
   $('.detail-info-tab ul li a').click(function(event){
     event.preventDefault();
 
@@ -113,10 +114,14 @@ $(document).ready(function(){
     if (dcon.length){
       dcon.show();
     }else{
-      $.ajax({
-        url: $(this).attr('href'),
-        dataType: 'script'
-      });
+      if($.inArray(elid, tab_request) == -1){
+        tab_request.push(elid);
+
+        $.ajax({
+          url: $(this).attr('href'),
+          dataType: 'script'
+        });
+      }
     }
   });
 
@@ -127,11 +132,13 @@ $(document).ready(function(){
   });
 
   // datail photo
+  var photo_request = Array();
   $('#detail-photos > a').live('click', function(event){
     event.preventDefault();
     arr_url = $(this).attr('href').split('/');
     id = arr_url[arr_url.length - 1];
-    img = $('#img-'+id);
+    img_id = 'img-'+id;
+    img = $('#'+img_id);
     img_height = img.length ? img.height() : 465;
 
     $('.detail-image-container').css('min-height', img_height);
@@ -139,10 +146,14 @@ $(document).ready(function(){
     if (img.length){
       img.show();
     }else{
-      $.ajax({
-        url: $(this).attr('href'),
-        dataType: 'script'
-      });
+      if($.inArray(img_id, photo_request) == -1){
+        photo_request.push(img_id);
+
+        $.ajax({
+          url: $(this).attr('href'),
+          dataType: 'script'
+        });
+      }
     }
   });
 });
