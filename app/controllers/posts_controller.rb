@@ -55,7 +55,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Renew failed"
     end
 
-    redirect_to :back || detail_path(@post.slug)
+    redirect_to request.env["HTTP_REFERER"] ? :back : detail_path(@post.slug)
   end
 
   # like pots
@@ -66,7 +66,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Like failed"
     end
 
-    redirect_to :back || detail_path(@post.slug)
+    redirect_to request.env["HTTP_REFERER"] ? :back : detail_path(@post.slug)
   end
 
   # report pots
@@ -77,7 +77,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Report post failed failed"
     end
 
-    redirect_to :back || detail_path(@post.slug)
+    redirect_to request.env["HTTP_REFERER"] ? :back : detail_path(@post.slug)
   end
 
   # edit post
