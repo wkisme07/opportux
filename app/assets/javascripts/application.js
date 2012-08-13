@@ -182,12 +182,13 @@ function remove_fields(link){
 function add_fields(link, association, content){
   var img_count = $('.image-group:visible').size() + 1;
 
-  if (img_count < 6){
+  max = 8;
+  if (img_count <= max){
     var new_id = new Date().getTime();
     var regexp = new RegExp("new_" + association, "g")
     $(link).before(content.replace(regexp, new_id));
   }else{
-    alert('Five (5) images maximum per upload.');
+    alert('('+max+') images maximum per upload.');
   }
 }
 
