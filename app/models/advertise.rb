@@ -28,9 +28,10 @@ class Advertise < ActiveRecord::Base
   # small
   def self.small
     sc = size_count('small')
-    off = rand(sc)
+    r = rand(sc)
+    off = sc != 0 && sc - off < 4 ? sc - 4 : r
 
-    advs = where(["size = ?", 'small']).offset(sc - off < 4 ? sc - 4 : off).slice(0, 4)
+    advs = where(["size = ?", 'small']).offset().slice(0, 4)
     advs.each do |adv|
       adv.update_attribute(:viewed, adv.viewed + 1)
     end unless advs.blank?
