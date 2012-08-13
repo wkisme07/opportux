@@ -29,7 +29,7 @@ end
 
 # admin
 if Admin.all.blank?
-  pust "Create default admin ..."
+  puts "Create default admin ..."
   Admin.create(
     :fullname => 'Administrator',
     :email    => 'admin@opportux.com',
