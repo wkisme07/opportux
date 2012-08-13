@@ -225,7 +225,7 @@ ul.top-thumbs{
 .top-thumbs li:last-child{ margin-right: 0; }
 .top-thumbs li .thumb-img, .top-thumbs li .thumb-img img{ border-radius: 5px 5px 0px 0px; }
 .top-thumbs li .thumb-img > a{
-  background: #fafafa;
+  background: #efefef;
   border-radius: 5px 5px 0 0;
   display: block;
   height: 165px;
@@ -343,7 +343,7 @@ ul.item-list li .draft, .item-detail-container .draft{
 }
 
 .item-img-container{
-  background: #fafafa;
+  background: #efefef;
   border-radius: 5px 0 0;
   float: left;
   height: 219px;
