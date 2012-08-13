@@ -107,7 +107,7 @@
 
     <h2><%= @post.title %></h2>
     <div class="detail-info">
-      <%= render :partial => "/home/detail-#{@temp}.html" %>
+      <%= render :partial => "/home/detail-#{@temp || 'description'}.html" %>
     </div>
 
   </div>

@@ -32,6 +32,7 @@ class PostsController < ApplicationController
 
   # review post before publish it
   def review
+    @temp = 'description'
     render '/home/show.html'
   end
 
