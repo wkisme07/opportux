@@ -1,6 +1,18 @@
 <div class="adm-form">
   <%= form_for [:admins, @adv], :html => {:class => 'form'} do |f| %>
     <div class="field-group">
+      <%= f.label 'Business Name*' %>
+      <%= f.text_field :business_name, :class => 'text-field', :required => 'required' %>
+    </div>
+    <div class="field-group">
+      <%= f.label 'Contact Name*' %>
+      <%= f.text_field :contact_name, :class => 'text-field', :required => 'required' %>
+    </div>
+    <div class="field-group">
+      <%= f.label 'Contact Email*' %>
+      <%= f.email_field :contact_email, :class => 'text-field', :required => 'required' %>
+    </div>
+    <div class="field-group">
       <%= f.label 'size*' %>
       <%= f.select :size, options_for_select(adv_size_options, @adv.size), {}, :required => 'required' %>
     </div>

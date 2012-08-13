@@ -1,8 +1,8 @@
 class Advertise < ActiveRecord::Base
-  attr_accessible :size, :title, :url, :description, :image, :price, :viewed
+  attr_accessible :business_name, :contact_name, :contact_email, :size, :title, :url, :description, :image, :price, :viewed
   mount_uploader :image, AdvUploader
 
-  validates :size, :title, :url, :description, :image, :price, :presence => true
+  validates :business_name, :contact_name, :contact_email, :size, :title, :url, :description, :image, :price, :presence => true
 
 
   # big
