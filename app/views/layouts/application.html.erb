@@ -55,9 +55,9 @@
         </div>
 
         <div class="header-menu user-menu <%= 'header-login-link' unless current_user %>">
-          <% unless current_user %>
+          <% if !current_user && !current_admin %>
             <%= link_to "Login", new_user_session_path, :rel => 'facebox' %>
-          <% else %>
+          <% elsif current_user %>
             <% av = current_user.avatar? ? "<span class='menu-user-avatar'>#{image_tag current_user.avatar_url(:thumb), :id => 'umenu-avtr'}</span>" : '' %>
             <%= link_to "#{av}<span class='uname' id='umenu-name'>#{truncate(current_user.fullname, :length => 25)}</span>
                 <span class='umenu' id='umenu-arrow'></span>".html_safe,
@@ -72,6 +72,8 @@
               </ul>
             </div>
             <div class="clear"></div>
+          <% elsif current_admin %>
+            <%= link_to 'Logout', destroy_admin_session_path, :method => 'delete' %>
           <% end %>
         </div>
         <div class="header-separator right"></div>
@@ -105,12 +107,22 @@
         <%= link_to 'SIGN UP', new_registration_path('user'), :class => 'sign-up-link', :rel => 'facebox' unless current_user %>
 
         <div class="big-adv">
-          <%= link_to image_tag('dummy/adv-big.png', :alt => ''), '#' %>
+          <% if @big_adv %>
+            <%= link_to image_tag(@big_adv.image_url(:big)), @big_adv.url, :title => @big_adv.title %>
+          <% else %>
+            <%= link_to image_tag('dummy/adv-big.png', :alt => ''), '#' %>
+          <% end %>
         </div>
 
         <div class="medium-adv-container">
-          <div class="medium-adv"><%= link_to image_tag('dummy/adv-medium-1.png', :alt => ''), '#' %></div>
-          <div class="medium-adv"><%= link_to image_tag('dummy/adv-medium-2.png', :alt => ''), '#' %></div>
+          <% if @medium_advs %>
+            <% @medium_advs.each do |adv| %>
+              <div class="medium-adv"><%= link_to image_tag(adv.image_url(:medium)), adv.url, :title => adv.title %></div>
+            <% end %>
+          <% else %>
+            <div class="medium-adv"><%= link_to image_tag('dummy/adv-medium-1.png', :alt => ''), '#' %></div>
+            <div class="medium-adv"><%= link_to image_tag('dummy/adv-medium-2.png', :alt => ''), '#' %></div>
+          <% end %>
           <div class="clear"></div>
         </div>
 
@@ -126,75 +138,32 @@
           </div>
         <% end %>
 
-        <div class="little-adv">
-          <div class="little-adv-title">SPONSORED</div>
+        <% if @small_advs %>
+          <div class="little-adv">
+            <div class="little-adv-title">SPONSORED</div>
 
-          <ul class="little-adv-list">
-            <li>
-              <div class="adv-img">
-                <%= link_to image_tag('dummy/adv-little.png', :alt => ''), '#' %>
-              </div>
+            <ul class="little-adv-list">
+              <% @small_advs.each do |adv| %>
+                <li>
+                  <div class="adv-img">
+                    <%= link_to image_tag(adv.image_url(:small)), adv.url, :title => adv.title %>
+                  </div>
 
-              <div class="little-adv-info">
-                <span class="little-adv-info-title"><%= link_to 'Motor Ninja', '#' %></span>
-                <span class="little-adv-desc">
-                  <p>
-                    Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting.
-                  </p>
-                </span>
-              </div>
-              <div class="clear"></div>
-            </li>
-            <li>
-              <div class="adv-img">
-                <%= link_to image_tag('dummy/adv-little.png', :alt => ''), '#' %>
-              </div>
+                  <div class="little-adv-info">
+                    <span class="little-adv-info-title"><%= link_to adv.title, adv.url %></span>
+                    <span class="little-adv-desc">
+                      <p><%= truncate(adv.description, :length => 80) %></p>
+                    </span>
+                  </div>
+                  <div class="clear"></div>
+                </li>
+              <% end %>
+            </ul>
 
-              <div class="little-adv-info">
-                <span class="little-adv-info-title"><%= link_to 'Motor Ninja', '#' %></span>
-                <span class="little-adv-desc">
-                  <p>
-                    Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting.
-                  </p>
-                </span>
-              </div>
-              <div class="clear"></div>
-            </li>
-            <li>
-              <div class="adv-img">
-                <%= link_to image_tag('dummy/adv-little.png', :alt => ''), '#' %>
-              </div>
-
-              <div class="little-adv-info">
-                <span class="little-adv-info-title"><%= link_to 'Motor Ninja', '#' %></span>
-                <span class="little-adv-desc">
-                  <p>
-                    Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting.
-                  </p>
-                </span>
-              </div>
-              <div class="clear"></div>
-            </li>
-            <li>
-              <div class="adv-img">
-                <%= link_to image_tag('dummy/adv-little.png', :alt => ''), '#' %>
-              </div>
-
-              <div class="little-adv-info">
-                <span class="little-adv-info-title"><%= link_to 'Motor Ninja', '#' %></span>
-                <span class="little-adv-desc">
-                  <p>
-                    Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting.
-                  </p>
-                </span>
-              </div>
-              <div class="clear"></div>
-            </li>
-          </ul>
+          </div>
 
         </div>
-
-      </div>
+      <% end %>
       <div class="clear"></div>
 
     </div>

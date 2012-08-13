@@ -1,0 +1,55 @@
+<div class="adm-form">
+  <%= form_for [:admins, @adv], :html => {:class => 'form'} do |f| %>
+    <div class="field-group">
+      <%= f.label 'size*' %>
+      <%= f.select :size, options_for_select(adv_size_options, @adv.size), {}, :required => 'required' %>
+    </div>
+    <div class="field-group">
+      <%= f.label 'title*' %>
+      <%= f.text_field :title, :class => 'text-field', :required => 'required' %>
+    </div>
+    <div class="field-group">
+      <%= f.label 'url*' %>
+      <%= f.url_field :url, :class => 'text-field', :required => 'required' %>
+      <span class="field-desc">ex: http://advertise.com</span>
+    </div>
+    <div class="field-group">
+      <%= f.label 'price*' %>
+      <%= f.text_field :price, :class => 'text-field' %>
+      <span class="field-desc">Price per view (3000)</span>
+    </div>
+    <div class="field-group">
+      <%= f.label 'description*' %>
+      <%= f.text_area :description, :class => 'text-area', :rows => 3, :required => 'required' %>
+    </div>
+
+    <div class="field-group image-group">
+      <div class="fake-file-input-container">
+        <%= f.label 'image*' %>
+        <%= text_field_tag 'file', '', :class => 'fake-file-input', :readonly => 'readonly' %>
+        <div class="fake-choose">
+          <span>Choose File</span>
+        </div>
+        <div class="clear"></div>
+        <span class="field-desc">Allowed file .JPG, .JPEG, .GIF or .PNG</span>
+
+        <%= f.file_field :image, :class => 'file-field', :required => 'required' %>
+        <div class="clear"></div>
+
+        <% if @adv.image_url %>
+          <div class="adm-edit-adv-img">
+            <%= image_tag @adv.image_url(:small), :alt => 'thumb' %>
+          </div>
+        <% end %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="field-group form-action">
+      <%= f.submit 'Save', :class => 'button-link' %>
+      <%= link_to 'Cancel', (:back || admins_advertises_path), :class => 'cancel-link' %>
+    </div>
+    <div class="clear"></div>
+  <% end %>
+
+</div>

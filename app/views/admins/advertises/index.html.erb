@@ -1,0 +1,36 @@
+<div class="adm-content">
+  <h2>Advertises</h2>
+
+  <div class="adm-action">
+    <%= link_to "New", new_admins_advertise_path, :class => 'new-link' %>
+  </div>
+  <table class="table">
+    <tr>
+      <th>Title</th>
+      <th>Url</th>
+      <th class="td-c">Size</th>
+      <th class="td-r">Price</th>
+      <th class="td-c">Viewed</th>
+      <th class="last">Action</th>
+    </tr>
+    <% @advs.each do |adv| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td><%= adv.title %></td>
+        <td><%= adv.url %></td>
+        <td class="td-c"><%= adv.size.titleize %></td>
+        <td class="td-r"><%= to_rupiach(adv.price) %></td>
+        <td class="td-c"><%= adv.viewed %></td>
+        <td class="last">
+          <%= link_to "view", admins_advertise_path(adv) %>
+          <%= link_to "edit", edit_admins_advertise_path(adv) %>
+          <%= link_to "remove", admins_advertise_path(adv), :class => 'remove-link', :method => :delete,
+            :confirm => 'Are you sure you want to remove this data?' %>
+        </td>
+      </tr>
+    <% end unless @advs.blank? %>
+  </table>
+
+  <% if @advs.blank? %>
+    <div class="admin-no-data">No Data</div>
+  <% end %>
+</div>

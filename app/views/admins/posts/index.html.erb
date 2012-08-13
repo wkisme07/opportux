@@ -1,0 +1,38 @@
+<div class="adm-content">
+  <h2>Posts</h2>
+
+  <table class="table">
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th class="td-c pv">View</th>
+      <th class="td-c pl">Like</th>
+      <th class="td-c pr">Report</th>
+      <th class="last">Action</th>
+    </tr>
+    <% @posts.each do |post| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td><%= post.title %></td>
+        <td><%= link_to post.author.try(:fullname), user_path(post.author.slug) %></td>
+        <td class="td-c pv"><%= post.views.count %></td>
+        <td class="td-c pl"><%= post.likes.count %></td>
+        <td class="td-c pr"><%= post.reports.count %></td>
+        <td class="last">
+          <%= link_to 'view', detail_path(post.slug) %>
+          <%= link_to 'remove', admins_posts_remove_path(post.slug), :class => 'remove-link', :method => :delete,
+            :confirm => 'Are you sure you want to remove this post?' %>
+        </td>
+      </tr>
+    <% end unless @posts.blank? %>
+  </table>
+  <% if @posts.blank? %>
+    <div class="admin-no-data">No Data</div>
+  <% end %>
+
+  <div class="pg-container">
+    <div class="page-info">
+      <%= page_entries_info @posts %>
+    </div>
+    <%= will_paginate @posts %>
+  </div>
+</div>

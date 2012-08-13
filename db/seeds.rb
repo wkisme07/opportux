@@ -26,3 +26,14 @@ if City.all.blank?
   ActiveRecord::Base.connection.execute "LOAD DATA LOCAL INFILE '#{Rails.root}/db/migrate/GeoWorldMap/Cities.txt' INTO TABLE cities
     FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;"
 end
+
+# admin
+if Admin.all.blank?
+  pust "Create default admin ..."
+  Admin.create(
+    :fullname => 'Administrator',
+    :email    => 'admin@opportux.com',
+    :password => '123oppORtuX',
+    :password_confirmation => '123oppORtuX'
+  )
+end

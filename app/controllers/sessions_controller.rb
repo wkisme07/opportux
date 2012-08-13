@@ -51,7 +51,7 @@ class SessionsController < Devise::SessionsController
           end
         end
       end
-      
+
       format.html { super }
     end
   end

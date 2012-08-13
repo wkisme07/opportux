@@ -36,14 +36,17 @@
           <% end %>
         </div>
 
-        <div class="item-autor"> by <%= link_to post.user.fullname, user_path(post.user.slug) %></div>
-        <div class="item-location"><%= post.location.name %></div>
-        <div class="item-category">
-          <% post.tag_list.each do |tag| %>
-            <%= link_to tag.titleize, root_path(:tag => tag), :class => 'tag-list' %>
-          <% end %>
+        <div class="item-author"> by <%= link_to post.user.fullname, user_path(post.user.slug) %></div>
+        <div class="loc-cat">
+          <div class="item-location"><%= post.location.name %></div>
+          <div class="item-category">
+            <% post.tag_list.each do |tag| %>
+              <%= link_to tag.titleize, root_path(:tag => tag), :class => 'tag-list' %>
+            <% end %>
+          </div>
+          <div class="clear"></div>
+
         </div>
-        <div class="clear"></div>
 
         <div class="item-stat">
           <span class="item-time"><%= "#{time_ago_in_words(post.created_at)} ago" %></span>

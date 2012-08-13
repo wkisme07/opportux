@@ -1,0 +1,38 @@
+<div class='adm-content'>
+  <h1>
+    Welcome to Opportux Admin Site
+    <span class="desc">Tempatnya Cari Peluang</span>
+  </h1>
+
+  <h2>Reported Posts</h2>
+  <table class='table'>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th class="td-c">Report Count</th>
+      <th class="last">Action</th>
+    </tr>
+    <% @rposts.each do |rp| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+        <td><%= rp.title %></td>
+        <td><%= link_to rp.author.try(:fullname), user_path(rp.author.slug) %></td>
+        <td class="td-c"><%= rp.reports.count %></td>
+        <td class="last">
+          <%= link_to 'view', detail_path(rp.slug) %>
+          <%= link_to 'remove', admin_remove_post_path(rp.slug), :class => 'remove-link', :method => :delete,
+            :confirm => 'Are you sure you want to remove this post?' %>
+        </td>
+      </tr>
+    <% end unless @rposts.blank? %>
+  </table>
+  <% if @rposts.blank? %>
+    <div class="admin-no-data">No Data</div>
+  <% end %>
+
+  <div class="pg-container">
+    <div class="page-info">
+      <%= page_entries_info @rposts %>
+    </div>
+    <%= will_paginate @rposts %>
+  </div>
+</div>

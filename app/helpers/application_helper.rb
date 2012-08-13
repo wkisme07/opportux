@@ -18,4 +18,24 @@ module ApplicationHelper
   def facebook_like
     content_tag :iframe, nil, :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape(request.url)}&layout=standard&show_faces=true&width=450&action=like&font=arial&colorscheme=light&height=80", :scrolling => 'no', :frameborder => '0', :allowtransparency => true, :id => :facebook_like
   end
+
+  # @author Wawan Kurniawan <ones07@gmail.com>
+  # Indonesian Curreny Format
+  def to_rupiach(number, rp = false)
+    formated_number = rp ? "Rp " : ""
+    formated_number += "#{number_to_currency(number, :separator => ',', :delimiter => '.', :unit => '')}"
+  end
+
+  # @author Wawan Kurniawan <ones07@gmail.com>
+  # DateTime format
+  def date_time_format(date_time)
+    date_time.strftime("%Y-%m-%d %H:%M:%S") if date_time
+  end
+
+  # @author Wawan Kurniawan <ones07@gmail.com>
+  # Date format
+  def date_format(date, str = false)
+    format = str ? "%d %b %Y" : "%d/%m/%Y"
+    date.strftime(format) if date
+  end
 end

@@ -52,6 +52,7 @@ class Post < ActiveRecord::Base
   alias :location :city
   alias :views :pviews
   alias :reports :post_reports
+  alias :author :user
 
   # like
   def like

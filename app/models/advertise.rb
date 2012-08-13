@@ -1,0 +1,47 @@
+class Advertise < ActiveRecord::Base
+  attr_accessible :size, :title, :url, :description, :image, :price, :viewed
+  mount_uploader :image, AdvUploader
+
+  validates :size, :title, :url, :description, :image, :price, :presence => true
+
+
+  # big
+  def self.big
+    adv = where(["size = ?", 'big']).offset(rand(size_count('big'))).try(:first)
+    adv.update_attribute(:viewed, adv.viewed + 1)
+
+    adv
+  end
+
+  # medium
+  def self.medium
+    off = rand(size_count('medium'))
+    advs = where(["size = ?", 'medium']).offset(off == 0 ? off : off-1).slice(0, 2)
+    advs.each do |adv|
+      adv.update_attribute(:viewed, adv.viewed + 1)
+    end
+
+    advs
+  end
+
+  # small
+  def self.small
+    sc = size_count('small')
+    off = rand(sc)
+
+logger.info "-------------------------- #{off}"
+
+    advs = where(["size = ?", 'small']).offset(sc - off < 4 ? sc - 4 : off).slice(0, 4)
+    advs.each do |adv|
+      adv.update_attribute(:viewed, adv.viewed + 1)
+    end
+
+    advs
+  end
+
+  def self.size_count(s)
+    where(["size = ?", s]).count
+  end
+
+
+end

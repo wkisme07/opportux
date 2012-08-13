@@ -1,0 +1,63 @@
+<div class="adm-content">
+  <h2>Detail Advertise</h2>
+
+  <div class="field-group">
+    <span class="detail-label">Size</span>
+    <span><%= @adv.size.titleize %></span>
+  </div>
+  <div class="field-group">
+    <span class="detail-label">Title</span>
+    <span><%= @adv.title %></span>
+  </div>
+  <div class="field-group">
+    <span class="detail-label">URL</span>
+    <span><%= @adv.url %></span>
+  </div>
+  <div class="field-group">
+    <span class="detail-label">Price per view</span>
+    <span><%= to_rupiach(@adv.price) %></span>
+  </div>
+  <div class="field-group">
+    <span class="detail-label">Viewed</span>
+    <span><%= @adv.viewed %></span>
+  </div>
+
+  <div class="big-adv">
+    <%= link_to image_tag(@adv.image_url(:big)), @adv.url %>
+  </div>
+
+  <div class="medium-adv-container">
+    <div class="medium-adv">
+      <%= link_to image_tag(@adv.image_url(:medium)), @adv.url %>
+    </div>
+    <div class="medium-adv">
+      <%= link_to image_tag(@adv.image_url(:medium)), @adv.url %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="little-adv">
+    <ul class="little-adv-list">
+      <li>
+        <div class="adv-img">
+          <%= link_to image_tag(@adv.image_url(:small)), @adv.url%>
+        </div>
+
+        <div class="little-adv-info">
+          <span class="little-adv-info-title"><%= link_to @adv.title, @adv.url %></span>
+          <span class="little-adv-desc">
+            <p><%= @adv.description %></p>
+          </span>
+        </div>
+        <div class="clear"></div>
+      </li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+
+  <div class="field-group">
+    <%= link_to "New", new_admins_advertise_path, :class => 'new-link' %>
+    <%= link_to 'Edit', edit_admins_advertise_path(@adv), :class => 'cancel-link' %>
+    <%= link_to 'Back', admins_advertises_path, :class => 'cancel-link' %>
+  </div>
+</div>

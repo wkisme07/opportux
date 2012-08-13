@@ -1,4 +1,8 @@
 Opportux::Application.routes.draw do
+  devise_for :admins, :controllers => {
+    :sessions => "sessions"
+  }
+
   devise_for :users, :controllers => {
     :sessions => "sessions",
     :registrations => "registrations",
@@ -59,6 +63,25 @@ Opportux::Application.routes.draw do
   resources :users, :only => [:show, :edit, :update] do
   end
 
+
+  # ADMIN #
+  get '/admins' => 'Admins::Application#dashboard', :as => 'backend_root'
+  get '/admins/dashboard' => 'Admins::Application#dashboard', :as => 'admin_root'
+  delete '/admins/:slug/destroy' => 'Admins::Application#destroy', :as => 'admin_remove_post'
+  delete '/admins/posts/:slug/destroy' => 'Admins::Posts#destroy', :as => 'admins_posts_remove'
+
+  namespace :admins do
+    resources :application, :only => [:index] do
+      collection do
+        get     :dashboard
+        delete  :destroy
+      end
+    end
+
+    resources :posts, :only => [:index, :destroy]
+    resources :advertises
+    resources :contents
+  end
 
   # Sample resource route with options:
   #   resources :products do
