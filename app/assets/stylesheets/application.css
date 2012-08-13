@@ -401,7 +401,7 @@ ul.item-list li .draft, .item-detail-container .draft{
   overflow: hidden;
   width: 175px;
 }
-.item-category a{ color: #31b5e0; }
+.item-category a{ color: #31b5e0;padding: 0 3px 0 0; }
 .item-category a:hover{ text-decoration: underline; }
 .item-stat{
   border-top: 1px solid #f1f1f1;
