@@ -8,9 +8,10 @@ class Advertise < ActiveRecord::Base
   # big
   def self.big
     adv = where(["size = ?", 'big']).offset(rand(size_count('big'))).try(:first)
-    adv.update_attribute(:viewed, adv.viewed + 1)
-
-    adv
+    if adv
+      adv.update_attribute(:viewed, adv.viewed + 1)
+      adv
+    end
   end
 
   # medium
@@ -19,7 +20,7 @@ class Advertise < ActiveRecord::Base
     advs = where(["size = ?", 'medium']).offset(off == 0 ? off : off-1).slice(0, 2)
     advs.each do |adv|
       adv.update_attribute(:viewed, adv.viewed + 1)
-    end
+    end unless advs.blank?
 
     advs
   end
@@ -29,12 +30,10 @@ class Advertise < ActiveRecord::Base
     sc = size_count('small')
     off = rand(sc)
 
-logger.info "-------------------------- #{off}"
-
     advs = where(["size = ?", 'small']).offset(sc - off < 4 ? sc - 4 : off).slice(0, 4)
     advs.each do |adv|
       adv.update_attribute(:viewed, adv.viewed + 1)
-    end
+    end unless advs.blank?
 
     advs
   end
