@@ -26,7 +26,8 @@ a{
 a:active, a:focus{ outline: none; }
 
 .wrapper{
-  background-image: url(bg-wrapper.png), url(bg-body.png);
+  background: #F9F9FA;
+  /*background-image: url(bg-wrapper.png), url(bg-body.png);*/
   background-repeat: repeat-x, repeat;
   background-position: 0px -30px, 0px 0px;
   margin: 0 auto;
@@ -91,8 +92,9 @@ a:active, a:focus{ outline: none; }
 .header-menu > a:last-child{
   border-radius: 0px 15px 15px 0px;
 }
-.header-menu.category a img{ float: left;margin-right: 8px; }
-.header-menu.category a span{ clear: both; }
+.header-menu.category > a img{ float: left;margin-right: 8px; }
+.header-menu.category > a span{ clear: both; }
+.header-menu.how-it-work > a{ border-radius: 15px; }
 
 .header-menu.header-search{
   float: right;
@@ -480,7 +482,7 @@ ul.item-list li:hover .item-action a{ display: inline-block; }
   text-shadow: 0px 1px 2px #aaa;
 }
 .big-adv{
-  background: #eee;
+  background: #F9F9F9;
   border-radius: 5px;
   margin: 0 0 20px 0;
   width: 280px;
@@ -676,7 +678,7 @@ label.inline-label{ display: inline; }
   text-shadow: 0px 1px 2px #aaa;
 }
 
-.cancel-link, .new-link{
+.cancel-link, .new-link, .styled-link{
   background: -moz-linear-gradient(top, #f3f3f3 0%, #efefef);
   background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#efefef));
   background: -o-linear-gradient(top, #f3f3f3, #efefef);
@@ -1409,6 +1411,10 @@ body.wysiwyg, div.wysiwyg iframe{
 .pg-container a:hover{ text-decoration: underline; }
 .pg-container em, .pg-container span{ color: #aaa; }
 
+.action-container{
+  margin: 10px 0;
+  padding: 5px 0;
+}
 
 /* CHROME | WEBKIT */
 @media screen and (-webkit-min-device-pixel-ratio:0){

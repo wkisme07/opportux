@@ -56,6 +56,10 @@
             new_post_path, :class => ('active' if controller_name == 'posts' && ['new', 'create'].include?(action_name))) %>
         </div>
 
+        <div class="header-menu how-it-work">
+          <%= link_to "How It Works", '#' %>
+        </div>
+
         <div class="header-menu user-menu <%= 'header-login-link' unless current_user %>">
           <% if !current_user && !current_admin %>
             <%= link_to "Login", new_user_session_path, :rel => 'facebox' %>
@@ -204,7 +208,7 @@
           <%= link_to 'Policy', '#policy' %>
         </div>
 
-        <div class="footer-right">Designed by <%= link_to 'Salamud.in', 'http://salamud.in', :target => '_blank' %></div>
+        <div class="footer-right">Developed by ones07 - <%= link_to 'Kuyainside.com', 'http://www.kuyainside.com', :target => '_blank' %></div>
         <div class="clear"></div>
       </div>
     </div>

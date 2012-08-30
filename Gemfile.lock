@@ -1,3 +1,8 @@
+PATH
+  remote: vendor/gems/ckeditor-3.7.0.rc2
+  specs:
+    ckeditor (3.7.0.rc2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -184,6 +189,7 @@ DEPENDENCIES
   cancan
   capistrano
   carrierwave
+  ckeditor (= 3.7.0.rc2)!
   coffee-rails (~> 3.2.1)
   devise
   facebox-rails

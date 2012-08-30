@@ -1,4 +1,6 @@
 Opportux::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   devise_for :admins, :controllers => {
     :sessions => "sessions"
   }

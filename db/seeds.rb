@@ -37,3 +37,23 @@ if Admin.all.blank?
     :password_confirmation => '123oppORtuX'
   )
 end
+
+# content
+if Content.all.blank?
+  puts "Create default content ..."
+  Content.create([
+    {
+      :code => "howitworks",
+      :title => "How It Works",
+      :value => "Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. "
+    },{
+      :code => "disclaimer",
+      :title => "Disclaimer",
+      :value => "Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. "
+    },{
+      :code => "policy",
+      :title => "Policy",
+      :value => "Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. "
+    }
+  ])
+end

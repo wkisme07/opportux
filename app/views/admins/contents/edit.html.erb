@@ -1,0 +1,19 @@
+<div class="adm-content">
+  <h2>Edit: <%= @content.title %></h2>
+
+  <div class="form-container">
+    <%= form_for ['admins', @content], :url => admins_content_path(@content.code), :html => { :class => 'form' } do |f| %>
+
+      <div class="field-group">
+        <%= f.label :value, 'Content*' %>
+        <%= f.cktext_area :value, :rows => 5, :class => 'text-area', :required => 'required' %>
+      </div>
+
+      <div class="field-group form-action">
+        <%= f.submit 'Update', :class => 'button-link' %>
+        <%= link_to 'Cancel', admins_contents_path, :class => 'cancel-link' %>
+      </div>
+      <div class="clear"></div>
+    <% end %>
+  </div>
+</div>

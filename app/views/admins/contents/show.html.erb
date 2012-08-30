@@ -1,0 +1,12 @@
+<div class="adm-content">
+  <h2><%= @content.title %></h2>
+
+  <div class="content-detail">
+    <%= @content.value.html_safe %>
+  </div>
+
+  <div class="action-container">
+    <%= link_to "Back", admins_contents_path, class: 'styled-link' %>
+    <%= link_to "Edit", edit_admins_content_path(@content.code), class: 'styled-link' %>
+  </div>
+</div>

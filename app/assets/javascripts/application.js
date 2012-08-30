@@ -16,6 +16,7 @@
 //= require jquery.facebox
 //= require autocomplete-rails
 //= require pin_it
+//= require ckeditor/ckeditor
 //= require_tree .
 
 $(document).ready(function(){
