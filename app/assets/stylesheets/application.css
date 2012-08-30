@@ -15,6 +15,7 @@
  */
 
 body{
+  background: #F9F9FA;
   font-family: "Calibri";
   font-size: 12px;
   line-height: 15px;
@@ -34,11 +35,26 @@ a:active, a:focus{ outline: none; }
   width: 100%;
 }
 
+.header-fix{
+  height: 67px;
+  width: 100%;
+}
+.search-fix{
+  position: fixed;
+  top: 66px;
+  width:  100%;
+}
+
+
 .header-wrapper{
   background: url(bg-header.png) repeat-x transparent;
   color: #fff;
   display: block;
-  height: 77px;
+  height: 67px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
 }
 .header{
   margin: 0 auto;
@@ -119,6 +135,7 @@ a:active, a:focus{ outline: none; }
 .header-menu.header-search a, .header-menu.user-menu > a{ border-radius: 10px; }
 .header-menu.user-menu > a{ float: right;min-width: 100px; }
 .header-menu.user-menu.header-login-link > a{ min-width: 0; }
+.header-menu.user-menu a.header-sign-up{ color: coral; }
 
 .menu-user-avatar{
   float: left;
@@ -327,6 +344,7 @@ ul.item-list li .draft, .item-detail-container .draft{
   text-align: center;
   text-shadow: 0 1px 3px #333333;
   width: 51px;
+  z-index: 98;
 }
 .item-view-info:before{
   border-color: transparent white;

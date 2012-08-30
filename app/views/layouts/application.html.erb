@@ -35,70 +35,75 @@
   </script>
 
   <div class="wrapper">
-    <div class="header-wrapper">
-      <div class="header">
-        <div class="header-logo">
-          <%= link_to image_tag('logo-header.png', :alt => 'Opportux'), root_path %>
+    <div class="header-fix">
+      <div class="header-wrapper">
+        <div class="header">
+          <div class="header-logo">
+            <%= link_to image_tag('logo-header.png', :alt => 'Opportux'), root_path %>
+          </div>
+          <div class="header-separator"></div>
+
+          <div class="header-menu facetweet">
+            <%= link_to image_tag('header-facebook.png', :alt => 'f'), '#', :class => 'h-face' %>
+            <%= link_to image_tag('header-twitter.png', :alt => 't'), '#', :class => 'h-tweet' %>
+          </div>
+
+          <div class="header-menu category">
+            <%= link_to("#{image_tag('header-bussiness.png', :alt => 'B')} <span>Business</span>".html_safe,
+              business_path, :class => ('active' if controller_name == 'home' && action_name == 'business')) %>
+            <%= link_to("#{image_tag('header-people.png', :alt => 'P')} <span>People</span>".html_safe,
+              people_path, :class => ('active' if controller_name == 'home' && action_name == 'people')) %>
+            <%= link_to("#{image_tag('header-upload.png', :alt => 'U')} <span>Upload</span>".html_safe,
+              new_post_path, :class => ('active' if controller_name == 'posts' && ['new', 'create'].include?(action_name))) %>
+          </div>
+
+          <div class="header-menu how-it-work">
+            <%= link_to "How It Works", '#' %>
+          </div>
+
+          <div class="header-menu user-menu <%= 'header-login-link' unless current_user %>">
+            <% if !current_user && !current_admin %>
+              <%= link_to "<i>Sign Up</i>".html_safe, new_registration_path('user'), :rel => 'facebox', :class => 'header-sign-up' %>
+              <%= link_to "Login", new_user_session_path, :rel => 'facebox' %>
+            <% elsif current_user %>
+              <% av = current_user.avatar? ? "<span class='menu-user-avatar'>#{image_tag current_user.avatar_url(:thumb), :id => 'umenu-avtr'}</span>" : '' %>
+              <%= link_to "#{av}<span class='uname' id='umenu-name'>#{truncate(current_user.fullname, :length => 25)}</span>
+                  <span class='umenu' id='umenu-arrow'></span>".html_safe,
+                "#", :id => 'umenu-link' %>
+              <div class="clear"></div>
+
+              <div id="hmenu-container" class="hmenu-container">
+                <ul>
+                  <li><%= link_to 'Dashboad', user_path(current_user.slug) %></li>
+                  <li><%= link_to 'Setting', edit_user_path(current_user.slug) %></li>
+                  <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %></li>
+                </ul>
+              </div>
+              <div class="clear"></div>
+            <% elsif current_admin %>
+              <%= link_to 'Logout', destroy_admin_session_path, :method => 'delete' %>
+            <% end %>
+          </div>
+          <div class="header-separator right"></div>
+
+          <div class="header-menu header-search">
+            <%= link_to image_tag('header-search.png', :alt => 'S'), '#search', :class => 'h-search' %>
+          </div>
+          <div class="clear"></div>
+
         </div>
-        <div class="header-separator"></div>
-
-        <div class="header-menu facetweet">
-          <%= link_to image_tag('header-facebook.png', :alt => 'f'), '#', :class => 'h-face' %>
-          <%= link_to image_tag('header-twitter.png', :alt => 't'), '#', :class => 'h-tweet' %>
-        </div>
-
-        <div class="header-menu category">
-          <%= link_to("#{image_tag('header-bussiness.png', :alt => 'B')} <span>Business</span>".html_safe,
-            business_path, :class => ('active' if controller_name == 'home' && action_name == 'business')) %>
-          <%= link_to("#{image_tag('header-people.png', :alt => 'P')} <span>People</span>".html_safe,
-            people_path, :class => ('active' if controller_name == 'home' && action_name == 'people')) %>
-          <%= link_to("#{image_tag('header-upload.png', :alt => 'U')} <span>Upload</span>".html_safe,
-            new_post_path, :class => ('active' if controller_name == 'posts' && ['new', 'create'].include?(action_name))) %>
-        </div>
-
-        <div class="header-menu how-it-work">
-          <%= link_to "How It Works", '#' %>
-        </div>
-
-        <div class="header-menu user-menu <%= 'header-login-link' unless current_user %>">
-          <% if !current_user && !current_admin %>
-            <%= link_to "Login", new_user_session_path, :rel => 'facebox' %>
-          <% elsif current_user %>
-            <% av = current_user.avatar? ? "<span class='menu-user-avatar'>#{image_tag current_user.avatar_url(:thumb), :id => 'umenu-avtr'}</span>" : '' %>
-            <%= link_to "#{av}<span class='uname' id='umenu-name'>#{truncate(current_user.fullname, :length => 25)}</span>
-                <span class='umenu' id='umenu-arrow'></span>".html_safe,
-              "#", :id => 'umenu-link' %>
-            <div class="clear"></div>
-
-            <div id="hmenu-container" class="hmenu-container">
-              <ul>
-                <li><%= link_to 'Dashboad', user_path(current_user.slug) %></li>
-                <li><%= link_to 'Setting', edit_user_path(current_user.slug) %></li>
-                <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %></li>
-              </ul>
-            </div>
-            <div class="clear"></div>
-          <% elsif current_admin %>
-            <%= link_to 'Logout', destroy_admin_session_path, :method => 'delete' %>
-          <% end %>
-        </div>
-        <div class="header-separator right"></div>
-
-        <div class="header-menu header-search">
-          <%= link_to image_tag('header-search.png', :alt => 'S'), '#', :class => 'h-search' %>
-        </div>
-        <div class="clear"></div>
-
       </div>
     </div>
 
-    <div class="search-form-container">
-      <%= form_for 'search', :url => root_path, :html => {:class => 'search-form', :method => :get} do |f| %>
-        <div class="search-field-container">
-          <span class="s-image">&nbsp;</span>
-          <%= f.text_field 'term', :class => 'search-field', :placeholder => "Search", :value => (params[:search][:term] if params[:search]) %>
-        </div>
-      <% end %>
+    <div class="search-fix">
+      <div class="search-form-container">
+        <%= form_for 'search', :url => root_path, :html => {:class => 'search-form', :method => :get} do |f| %>
+          <div class="search-field-container">
+            <span class="s-image">&nbsp;</span>
+            <%= f.text_field 'term', :class => 'search-field', :placeholder => "Search", :value => (params[:search][:term] if params[:search]) %>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <%= yield :top_thumb %>
