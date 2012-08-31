@@ -32,29 +32,6 @@ $(document).ready(function(){
     $("form").validate();
   }
 
-  if($.fn.wysiwyg){
-    $('.wysiwyg').wysiwyg({
-      css: '/assets/application.css',
-      initialContent: '',
-      removeHeadings: true,
-      controls: {
-        insertImage: { visible: false },
-        subscript: { visible: false },
-        superscript: { visible: false },
-        insertTable: { visible: false },
-        h1: { visible: false },
-        h2: { visible: false },
-        h3: { visible: false }
-      },
-      plugins:{
-        autoload: true,
-        rmFormat:{
-          rmMsWordMarkup: true
-        }
-      }
-    });
-  }
-
   // Main Search
   $('.header-search').click(function(){
     $('.search-form-container').slideToggle();
@@ -156,6 +133,20 @@ $(document).ready(function(){
         });
       }
     }
+  });
+
+  $('.signup-form.xhr .cancel-link').live('click', function(event){
+    event.preventDefault();
+    $(document).trigger('close.facebox');
+  });
+
+  // back to top
+  $('a.back-to-top').live('click', function(e){
+    e.preventDefault();
+    $('body,html').animate({
+      scrollTop: 0
+    }, 'slow');
+    return false;
   });
 });
 

@@ -1,4 +1,4 @@
-<div class="devise-form signup-form <%= 'not-xhr' unless @xhr %>">
+<div class="devise-form signup-form <%= @xhr ? 'xhr' : 'not-xhr' %>">
   <h2>Sign up</h2>
 
   <div class="flash">

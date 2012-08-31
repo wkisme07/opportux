@@ -132,10 +132,14 @@ a:active, a:focus{ outline: none; }
   margin: -2px -7px 0 10px;
   width: 12px;
 }
-.header-menu.header-search a, .header-menu.user-menu > a{ border-radius: 10px; }
+.header-menu.header-search a{ border-radius: 10px; }
 .header-menu.user-menu > a{ float: right;min-width: 100px; }
 .header-menu.user-menu.header-login-link > a{ min-width: 0; }
-.header-menu.user-menu a.header-sign-up{ color: coral; }
+.header-menu.user-menu a.header-login{ border-radius: 10px 0px 0px 10px; }
+.header-menu.user-menu a.header-sign-up{
+  border-radius: 0px 10px 10px 0;
+  color: coral;
+}
 
 .menu-user-avatar{
   float: left;
@@ -652,7 +656,7 @@ a.back-to-top{
 .footer-right a{ font-weight: bold; }
 
 
-
+#facebox{ position: fixed !important; }
 #facebox_overlay{
   opacity: 0.6 !important;
 }
@@ -1432,6 +1436,16 @@ body.wysiwyg, div.wysiwyg iframe{
 .action-container{
   margin: 10px 0;
   padding: 5px 0;
+}
+
+.content-container{
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 1px 5px #ccc;
+  padding: 20px;
+}
+.content-container h2:first-child{
+  margin-top: 0;
 }
 
 /* CHROME | WEBKIT */

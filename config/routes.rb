@@ -28,6 +28,9 @@ Opportux::Application.routes.draw do
   get '/p/:slug/photo/:id' => 'home#photo', :as => 'photo'
   get '/business' => 'home#business', :as => 'business'
   get '/people' => 'home#people', :as => 'people'
+  get '/howitworks' => 'home#content', :as => 'howitworks'
+  get '/disclaimer' => 'home#content', :as => 'disclaimer'
+  get '/policy' => 'home#content', :as => 'policy'
 
   resources :home do
     collection do

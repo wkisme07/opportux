@@ -58,13 +58,13 @@
           </div>
 
           <div class="header-menu how-it-work">
-            <%= link_to "How It Works", '#' %>
+            <%= link_to "How It Works", howitworks_path, :class => ('active' if request.fullpath == '/howitworks') %>
           </div>
 
           <div class="header-menu user-menu <%= 'header-login-link' unless current_user %>">
             <% if !current_user && !current_admin %>
               <%= link_to "<i>Sign Up</i>".html_safe, new_registration_path('user'), :rel => 'facebox', :class => 'header-sign-up' %>
-              <%= link_to "Login", new_user_session_path, :rel => 'facebox' %>
+              <%= link_to "Login", new_user_session_path, :rel => 'facebox', :class => 'header-login' %>
             <% elsif current_user %>
               <% av = current_user.avatar? ? "<span class='menu-user-avatar'>#{image_tag current_user.avatar_url(:thumb), :id => 'umenu-avtr'}</span>" : '' %>
               <%= link_to "#{av}<span class='uname' id='umenu-name'>#{truncate(current_user.fullname, :length => 25)}</span>
@@ -209,8 +209,8 @@
         <span class="copy-right">Copyright &copy; Opportux.com</span>
 
         <div class="footer-menu">
-          <%= link_to 'Disclaimer', '#disclaimer' %>
-          <%= link_to 'Policy', '#policy' %>
+          <%= link_to 'Disclaimer', disclaimer_path %>
+          <%= link_to 'Policy', policy_path %>
         </div>
 
         <div class="footer-right">Developed by ones07 - <%= link_to 'Kuyainside.com', 'http://www.kuyainside.com', :target => '_blank' %></div>

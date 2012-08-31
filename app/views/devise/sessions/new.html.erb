@@ -1,4 +1,4 @@
-<div class="login-form-container <%= 'not-xhr' unless @xhr %>">
+<div class="login-form-container <%= @xhr ? 'xhr' : 'not-xhr' %>">
   <div class="login-form">
     <h2><%= resource_name.to_s %> LOGIN</h2>
 

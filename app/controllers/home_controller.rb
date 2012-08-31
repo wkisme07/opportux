@@ -37,6 +37,12 @@ class HomeController < ApplicationController
     render :index
   end
 
+  # how it works
+  def content
+    code = request.fullpath.gsub('/', '')
+    @content = Content.find_by_code(code)
+  end
+
   protected
 
     # can read draft
