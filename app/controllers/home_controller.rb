@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :tag_cloud
+  before_filter :tag_cloud, :only => [:business, :people]
   before_filter :find_post, :only => [:show, :show_info]
   before_filter :can_read_draft?, :only => [:show]
 
@@ -27,7 +27,12 @@ class HomeController < ApplicationController
 
   # business
   def business
-    @posts = Post.all_published.where("category_id = 1").paginate(:page => params[:page])
+    if params[:tag]
+      @posts = Post.all_published.where("category_id = 1").tagged_with(params[:tag], :on => :tags, :any => true)
+    else
+      @posts = Post.all_published.where("category_id = 1")
+    end
+    @posts = @posts.paginate(:page => params[:page])
     render :index
   end
 
@@ -52,4 +57,5 @@ class HomeController < ApplicationController
         redirect_to root_path
       end
     end
+
 end

@@ -111,11 +111,23 @@
 
     <div class="content-wrapper">
       <div class="main-content">
+
+        <% if ['people', 'business'].include?(action_name) %>
+          <div class="categories-list">
+            <span>CATEGORY</span>
+            <ul>
+              <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+                <li class="<%= 'active' if params[:tag] == tag.name %>"><%= link_to tag.name.titleize, "?tag=#{tag.name}", :class => css_class %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
         <%= yield %>
       </div>
 
       <div class="right-content">
-        <%= link_to 'SIGN UP', new_registration_path('user'), :class => 'sign-up-link', :rel => 'facebox' unless current_user %>
+        <%#= link_to 'SIGN UP', new_registration_path('user'), :class => 'sign-up-link', :rel => 'facebox' unless current_user %>
 
         <div class="big-adv">
           <% if @big_adv %>

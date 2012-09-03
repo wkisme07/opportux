@@ -27,10 +27,10 @@ a{
 a:active, a:focus{ outline: none; }
 
 .wrapper{
-  background: #F9F9FA;
-  /*background-image: url(bg-wrapper.png), url(bg-body.png);*/
-  background-repeat: repeat-x, repeat;
-  background-position: 0px -30px, 0px 0px;
+  /*background: #F9F9FA;*/
+  background-image: url(bg-wrapper-s.png); /* url(bg-body.png) */
+  background-repeat: repeat; /*, repeat*/
+  background-position: 0 0; /*0px -30px, 0px 0px;*/
   margin: 0 auto;
   width: 100%;
 }
@@ -54,7 +54,7 @@ a:active, a:focus{ outline: none; }
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 99;
+  z-index: 49;
 }
 .header{
   margin: 0 auto;
@@ -348,7 +348,7 @@ ul.item-list li .draft, .item-detail-container .draft{
   text-align: center;
   text-shadow: 0 1px 3px #333333;
   width: 51px;
-  z-index: 98;
+  z-index: 48;
 }
 .item-view-info:before{
   border-color: transparent white;
@@ -866,7 +866,7 @@ span.field-desc{
   float: left;
   padding: 10px 15px 9px;
   width: 70%;
-  z-index: 74;
+  z-index: 34;
 }
 .fake-choose{
   background: -moz-linear-gradient(top, #f6f6f6 0%, #ffffff);
@@ -880,7 +880,7 @@ span.field-desc{
   cursor: pointer;
   float: left;
   padding: 4px;
-  z-index: 75;
+  z-index: 35;
 }
 .fake-choose span{
   background: -moz-linear-gradient(top, #f8f8f8 0%, #f2f2f2);
@@ -892,7 +892,7 @@ span.field-desc{
   border-radius: 5px;
   display: block;
   padding: 5px 10px;
-  z-index: 76;
+  z-index: 36;
 }
 .image-group input[type=file]{
   border: 1px solid #000000;
@@ -910,7 +910,7 @@ span.field-desc{
   position: relative;
   text-align: right;
   width: 538px;
-  z-index: 77;
+  z-index: 37;
 }
 
 a.remove-image img{
@@ -1446,6 +1446,45 @@ body.wysiwyg, div.wysiwyg iframe{
 }
 .content-container h2:first-child{
   margin-top: 0;
+}
+
+.categories-list{
+  background: #fff;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 0 1px 5px #ccc;
+  position: fixed;
+  top: 88px;
+  left: 0;
+  width: 150px;
+  z-index: 50;
+}
+.categories-list > span{
+  border-bottom: 1px solid #ccc;
+  display: block;
+  font-size: 14px;
+  padding: 10px 10px;
+}
+.categories-list ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.categories-list ul li{
+  border-bottom: 1px dashed #ccc;
+}
+.categories-list ul li:last-child{
+  border-bottom: none;
+}
+.categories-list ul li.active{
+  background: url(bg-category.png) no-repeat transparent;
+}
+.categories-list ul li a{
+  color: #31b5e0;
+  display: block;
+  padding: 10px 5px 9px 11px;
+}
+.categories-list ul li a:hover{
+  text-shadow: 0px 1px #ccc;
 }
 
 /* CHROME | WEBKIT */
