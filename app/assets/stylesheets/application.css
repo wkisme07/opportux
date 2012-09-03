@@ -136,7 +136,7 @@ a:active, a:focus{ outline: none; }
 .header-menu.user-menu > a{ float: right;min-width: 100px; }
 .header-menu.user-menu.header-login-link > a{ min-width: 0; }
 
-.header-menu.user-menu a.header-login{ border-radius: 10px; }
+.header-menu.user-menu a.header-login, .header-menu.user-menu > a#umenu-link{ border-radius: 10px; }
 .header-menu.user-menu.header-login-link a.header-login{ border-radius: 10px 0px 0px 10px; }
 .header-menu.user-menu a.header-sign-up{
   border-radius: 0px 10px 10px 0;
