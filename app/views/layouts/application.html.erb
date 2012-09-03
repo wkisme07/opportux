@@ -74,7 +74,7 @@
 
               <div id="hmenu-container" class="hmenu-container">
                 <ul>
-                  <li><%= link_to 'Dashboad', user_path(current_user.slug) %></li>
+                  <li><%= link_to 'Dashboard', user_path(current_user.slug) %></li>
                   <li><%= link_to 'Setting', edit_user_path(current_user.slug) %></li>
                   <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %></li>
                 </ul>
