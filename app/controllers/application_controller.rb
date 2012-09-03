@@ -32,7 +32,7 @@ protected
 
   # tags
   def tag_cloud
-    @tags = Post.tag_counts_on(:tags).limit(7)
+    @tags = Post.tag_counts_on(:tags).limit(6)
   end
 
   # can like?
