@@ -149,18 +149,6 @@
           <div class="clear"></div>
         </div>
 
-        <% unless top_views.blank? %>
-          <div class="most-view-container">
-            <div class="most-view-title">Most View</div>
-
-            <ul class="most-view-list">
-              <% top_views.each_with_index do |tv, tvi| %>
-                <li><%= link_to truncate(tv.title, :length => 50), home_path(tv.slug) %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-
         <% if @small_advs %>
           <div class="little-adv">
             <div class="little-adv-title">SPONSORED</div>
@@ -184,9 +172,21 @@
             </ul>
 
           </div>
+        <% end %>
 
-        </div>
-      <% end %>
+        <% unless top_views.blank? %>
+          <div class="most-view-container">
+            <div class="most-view-title">Most View</div>
+
+            <ul class="most-view-list">
+              <% top_views.each_with_index do |tv, tvi| %>
+                <li><%= link_to truncate(tv.title, :length => 50), home_path(tv.slug) %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      </div>
       <div class="clear"></div>
 
     </div>

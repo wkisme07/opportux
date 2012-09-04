@@ -534,6 +534,7 @@ ul.item-list li:hover .item-action a{ display: inline-block; }
   text-shadow: 0px 1px #ddd;
   width: 280px;
 }
+.most-view-container.sticky{ position: fixed;top: 80px; }
 .most-view-title{
   background: -moz-linear-gradient(top, #f3f3f3 0%, #ffffff);
   background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#ffffff));
@@ -566,6 +567,7 @@ ul.most-view-list{
 .most-view-list li:last-child, .most-view-list li:last-child a{ border-radius: 0 0 5px 5px; }
 
 .little-adv{
+  margin: 0 0 20px;
   width: 280px;
 }
 .little-adv-title{

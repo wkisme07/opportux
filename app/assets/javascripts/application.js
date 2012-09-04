@@ -148,6 +148,21 @@ $(document).ready(function(){
     }, 'slow');
     return false;
   });
+
+  // sticky
+  var windowTop = $(window).scrollTop();
+  $most = $('.most-view-container');
+  var mostTop = $most.offset().top;
+  $most.toggleClass('sticky', windowTop + 80 > mostTop);
+
+
+  $(window).scroll(function(){
+    var windowTop = $(window).scrollTop();
+
+    $most.toggleClass('sticky', windowTop + 80 > mostTop);
+  });
+
+
 });
 
 
