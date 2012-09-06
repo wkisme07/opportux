@@ -150,16 +150,29 @@ $(document).ready(function(){
   });
 
   // sticky
+  var blimit = 963;
+  var tlimit = 80;
   var windowTop = $(window).scrollTop();
+  var bodyHeight = $('body').height();
   $most = $('.most-view-container');
-  var mostTop = $most.offset().top;
-  $most.toggleClass('sticky', windowTop + 80 > mostTop);
 
+  var mostTop = $most.offset().top;
+  mostTop = mostTop < 1041.5 ? 1041.5 : mostTop;
+
+  $most.toggleClass('stickyTop', windowTop + 80 > mostTop);
 
   $(window).scroll(function(){
     var windowTop = $(window).scrollTop();
 
-    $most.toggleClass('sticky', windowTop + 80 > mostTop);
+    $most.toggleClass('stickyTop', windowTop + tlimit > mostTop);
+
+    tp = (bodyHeight - blimit) - (windowTop + tlimit);
+    if(tp < 0){
+      $most.css('top', tlimit + tp);
+    }else{
+      if(windowTop + tlimit > mostTop) $most.css('top', tlimit);
+    }
+
   });
 
 

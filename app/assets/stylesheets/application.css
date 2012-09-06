@@ -43,6 +43,7 @@ a:active, a:focus{ outline: none; }
   position: fixed;
   top: 66px;
   width:  100%;
+  z-index: 55;
 }
 
 
@@ -534,7 +535,11 @@ ul.item-list li:hover .item-action a{ display: inline-block; }
   text-shadow: 0px 1px #ddd;
   width: 280px;
 }
-.most-view-container.sticky{ position: fixed;top: 80px; }
+.most-view-container.stickyTop{
+  position: fixed;
+  top: 80px;
+  z-index: 19;
+}
 .most-view-title{
   background: -moz-linear-gradient(top, #f3f3f3 0%, #ffffff);
   background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#ffffff));
