@@ -1,4 +1,7 @@
 Opportux::Application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/admins/sidekiq'
+
   mount Ckeditor::Engine => '/ckeditor'
 
   devise_for :admins, :controllers => {

@@ -3,7 +3,7 @@
 
   <div class="field-group">
     <span class="detail-label">Business Name</span>
-    <span><%= @adv.business_name.titleize %></span>
+    <span><%= @adv.business_name.try(:titleize) %></span>
   </div>
   <div class="field-group">
     <span class="detail-label">Contact Name</span>

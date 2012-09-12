@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, :only => [:edit, :update]
   before_filter :find_user
+  before_filter :big_adv, :medium_advs, :small_advs, :only => [:show, :draft, :edit]
 
   # show
   def show

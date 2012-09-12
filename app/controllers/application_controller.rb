@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   helper_method :top_thumbs, :top_views, :city_options, :category_options,
     :can_like?, :can_view?, :can_renew?, :can_report?, :fb_meta, :adv_size_options
 
-  before_filter :big_adv, :medium_advs, :small_advs
-
   # http_basic_authenticate_with :name => "opportux", :password => "123opportux"
 
 protected
@@ -83,27 +81,21 @@ protected
 
   # big adv
   def big_adv
-    if view_adv
-      @big_adv = Advertise.big
-    end
+    @big_adv = Advertise.big if view_adv
   end
 
   # big adv
   def medium_advs
-    if view_adv
-      @medium_advs = Advertise.medium
-    end
+    @medium_advs = Advertise.medium if view_adv
   end
 
   # big adv
   def small_advs
-    if view_adv
-      @small_advs = Advertise.small
-    end
+    @small_advs = Advertise.small if view_adv
   end
 
   def view_adv
-    !request.xhr? && ['home', 'posts', 'passwords', 'registrations', 'sessions', 'users'].include?(controller_name)
+    !request.xhr?
   end
 
   # Cancan Access Denied

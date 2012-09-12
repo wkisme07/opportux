@@ -154,27 +154,29 @@ $(document).ready(function(){
   var tlimit = 80;
   var windowTop = $(window).scrollTop();
   var bodyHeight = $('body').height();
+
   $most = $('.most-view-container');
+  if ($most.length){
+    var mostTop = $most.offset().top;
+    mostTop = mostTop < 1041.5 ? 1041.5 : mostTop;
 
-  var mostTop = $most.offset().top;
-  mostTop = mostTop < 1041.5 ? 1041.5 : mostTop;
+    if(bodyHeight > 2000){
+      $most.toggleClass('stickyTop', windowTop + 80 > mostTop);
 
-  $most.toggleClass('stickyTop', windowTop + 80 > mostTop);
+      $(window).scroll(function(){
+        var windowTop = $(window).scrollTop();
+        $most.toggleClass('stickyTop', windowTop + tlimit > mostTop);
 
-  $(window).scroll(function(){
-    var windowTop = $(window).scrollTop();
+        tp = (bodyHeight - blimit) - (windowTop + tlimit);
+        if(tp < 0){
+          $most.css('top', tlimit + tp);
+        }else{
+          if(windowTop + tlimit > mostTop) $most.css('top', tlimit);
+        }
 
-    $most.toggleClass('stickyTop', windowTop + tlimit > mostTop);
-
-    tp = (bodyHeight - blimit) - (windowTop + tlimit);
-    if(tp < 0){
-      $most.css('top', tlimit + tp);
-    }else{
-      if(windowTop + tlimit > mostTop) $most.css('top', tlimit);
+      });
     }
-
-  });
-
+  }
 
 });
 

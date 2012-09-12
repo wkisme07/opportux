@@ -9,42 +9,46 @@
 </head>
 <body class="admin-site">
   <div class="wrapper">
-    <div class="header-wrapper">
-      <div class="header">
-        <div class="header-logo">
-          <%= link_to image_tag('logo-header.png', :alt => 'Opportux'), root_path %>
-        </div>
-        <div class="header-separator"></div>
+    <div class="header-fix">
+      <div class="header-wrapper">
+        <div class="header">
+          <div class="header-logo">
+            <%= link_to image_tag('logo-header.png', :alt => 'Opportux'), root_path %>
+          </div>
+          <div class="header-separator"></div>
 
-        <div class="header-menu">
-          <%= link_to 'Dashboard', admin_root_path, :class => ('active' if action_name == 'dashboard') %>
-          <%= link_to 'Post', admins_posts_path, :class => ('active' if controller_name == 'posts') %>
-          <%= link_to 'Advertise', admins_advertises_path, :class => ('active' if controller_name == 'advertises') %>
-          <%= link_to 'Content', admins_contents_path, :class => ('active' if controller_name == 'contents') %>
-        </div>
+          <div class="header-menu">
+            <%= link_to 'Dashboard', admin_root_path, :class => ('active' if action_name == 'dashboard') %>
+            <%= link_to 'Post', admins_posts_path, :class => ('active' if controller_name == 'posts') %>
+            <%= link_to 'Advertise', admins_advertises_path, :class => ('active' if controller_name == 'advertises') %>
+            <%= link_to 'Content', admins_contents_path, :class => ('active' if controller_name == 'contents') %>
+          </div>
 
-        <div class="header-menu user-menu <%= 'header-login-link' unless current_user %>">
-          <% if current_admin %>
-            <%= link_to 'Logout', destroy_admin_session_path, :method => 'delete' %>
-          <% end %>
-        </div>
-        <div class="header-separator right"></div>
+          <div class="header-menu user-menu <%= 'header-login-link' unless current_user %>">
+            <% if current_admin %>
+              <%= link_to 'Logout', destroy_admin_session_path, :method => 'delete' %>
+            <% end %>
+          </div>
+          <div class="header-separator right"></div>
 
-        <div class="header-menu header-search">
-          <%= link_to image_tag('header-search.png', :alt => 'S'), '#', :class => 'h-search' %>
-        </div>
-        <div class="clear"></div>
+          <div class="header-menu header-search">
+            <%= link_to image_tag('header-search.png', :alt => 'S'), '#', :class => 'h-search' %>
+          </div>
+          <div class="clear"></div>
 
+        </div>
       </div>
     </div>
 
-    <div class="search-form-container">
-      <%= form_for 'search', :url => root_path, :html => {:class => 'search-form', :method => :get} do |f| %>
-        <div class="search-field-container">
-          <span class="s-image">&nbsp;</span>
-          <%= f.text_field 'term', :class => 'search-field', :placeholder => "Search", :value => (params[:search][:term] if params[:search]) %>
-        </div>
-      <% end %>
+    <div class="search-fix">
+      <div class="search-form-container">
+        <%= form_for 'search', :url => root_path, :html => {:class => 'search-form', :method => :get} do |f| %>
+          <div class="search-field-container">
+            <span class="s-image">&nbsp;</span>
+            <%= f.text_field 'term', :class => 'search-field', :placeholder => "Search", :value => (params[:search][:term] if params[:search]) %>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <div class="content-wrapper">
@@ -58,7 +62,7 @@
       <div class="footer">
         <span class="copy-right">Copyright &copy; Opportux.com</span>
 
-        <div class="footer-right">Designed by <%= link_to 'Salamud.in', 'http://salamud.in', :target => '_blank' %></div>
+        <div class="footer-right">Developed by ones07 - <%= link_to 'Kuyainside.com', 'http://www.kuyainside.com', :target => '_blank' %></div>
         <div class="clear"></div>
       </div>
     </div>
