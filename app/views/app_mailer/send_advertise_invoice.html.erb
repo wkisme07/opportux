@@ -1,0 +1,22 @@
+<p>
+  Dear <%= @adv.contact_name %>,
+</p>
+
+<p>
+  Berikut adalah rincian tagihan pembayaran untuk iklan yang anda pasang di website kami.
+  Tahun/Bulan: <%= @today.year%> / <%= @today.month %><br />
+  Advertise Title: <%= @adv.title.try(:titleize) %><br />
+  Advertise Size: <%= @adv.size.try(:titleize) %><br />
+  Viewed: <%= @viewed %><br />
+  Price: <%= to_rupiach(@adv.price) %><br />
+  Amount: <%= to_rupiach(@amount) %>
+</p>
+
+<p>
+  Demikian informasi yang dapat kami berikan. Segera lakukan pembayaran dan konfirmasikan pembayaran kepada kami dengan cara mengirim email ke alamat email berikut, admin@opportux.com. Jika pembayaran tidak segera dilakukan, kami akan menghapus advertise anda dari website kami.
+</p>
+
+<p>
+  Regards, <br />
+  Opportux Team
+</p>
