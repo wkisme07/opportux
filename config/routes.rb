@@ -34,6 +34,7 @@ Opportux::Application.routes.draw do
   get '/howitworks' => 'home#content', :as => 'howitworks'
   get '/disclaimer' => 'home#content', :as => 'disclaimer'
   get '/policy' => 'home#content', :as => 'policy'
+  get '/term' => 'home#content', :as => 'term'
 
   resources :home do
     collection do

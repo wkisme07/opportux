@@ -631,6 +631,12 @@ a.back-to-top{
   padding: 20px;
   width: 430px;
 }
+.about-us{ color: #666; }
+.about-us p strong, .about-us strong{ display: block; }
+.about-us ol{
+  margin: 0 0 1em 0;
+  padding: 0 0 0 18px;
+}
 .contact-us{ padding: 0 20px 20px; }
 .about-us p, .contact-us p{
   color: #666;

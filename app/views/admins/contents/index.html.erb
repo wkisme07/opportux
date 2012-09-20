@@ -1,7 +1,7 @@
 <div class="adm-content">
   <h2>Site Contents</h2>
 
-  <ul class="content-container">
+  <ul class="content-container-lists">
     <% @contents.each do |content| %>
       <li><%= link_to content.title, admins_content_path(content.code) %></li>
     <% end %>
