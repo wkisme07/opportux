@@ -16,7 +16,7 @@
 
 body{
   background: #F9F9FA;
-  font-family: "Calibri";
+  font-family: "Calibri", "Helvetica Neue", "Arial";
   font-size: 12px;
   line-height: 15px;
 }
@@ -79,7 +79,7 @@ a:active, a:focus{ outline: none; }
   box-shadow: 0px 1px 5px #1c1424;
 
   color: #fff;
-  font-family: "Calibri";
+  font-family: "Calibri", "Helvetica Neue", "Arial";
   font-weight: bold;
   float: left;
   height: 27px;
@@ -223,7 +223,7 @@ span.uname{ float: left;height: 20px; }
   background: #f8f8f8;
   border: none;
   color: #666;
-  font-family: "Calibri";
+  font-family: "Calibri", "Helvetica Neue", "Arial";
   font-size: 12px;
   height: 22px;
   padding: 2px 0;
@@ -467,7 +467,7 @@ ul.item-list li:hover .item-action a{ display: inline-block; }
 .item-desc{
   color: #2b2929;
   font-size: 14px;
-  font-family: "Calibri";
+  font-family: "Calibri", "Helvetica Neue", "Arial";
   line-height: 16px;
   margin: 10px 15px;
 }
