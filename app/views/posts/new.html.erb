@@ -48,7 +48,7 @@
           <div class="clear"></div>
           <span class="field-desc">Allowed file .JPG, .JPEG, .GIF or .PNG</span>
 
-          <%= pi.file_field :image, :class => 'file-field' %>
+          <%= pi.file_field :image, :class => 'file-field', :accept => 'image/*' %>
           <%= pi.hidden_field :main_image, :value => pidx == 0 %>
           <div class="clear"></div>
 
