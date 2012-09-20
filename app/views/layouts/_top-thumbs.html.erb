@@ -10,7 +10,7 @@
           <div class="thumb-info">
             <div class="thumb-author">From <%= link_to tt.user.fullname, user_path(tt.user.slug) %></div>
             <div class="thumb-desc">
-              <%= simple_format(truncate(tt.description, :length => 70).html_safe) %>
+              <%= simple_format(truncate(strip_tags(tt.description), :length => 70)) %>
             </div>
           </div>
 
