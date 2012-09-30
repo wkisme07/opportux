@@ -48,6 +48,17 @@ class HomeController < ApplicationController
     render :index
   end
 
+  # project
+  def project
+    if params[:tag]
+      @posts = Post.all_published.where("category_id = 3").tagged_with(params[:tag], :on => :tags, :any => true)
+    else
+      @posts = Post.all_published.where("category_id = 3")
+    end
+    @posts = @posts.paginate(:page => params[:page])
+    render :index
+  end
+
   # how it works
   def content
     code = request.fullpath.gsub('/', '')

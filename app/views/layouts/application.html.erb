@@ -44,16 +44,18 @@
           </div>
           <div class="header-separator"></div>
 
-          <div class="header-menu facetweet">
+          <!-- <div class="header-menu facetweet">
             <%= link_to image_tag('header-facebook.png', :alt => 'f'), '#', :class => 'h-face' %>
             <%= link_to image_tag('header-twitter.png', :alt => 't'), '#', :class => 'h-tweet' %>
-          </div>
+          </div> -->
 
           <div class="header-menu category">
             <%= link_to("#{image_tag('header-bussiness.png', :alt => 'B')} <span>Business</span>".html_safe,
               business_path, :class => ('active' if controller_name == 'home' && action_name == 'business')) %>
             <%= link_to("#{image_tag('header-people.png', :alt => 'P')} <span>People</span>".html_safe,
               people_path, :class => ('active' if controller_name == 'home' && action_name == 'people')) %>
+            <%= link_to("#{image_tag('header-bussiness.png', :alt => 'P')} <span>Project</span>".html_safe,
+              project_path, :class => ('active' if controller_name == 'home' && action_name == 'project')) %>
             <%= link_to("#{image_tag('header-upload.png', :alt => 'U')} <span>Upload</span>".html_safe,
               new_post_path, :class => ('active' if controller_name == 'posts' && ['new', 'create'].include?(action_name))) %>
           </div>
@@ -114,12 +116,14 @@
     <div class="content-wrapper">
       <div class="main-content">
 
-        <% if ['people', 'business'].include?(action_name) %>
+        <% if ['people', 'business', 'project'].include?(action_name) %>
           <div class="categories-list">
             <span>CATEGORY</span>
             <ul>
-              <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-                <li class="<%= 'active' if params[:tag] == tag.name %>"><%= link_to tag.name.titleize, "?tag=#{tag.name}", :class => css_class %></li>
+              <% send("#{action_name}_categories").each do |tag| %>
+                <li>
+                  <%= link_to tag.titleize, "?tag=#{tag.downcase}", :class => '' %>
+                </li>
               <% end %>
             </ul>
           </div>

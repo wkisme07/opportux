@@ -1,0 +1,1 @@
+Resque::Mailer.default_queue_name = 'app_mailer'

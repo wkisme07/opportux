@@ -25,6 +25,10 @@ gem "pin_it"
 gem "tweet-button"
 
 gem "ckeditor", "3.7.0.rc2", :path => "vendor/gems/ckeditor-3.7.0.rc2"
+gem "mini_magick"
+
+gem 'resque'
+gem 'resque_mailer'
 
 # Gems used only for assets and not required
 # in production environments by default.

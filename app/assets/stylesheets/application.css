@@ -995,7 +995,7 @@ a.add-image{
 .item-action{ float: right; }
 .item-action a{
   color: #31b5e0;
-  display: none;
+  /*display: none;*/
   padding: 5px 10px;
 }
 .item-action a.publish-link, .item-detail-container:hover .item-action a{ display: inline-block; }

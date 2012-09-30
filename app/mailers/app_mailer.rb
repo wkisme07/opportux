@@ -1,4 +1,7 @@
 class AppMailer < ActionMailer::Base
+  include Resque::Mailer
+  layout 'email'
+
   add_template_helper(ApplicationHelper)
   default from: "no-reply@opportux.com"
 

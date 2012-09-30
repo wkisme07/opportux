@@ -1,6 +1,9 @@
 Opportux::Application.routes.draw do
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/admins/sidekiq'
+  # RESQUE
+  require 'resque/server'
+  # authenticate :admin do
+    mount Resque::Server.new, :at => "/admin/resque"
+  # end
 
   mount Ckeditor::Engine => '/ckeditor'
 
@@ -31,6 +34,7 @@ Opportux::Application.routes.draw do
   get '/p/:slug/photo/:id' => 'home#photo', :as => 'photo'
   get '/business' => 'home#business', :as => 'business'
   get '/people' => 'home#people', :as => 'people'
+  get '/project' => 'home#project', :as => 'project'
   get '/howitworks' => 'home#content', :as => 'howitworks'
   get '/disclaimer' => 'home#content', :as => 'disclaimer'
   get '/policy' => 'home#content', :as => 'policy'

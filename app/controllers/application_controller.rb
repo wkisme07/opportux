@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   WillPaginate.per_page = 15
   protect_from_forgery
   helper_method :top_thumbs, :top_views, :city_options, :category_options,
-    :can_like?, :can_view?, :can_renew?, :can_report?, :fb_meta, :adv_size_options
+    :can_like?, :can_view?, :can_renew?, :can_report?, :fb_meta, :adv_size_options,
+    :business_categories, :project_categories, :people_categories
 
   # http_basic_authenticate_with :name => "opportux", :password => "123opportux"
 
@@ -96,6 +97,18 @@ protected
 
   def view_adv
     !request.xhr?
+  end
+
+  def business_categories
+    ["Franchise", "Cari modal"]
+  end
+
+  def project_categories
+    ["Music", "Video", "Fashion", "Food"]
+  end
+
+  def people_categories
+    ["Chef", "Talent", "Professional"]
   end
 
   # Cancan Access Denied

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Opportux</title>
+</head>
+<body style="margin: 0;">
+  <div class="email-wrapper" style="color:#333333;font-family:Helvetica;font-size:12px;line-height:16px;">
+    <div class="email-header-wrapper" style="width:100%;">
+      <div class="email-header" style="background-color:#dddddd;height:55px;margin:0 auto;padding:17px 10px 0;text-align:center;width:600px;">
+        <a href="http://opportux.com" style="display:block;margin:0 auto;">
+          <%= image_tag 'http://opportux.com/assets/logo.png', :alt => 'opportux' %>
+        </a>
+      </div>
+    </div>
+
+    <div class="email-content-wrapper" style="margin:0 auto;width: 600px;">
+      <div class="email-content" style="background:#fff;margin: 0 auto;padding:10px;">
+        <%= yield %>
+
+      </div>
+    </div>
+
+    <div class="email-footer-wrapper" style="width:100%;">
+      <div class="email-footer-content" style="background-color:#dddddd;margin:0 auto;padding:10px;width: 600px;">
+
+        <div class="copy-right left">
+          Copyright &copy; 2012 Opportux. All Rights Reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+system "QUEUE=* rake environment resque:work &"
