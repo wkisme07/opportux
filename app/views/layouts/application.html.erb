@@ -266,5 +266,7 @@
       <% end %>
     </div>
   <% end %>
+
+  <%= render :partial => 'layouts/ga.html' if Rails.env == 'production' %>
 </body>
 </html>
