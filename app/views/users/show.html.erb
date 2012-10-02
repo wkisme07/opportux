@@ -1,7 +1,8 @@
 <%= content_for :user_profile do %>
   <div class="user-profile-container">
     <div class="cover-photo-container">
-      <%= image_tag @user.cover_url, :alt => 'Cover Photo' %>
+      <% cover = @user.cover? ? @user.cover_url : 'default-user-cover.png' %>
+      <%= image_tag cover, :alt => 'Cover Photo' %>
     </div>
 
     <div class="user-info-container">
