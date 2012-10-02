@@ -21,6 +21,8 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= yield :css %>
+
+  <%= render :partial => 'layouts/ga.html' if Rails.env == 'production' %>
 </head>
 <body>
   <div id="fb-root"></div>
@@ -267,6 +269,5 @@
     </div>
   <% end %>
 
-  <%= render :partial => 'layouts/ga.html' if Rails.env == 'production' %>
 </body>
 </html>
