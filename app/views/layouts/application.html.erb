@@ -56,7 +56,7 @@
               business_path, :class => ('active' if controller_name == 'home' && action_name == 'business')) %>
             <%= link_to("#{image_tag('header-people.png', :alt => 'P')} <span>People</span>".html_safe,
               people_path, :class => ('active' if controller_name == 'home' && action_name == 'people')) %>
-            <%= link_to("#{image_tag('header-bussiness.png', :alt => 'P')} <span>Project</span>".html_safe,
+            <%= link_to("#{image_tag('header-project.png', :alt => 'P')} <span>Project</span>".html_safe,
               project_path, :class => ('active' if controller_name == 'home' && action_name == 'project')) %>
             <%= link_to("#{image_tag('header-upload.png', :alt => 'U')} <span>Upload</span>".html_safe,
               new_post_path, :class => ('active' if controller_name == 'posts' && ['new', 'create'].include?(action_name))) %>
@@ -139,7 +139,7 @@
 
         <div class="big-adv">
           <% if @big_adv %>
-            <%= link_to image_tag(@big_adv.image_url(:big)), @big_adv.url, :title => @big_adv.title %>
+            <%= link_to image_tag(@big_adv.image_url(:big)), @big_adv.url, :title => @big_adv.title, :target => "_blank" %>
           <% else %>
             <%= link_to image_tag('dummy/adv-big.png', :alt => ''), '#' %>
           <% end %>
@@ -148,7 +148,7 @@
         <div class="medium-adv-container">
           <% if @medium_advs %>
             <% @medium_advs.each do |adv| %>
-              <div class="medium-adv"><%= link_to image_tag(adv.image_url(:medium)), adv.url, :title => adv.title %></div>
+              <div class="medium-adv"><%= link_to image_tag(adv.image_url(:medium)), adv.url, :title => adv.title, :target => "_blank" %></div>
             <% end %>
           <% else %>
             <div class="medium-adv"><%= link_to image_tag('dummy/adv-medium-1.png', :alt => ''), '#' %></div>
@@ -165,7 +165,7 @@
               <% @small_advs.each do |adv| %>
                 <li>
                   <div class="adv-img">
-                    <%= link_to image_tag(adv.image_url(:small)), adv.url, :title => adv.title %>
+                    <%= link_to image_tag(adv.image_url(:small)), adv.url, :title => adv.title, :target => "_blank" %>
                   </div>
 
                   <div class="little-adv-info">

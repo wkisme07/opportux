@@ -520,12 +520,17 @@ ul.item-list li:hover .item-action a{ display: inline-block; }
   background: #eee;
   border-radius: 5px;
   float: left;
-  height: 85px;
+  min-height: 101px;
   margin-left: 10px;
   overflow: hidden;
   width: 135px;
 }
-.medium-adv a, .medium-adv a img{ border-radius: 5px; display: block; }
+.medium-adv a, .medium-adv a img{
+  border-radius: 5px;
+  display: block;
+  height: 101px;
+  width: 135px;
+}
 
 .most-view-container{
   background: #fff;

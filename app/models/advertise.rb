@@ -4,6 +4,12 @@ class Advertise < ActiveRecord::Base
 
   validates :business_name, :contact_name, :contact_email, :size, :title, :url, :description, :image, :price, :presence => true
 
+  before_save :complete_url
+
+  def complete_url
+    self.url = "http://#{self.url}" unless self.url.include?('http://')
+  end
+
   # big
   def self.big
     adv = where(["size = ?", 'big']).offset(rand(size_count('big'))).try(:first)
