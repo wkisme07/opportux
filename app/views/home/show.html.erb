@@ -94,7 +94,7 @@
             :id => 'description', :class => ('active' if @temp == 'description') %>
         </li><!--
      --><% unless @post.deal.blank? %><li>
-          <%= link_to 'Deal', detail_path(:slug => @post.slug, :info => 'deal'),
+          <%= link_to 'Syarat', detail_path(:slug => @post.slug, :info => 'deal'),
             :id => 'deal', :class => ('active' if @temp == 'deal') %>
         </li><% end %><!--
      --><% if @post.images.count > 1 %><li>
