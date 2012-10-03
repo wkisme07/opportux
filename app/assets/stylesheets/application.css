@@ -446,7 +446,7 @@ ul.item-list li .draft, .item-detail-container .draft{
 }
 .item-info .item-action a{ padding: 0px 10px 0 0; }
 .item-action a:hover{ text-decoration: underline; }
-ul.item-list li:hover .item-action a{ display: inline-block; }
+/*ul.item-list li:hover .item-action a{ display: inline-block; }*/
 
 
 .item-stat span{
