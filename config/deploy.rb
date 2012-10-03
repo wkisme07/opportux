@@ -17,7 +17,7 @@ set :default_environment, {
 
 set :domain, "66.212.17.114"
 set :branch, "master"
-set :rails_env, "development"
+set :rails_env, "production"
 set :migrate_target, :latest
 role :web, domain
 role :app, domain
@@ -37,21 +37,19 @@ namespace :symlinks do
   end
 
   task :symlink_uploads do
-     run "ln -snf #{shared_path}/uploads #{release_path}/public/uploads"
-   end
+    run "ln -sfn #{shared_path}/uploads #{release_path}/public/uploads"
+    run "ln -sfn #{shared_path}/ckeditor_assets #{release_path}/public/ckeditor_assets"
+  end
 end
 
 namespace :assets do
   task :precompile, :roles => :web do
-    run "cd #{current_path}; rm -rf public/assets/*"
     run "cd #{current_path}; RAILS_ENV=production bundle exec rake assets:precompile --trace"
-    run "cp -rf #{current_path}/public/assets/web-app-theme/themes/default/images/ #{current_path}/public/assets/images/"
-    run "cp -rf #{current_path}/public/assets/web-app-theme/themes/default/fonts/ #{current_path}/public/assets/fonts/"
-    run "mv #{current_path}/public/assets/ui-*.png #{current_path}/public/assets/images/"
   end
 end
 
 after "deploy:finalize_update", "symlinks:database_yml"
 after 'deploy:update', 'deploy:migrate'
-# after 'deploy:update', 'assets:precompile'
+after 'deploy:update', 'assets:precompile'
+after "deploy:update", "symlinks:symlink_uploads"
 after "deploy:update", "deploy:cleanup"
