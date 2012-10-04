@@ -33,7 +33,7 @@ class Advertise < ActiveRecord::Base
   def self.small
     sc = size_count('small')
     r = rand(sc)
-    off = sc != 0 && sc - r < 4 ? sc - 4 : r
+    off = sc != 0 && (sc - r) > 4 ? sc - 4 : r
 
     advs = where(["size = ?", 'small']).offset(off).slice(0, 4)
     add_viewed(advs)
