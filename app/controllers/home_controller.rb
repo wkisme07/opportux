@@ -65,6 +65,10 @@ class HomeController < ApplicationController
     @content = Content.find_by_code(code)
   end
 
+  # about us
+  def about
+  end
+
   protected
 
     # can read draft
