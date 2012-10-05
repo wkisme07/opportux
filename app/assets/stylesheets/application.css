@@ -682,7 +682,7 @@ a.back-to-top{
   float: left;
   margin-left: 20px;
 }
-.footer-menu a{ padding: 0 10px; }
+.footer-menu a{ float: left;padding: 0 10px; }
 .footer-menu a:hover{ color: #000;text-decoration: underline; }
 .footer-right{ float: right; }
 .footer-right a{ font-weight: bold; }

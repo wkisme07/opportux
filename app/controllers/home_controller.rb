@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   before_filter :tag_cloud, :only => [:business, :people]
   before_filter :find_post, :only => [:show, :show_info]
   before_filter :can_read_draft?, :only => [:show]
-  before_filter :big_adv, :medium_advs, :small_advs, :only => [:index, :show, :business, :people, :content]
+  before_filter :big_adv, :medium_advs, :small_advs, :only => [:index, :show, :business, :people, :content, :about, :contact]
 
   # front-page
   def index
