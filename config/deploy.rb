@@ -44,6 +44,7 @@ end
 
 namespace :assets do
   task :precompile, :roles => :web do
+    teardown_connections_to(sessions.keys)
     run "cd #{current_path}; RAILS_ENV=production bundle exec rake assets:precompile --trace"
   end
 end

@@ -69,6 +69,10 @@ class HomeController < ApplicationController
   def about
   end
 
+  # contact us
+  def contact
+  end
+
   protected
 
     # can read draft

@@ -199,24 +199,6 @@
 
     </div>
 
-    <div class="about-info-wrapper">
-      <div class="about-info">
-        <%= link_to image_tag('back-to-top.png', :alt => 'Back to top'), '#', :class => 'back-to-top' %>
-
-        <div class="contact-us">
-          <span class="footer-title">Contact Us</span>
-
-          <p>
-            PT. Kreasi Media Prakarsa<br />
-            Address: Jln. Danau Indah Barat 2, Blok A3/11, Sunter Jaya,  Jakarta Utara 14350<br />
-            Email: info@Opportux.com<br />
-            Phone: (021) 650 6268
-          </p>
-        </div>
-        <div class="clear"></div>
-      </div>
-    </div>
-
     <div class="footer-wrapper">
       <div class="footer">
         <span class="copy-right">Copyright &copy; Opportux.com</span>
@@ -225,8 +207,12 @@
           <%= link_to 'About Us', about_us_path %>
           <%= link_to 'Terms and Conditions', term_path %>
           <%= link_to 'Policy', policy_path %>
+          <%= link_to image_tag('bg-user-facebook.png'), 'http://www.facebook.com/opportux', target: '_blank', class: 'social-link' %>
+          <%= link_to image_tag('bg-user-twitter.png'), 'http://www.twitter.com/opportux', target: '_blank', class: 'social-link social-twitter' %>
+          <div class="clear"></div>
         </div>
 
+        <%= link_to image_tag('back-to-top.png', :alt => 'Back to top'), '#', :class => 'back-to-top' %>
         <div class="footer-right">Developed by ones07 - <%= link_to 'Kuyainside.com', 'http://www.kuyainside.com', :target => '_blank' %></div>
         <div class="clear"></div>
       </div>

@@ -619,7 +619,7 @@ ul.little-adv-list{
 
 a.back-to-top{
   float: right;
-  margin-top: -41px;
+  margin-top: -57px;
 }
 
 .about-info-wrapper{
@@ -656,6 +656,8 @@ a.back-to-top{
 
 .footer-wrapper{
   background-color: #dcdcdc;
+  border-top: 1px solid #ccc;
+  margin: 40px 0 0;
 }
 .footer{
   margin: 0 auto;
@@ -674,6 +676,8 @@ a.back-to-top{
 .footer-menu a:hover{ color: #000;text-decoration: underline; }
 .footer-right{ float: right; }
 .footer-right a{ font-weight: bold; }
+.footer-menu a.social-link{ float: right; }
+.footer-menu a.social-link.social-twitter{ padding-top: 3px; }
 
 
 #facebox{ position: fixed !important; }

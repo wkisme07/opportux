@@ -40,6 +40,7 @@ Opportux::Application.routes.draw do
   get '/policy' => 'home#content', :as => 'policy'
   get '/term' => 'home#content', :as => 'term'
   get '/about-us' => 'home#about', :as => 'about_us'
+  get '/contact-us' => 'home#contact', :as => 'contact_us'
 
   resources :home do
     collection do
