@@ -275,6 +275,10 @@ ul.top-thumbs{
 .thumb-author{ display: block; }
 .thumb-author a{ color: #31b5e0; }
 .thumb-author a:hover{ text-decoration: underline; }
+.thumb-desc{
+  max-height: 35px;
+  overflow: hidden;
+}
 .thumb-desc p:first-child{ margin: 0;padding: 0; }
 
 .thumb-stat{
@@ -470,7 +474,11 @@ ul.item-list li .draft, .item-detail-container .draft{
   font-family: "Calibri", "Helvetica Neue", "Arial";
   line-height: 16px;
   margin: 10px 15px;
+  max-height: 97px;
+  min-height: 30px;
+  overflow: hidden;
 }
+.item-desc p:first-child{ margin-top: 0; }
 .view-more{
   background: -moz-linear-gradient(top, #31b5e0 0%, #31b5e0);
   background: -webkit-gradient(linear, left top, left bottom, from(#31b5e0), to(#31b5e0));
@@ -479,10 +487,12 @@ ul.item-list li .draft, .item-detail-container .draft{
 
   border-radius: 15px;
   color: #fff !important;
+  display: inline-block;
   font-family: Calibri !important;
   font-size: 12px !important;
   font-style: italic !important;
   line-height: 14px !important;
+  margin: 10px 0 5px 10px;
   padding: 8px 15px !important;
   text-shadow: 0px 1px 3px #ccc !important;
 }
