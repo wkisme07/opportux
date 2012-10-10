@@ -39,7 +39,8 @@ Opportux::Application.routes.draw do
   get '/disclaimer' => 'home#content', :as => 'disclaimer'
   get '/policy' => 'home#content', :as => 'policy'
   get '/term' => 'home#content', :as => 'term'
-  get '/about-us' => 'home#about', :as => 'about_us'
+  get '/about-us' => 'home#content', :as => 'about_us'
+  get '/about' => 'home#about', :as => 'about'
   get '/contact-us' => 'home#contact', :as => 'contact_us'
 
   resources :home do
