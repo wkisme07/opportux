@@ -15,7 +15,8 @@
  */
 
 body{
-  background: #F9F9FA;
+  background-color: #F9F9FA;
+  background-image: url(bg-wrapper-s.png);
   font-family: "Calibri", "Helvetica Neue", "Arial";
   font-size: 12px;
   line-height: 15px;
@@ -37,6 +38,7 @@ a:active, a:focus{ outline: none; }
 
 .header-fix{
   height: 67px;
+  min-width: 960px;
   width: 100%;
 }
 .search-fix{
@@ -1096,7 +1098,11 @@ a.add-image{
   background: -ms-linear-gradient(top, #f6f6f6, #ffffff);
   border-bottom: 5px solid #da839a;
 }
-.detail-info{ padding: 0 15px 25px; }
+.detail-info{
+  max-width: 92px;
+  padding: 0 15px 25px;
+  overflow: hidden;
+}
 
 .detail-description > h2{ margin-top: 0; }
 .detail-description > ul{ padding-left: 15px; }

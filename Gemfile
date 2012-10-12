@@ -30,6 +30,9 @@ gem "mini_magick"
 gem 'resque'
 gem 'resque_mailer'
 
+# monitoring background job
+gem 'bluepill'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
