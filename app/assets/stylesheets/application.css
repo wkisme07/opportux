@@ -1099,10 +1099,11 @@ a.add-image{
   border-bottom: 5px solid #da839a;
 }
 .detail-info{
-  max-width: 92px;
   padding: 0 15px 25px;
   overflow: hidden;
 }
+.detail-info, .detail-info p, .detail-info table,
+.detail-info div{ max-width: 610px !important; }
 
 .detail-description > h2{ margin-top: 0; }
 .detail-description > ul{ padding-left: 15px; }
