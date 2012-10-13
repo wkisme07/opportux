@@ -178,6 +178,20 @@ $(document).ready(function(){
     }
   }
 
+  // on window resize
+  $(window).resize(function(){
+    ww = $(window).width()
+
+    // header and search
+    if(ww < 960){
+      $('.header-wrapper').removeClass('fixed');
+      $('.search-fix').removeClass('fixed');
+    }else{
+      $('.header-wrapper').addClass('fixed');
+      $('.search-fix').addClass('fixed');
+    }
+  });
+
 });
 
 

@@ -33,32 +33,31 @@ a:active, a:focus{ outline: none; }
   background-repeat: repeat; /*, repeat*/
   background-position: 0 0; /*0px -30px, 0px 0px;*/
   margin: 0 auto;
+  min-width: 1120px;
   width: 100%;
 }
 
-.header-fix{
+.header-container{
   height: 67px;
   min-width: 960px;
   width: 100%;
 }
 .search-fix{
-  position: fixed;
-  top: 66px;
   width:  100%;
   z-index: 55;
 }
-
 
 .header-wrapper{
   background: url(bg-header.png) repeat-x transparent;
   color: #fff;
   display: block;
   height: 67px;
-  position: fixed;
   top: 0;
   width: 100%;
   z-index: 49;
 }
+.fixed{ position: fixed; }
+.relative{ position: relative; }
 .header{
   margin: 0 auto;
   width: 940px;
@@ -111,7 +110,7 @@ a:active, a:focus{ outline: none; }
 .header-menu > a:last-child{
   border-radius: 0px 15px 15px 0px;
 }
-.header-menu.category > a img{ float: left;margin-right: 8px; }
+.header-menu.category > a img{ float: left;margin-right: 6px; }
 .header-menu.category > a span{ clear: both; }
 .header-menu.how-it-work > a{ border-radius: 15px; }
 
@@ -1532,5 +1531,16 @@ body.wysiwyg, div.wysiwyg iframe{
   .fake-choose{ padding: 3px 4px; }
   #facebox{ min-width: 395px; }
   #facebox .popup{ min-width: 385px; }
+}
+
+@media screen and (min-width: 60em){
+  .header-wrapper{ position: fixed; }
+  .search-fix{ position: fixed; }
+}
+
+.header-container.fixed{ position: fixed; }
+.search-fix.fixed{
+  position: fixed;
+  top: 66px;
 }
 
