@@ -72,7 +72,7 @@
               <%= link_to "Login", new_user_session_path, :rel => 'facebox', :class => 'header-login' %>
             <% elsif current_user %>
               <% av = current_user.avatar? ? "<span class='menu-user-avatar'>#{image_tag current_user.avatar_url(:thumb), :id => 'umenu-avtr'}</span>" : '' %>
-              <%= link_to "#{av}<span class='uname' id='umenu-name'>#{truncate(current_user.fullname, :length => 15)}</span>
+              <%= link_to "#{av}<span class='uname' id='umenu-name'>#{current_user.try(:fullname)}</span>
                   <span class='umenu' id='umenu-arrow'></span>".html_safe,
                 "#", :id => 'umenu-link' %>
               <div class="clear"></div>
@@ -188,7 +188,7 @@
 
             <ul class="most-view-list">
               <% top_views.each_with_index do |tv, tvi| %>
-                <li><%= link_to truncate(tv.title, :length => 50), home_path(tv.slug) %></li>
+                <li><%= link_to tv.title, home_path(tv.slug) %></li>
               <% end %>
             </ul>
           </div>

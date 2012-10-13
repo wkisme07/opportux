@@ -46,6 +46,10 @@ a:active, a:focus{ outline: none; }
   width:  100%;
   z-index: 55;
 }
+.search-fix.fixed{
+  position: fixed;
+  top: 66px;
+}
 
 .header-wrapper{
   background: url(bg-header.png) repeat-x transparent;
@@ -56,8 +60,7 @@ a:active, a:focus{ outline: none; }
   width: 100%;
   z-index: 49;
 }
-.fixed{ position: fixed; }
-.relative{ position: relative; }
+.header-wrapper.fixed{ position: fixed; }
 .header{
   margin: 0 auto;
   width: 940px;
@@ -160,7 +163,14 @@ a:active, a:focus{ outline: none; }
   margin: -5px 0 0;
   width: 26px;
 }
-span.uname{ float: left;height: 20px; }
+span.uname{
+  float: left;
+  height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 105px;
+}
 
 .hmenu-container{
   background: #fff;
@@ -169,9 +179,9 @@ span.uname{ float: left;height: 20px; }
   display: none;
   float: right;
   margin: 10px 0;
-  min-width: 141px;
+  min-width: 169px;
   padding: 5px 0 10px;
-  position: fixed;
+  width: 100%;
 }
 .hmenu-container ul{
   display: block;
@@ -582,7 +592,11 @@ ul.most-view-list{
 .most-view-list li a{
   color: #333;
   display: block;
+  overflow: hidden;
   padding: 16px 15px 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 250px;
 }
 .most-view-list li a:hover{ color: #a9a9a9; }
 .most-view-list li:last-child, .most-view-list li:last-child a{ border-radius: 0 0 5px 5px; }
@@ -1533,14 +1547,6 @@ body.wysiwyg, div.wysiwyg iframe{
   #facebox .popup{ min-width: 385px; }
 }
 
-@media screen and (min-width: 60em){
-  .header-wrapper{ position: fixed; }
-  .search-fix{ position: fixed; }
+@media screen and (max-width: 59em){
+  .header-wrapper, .search-fix{ position: relative; }
 }
-
-.header-container.fixed{ position: fixed; }
-.search-fix.fixed{
-  position: fixed;
-  top: 66px;
-}
-
