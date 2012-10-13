@@ -179,7 +179,6 @@ span.uname{
   display: none;
   float: right;
   margin: 10px 0;
-  min-width: 169px;
   padding: 5px 0 10px;
   width: 100%;
 }
@@ -1501,7 +1500,9 @@ body.wysiwyg, div.wysiwyg iframe{
 .content-container h2:first-child{
   margin-top: 0;
 }
-
+.content-value, .content-value p{
+  width: 600px;
+}
 .categories-list{
   background: #fff;
   border-radius: 0 5px 5px 0;
