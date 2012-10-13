@@ -67,7 +67,7 @@
       <div class="social-media pint-button">
         <%= pin_it_button(
           media: "#{request.protocol}#{request.host_with_port}#{@post.main_image.image_url}",
-          description: @post.description, url: detail_url(@post.slug)
+          description: truncate(strip_tags(@post.description), :length => 200), url: detail_url(@post.slug)
         ) %>
       </div>
 
