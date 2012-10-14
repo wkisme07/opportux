@@ -5,6 +5,10 @@
     <%= form_for ['admins', @content], :url => admins_content_path(@content.code), :html => { :class => 'form' } do |f| %>
 
       <div class="field-group">
+        <%= f.label :title, 'Title*' %>
+        <%= f.text_field :title, :class => 'text-field', :required => 'required' %>
+      </div>
+      <div class="field-group">
         <%= f.label :value, 'Content*' %>
         <%= f.cktext_area :value, :rows => 5, :class => 'text-area', :required => 'required' %>
       </div>
