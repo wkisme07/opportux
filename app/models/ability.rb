@@ -40,7 +40,7 @@ class Ability
       can :read_draft, User, :id => user.id
     end
 
-    admin || Admin.new
+    admin ||= Admin.new
     if admin.id
       can :manage, Post
       can :manage, User
