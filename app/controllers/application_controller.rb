@@ -100,7 +100,7 @@ protected
   end
 
   def business_categories
-    ["Franchise", "Cari modal"]
+    ["Franchise", "Cari modal", "Distributor/Agen"]
   end
 
   def project_categories
