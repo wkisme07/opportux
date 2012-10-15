@@ -39,5 +39,11 @@ class Ability
       can :update, User, :id => user.id
       can :read_draft, User, :id => user.id
     end
+
+    admin || Admin.new
+    if admin.id
+      can :manage, Post
+      can :manage, User
+    end
   end
 end
