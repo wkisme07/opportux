@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   before_filter :find_post, :only => [:edit, :update, :destroy, :review, :publish, :renew, :like, :report]
   before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy, :review, :publish, :renew]
+  before_filter :big_adv, :medium_advs, :small_advs, :only => [:new, :review, :edit]
 
   # new post
   def new
