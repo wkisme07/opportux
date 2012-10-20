@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     @post = Post.find_by_slug(params[:slug])
     @temp = params[:info] || 'description'
 
-    @post.pviews.create(:user_id => current_user.try(:id), :ip_address => request.ip) if can_view?(@post)
+    @post.pviews.create(:user_id => current_user.try(:id), :ip_address => request.ip)
   end
 
   # change picture
