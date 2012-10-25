@@ -116,6 +116,13 @@
   <div class="post-comment-container">
     <div class="fb-comments" data-href="<%= detail_url(@post.slug) %>" data-num-posts="5" data-width="620"></div>
   </div>
+
+  <% if !@post.published? %>
+    <div class="publish-button-container">
+      <%= link_to('Publish', publish_posts_path(@post.slug), :class => 'publish-button')  %>
+    </div>
+  <% end %>
+  <div class="clear"></div>
 </div>
 
 <style type="text/css">

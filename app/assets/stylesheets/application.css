@@ -1035,6 +1035,26 @@ a.add-image{
 .item-action a.publish-link, .item-action a.publish-link{ color: green; }
 .item-action a.edit-link{ color: #feb84a; }
 
+.publish-button-container{
+  float: right;
+  margin: 10px 10px 20px;
+}
+.publish-button{
+  background: -moz-linear-gradient(top, #C2D668 0%, #2A4D2F);
+  background: -webkit-gradient(linear, left top, left bottom, from(#C2D668), to(#2A4D2F));
+  background: -o-linear-gradient(top, #C2D668, #2A4D2F);
+  background: -ms-linear-gradient(top, #C2D668, #2A4D2F);
+
+  border: 1px solid #E5E29B;
+  border-radius: 15px;
+  box-shadow: 0px 1px 2px #E5E29B;
+  color: #fff;
+  font-size: 14px;
+  padding: 7px 20px 8px;
+  text-align: center;
+  text-shadow: 0px 1px 2px #aaa;
+}
+
 .detail-image-container{
   background: #fafafa;
   /*height: 423px;*/
