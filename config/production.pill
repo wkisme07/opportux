@@ -1,11 +1,11 @@
 ENVIRONMENT = 'production'
 RAILS_ROOT  = ENV['RAILS_ROOT'] || "/rails-app/opportux/current"
 
-Bluepill.application("satutempat", :base_dir => "#{RAILS_ROOT}/tmp/bluepill", :log_file => "#{RAILS_ROOT}/log/bluepill.log") do |app|
+Bluepill.application("opportux", :base_dir => "#{RAILS_ROOT}/tmp/bluepill", :log_file => "#{RAILS_ROOT}/log/bluepill.log") do |app|
   app.uid = "ubuntu"
   app.gid = "ubuntu"
 
-  app.process("satutempat-mailer") do |process|
+  app.process("opportux-mailer") do |process|
     process.working_dir = RAILS_ROOT
     process.group = "resque"
     queues = "*"
