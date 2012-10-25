@@ -1040,10 +1040,14 @@ a.add-image{
   margin: 10px 10px 20px;
 }
 .publish-button{
-  background: -moz-linear-gradient(top, #C2D668 0%, #2A4D2F);
+  /*background: -moz-linear-gradient(top, #C2D668 0%, #2A4D2F);
   background: -webkit-gradient(linear, left top, left bottom, from(#C2D668), to(#2A4D2F));
   background: -o-linear-gradient(top, #C2D668, #2A4D2F);
-  background: -ms-linear-gradient(top, #C2D668, #2A4D2F);
+  background: -ms-linear-gradient(top, #C2D668, #2A4D2F);*/
+  background: -moz-linear-gradient(top, #e588a0 0%, #b9697d);
+  background: -webkit-gradient(linear, left top, left bottom, from(#e588a0), to(#b9697d));
+  background: -o-linear-gradient(top, #e588a0, #b9697d);
+  background: -ms-linear-gradient(top, #e588a0, #b9697d);
 
   border: 1px solid #E5E29B;
   border-radius: 15px;
