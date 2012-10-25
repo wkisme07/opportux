@@ -1,5 +1,5 @@
 ENVIRONMENT = 'production'
-RAILS_ROOT  = ENV['RAILS_ROOT'] || "/rails-app/opportux/current"
+RAILS_ROOT  = "/rails-app/opportux/current"
 
 Bluepill.application("opportux", :base_dir => "#{RAILS_ROOT}/tmp/bluepill", :log_file => "#{RAILS_ROOT}/log/bluepill.log") do |app|
   app.uid = "ubuntu"
@@ -10,20 +10,7 @@ Bluepill.application("opportux", :base_dir => "#{RAILS_ROOT}/tmp/bluepill", :log
     process.group = "resque"
     queues = "*"
     process.start_command = "/usr/bin/env VERBOSE=true RAILS_ENV=#{ENVIRONMENT} QUEUE=#{queues} rake resque:work --trace"
-    process.stop_command = <<-EOF
-    kill -QUIT {{PID}}
-    sleep_count=0
-    while [ -e /proc/{{PID}} ]; do
-      sleep 1
-      let "sleep_count+=1"
-      if [ $sleep_count -eq 60 ]; then
-        kill -TERM {{PID}}
-      fi
-      if [ $sleep_count -ge 70 ]; then
-        kill -KILL {{PID}}
-      fi
-    done
-    EOF
+    process.stop_command = "kill -QUIT {{PID}}"
 
     process.stdout = process.stderr = "#{RAILS_ROOT}/log/resque.log"
     process.pid_file      = "#{RAILS_ROOT}/tmp/pids/resque-mailer.pid"
