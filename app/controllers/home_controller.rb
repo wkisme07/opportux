@@ -31,7 +31,7 @@ class HomeController < ApplicationController
     if params[:tag]
       @posts = Post.by_tags(tags).all_published.by_business
     else
-      @posts = Post.all_published.where("category_id = 1")
+      @posts = Post.all_published.by_business
     end
     @posts = @posts.paginate(:page => params[:page])
     render :index
@@ -42,7 +42,7 @@ class HomeController < ApplicationController
     if params[:tag]
       @posts = Post.by_tags(tags).all_published.by_people
     else
-      @posts = Post.all_published.where("category_id = 2")
+      @posts = Post.all_published.by_people
     end
     @posts = @posts.paginate(:page => params[:page])
     render :index
@@ -53,7 +53,7 @@ class HomeController < ApplicationController
     if params[:tag]
       @posts = Post.by_tags(tags).all_published.by_project
     else
-      @posts = Post.all_published.where("category_id = 3")
+      @posts = Post.all_published.by_project
     end
     @posts = @posts.paginate(:page => params[:page])
     render :index
