@@ -87,6 +87,10 @@ class HomeController < ApplicationController
     def tags
       t = params[:tag].try(:downcase)
       t += "/reseller" if t.include?('agen')
+      t += "/business" if action_name == 'business'
+      t += "/people"   if action_name == 'people'
+      t += "/project"  if action_name == 'project'
+
       !t.blank? ? t.split(/\/|,|\+| /) << t : []
     end
 
