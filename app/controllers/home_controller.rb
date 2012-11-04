@@ -29,7 +29,7 @@ class HomeController < ApplicationController
   # business
   def business
     if params[:tag]
-      @posts = Post.by_tags(tags).all_published.where("category_id = 1")
+      @posts = Post.by_tags(tags).all_published.by_business
     else
       @posts = Post.all_published.where("category_id = 1")
     end
@@ -40,7 +40,7 @@ class HomeController < ApplicationController
   # people
   def people
     if params[:tag]
-      @posts = Post.by_tags(tags).all_published.where("category_id = 2")
+      @posts = Post.by_tags(tags).all_published.by_people
     else
       @posts = Post.all_published.where("category_id = 2")
     end
@@ -51,7 +51,7 @@ class HomeController < ApplicationController
   # project
   def project
     if params[:tag]
-      @posts = Post.by_tags(tags).all_published.where("category_id = 3")
+      @posts = Post.by_tags(tags).all_published.by_project
     else
       @posts = Post.all_published.where("category_id = 3")
     end
@@ -87,9 +87,6 @@ class HomeController < ApplicationController
     def tags
       t = params[:tag].try(:downcase)
       t += "/reseller" if t.include?('agen')
-      t += "/business" if action_name == 'business'
-      t += "/people"   if action_name == 'people'
-      t += "/project"  if action_name == 'project'
 
       !t.blank? ? t.split(/\/|,|\+| /) << t : []
     end

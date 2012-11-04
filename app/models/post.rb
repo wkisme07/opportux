@@ -22,6 +22,9 @@ class Post < ActiveRecord::Base
 
   scope :by_tags, lambda{|tags| tagged_with(tags, :wild => true, :any => true) }
   scope :all_published, where('status = 1').order('renew DESC, created_at DESC')
+  scope :by_business, where("category_id = 1 OR posts.id IN (SELECT taggable_id from taggings WHERE taggable_type = 'Post' AND tag_id IN (SELECT id FROM tags WHERE LOWER(name) LIKE '%business%'))")
+  scope :by_people, where("category_id = 2 OR posts.id IN (SELECT taggable_id from taggings WHERE taggable_type = 'Post' AND tag_id IN (SELECT id FROM tags WHERE LOWER(name) LIKE '%people%'))")
+  scope :by_project, where("category_id = 3 OR posts.id IN (SELECT taggable_id from taggings WHERE taggable_type = 'Post' AND tag_id IN (SELECT id FROM tags WHERE LOWER(name) LIKE '%project%'))")
 
 
   def require_main_image
