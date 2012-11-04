@@ -842,6 +842,7 @@ span.field-desc{
   padding: 40px 20px;
   width: 280px;
 }
+.login-with-facebook.onsignup{ padding: 20px 10px; }
 .login-form-container.not-xhr .login-with-facebook{
   border-radius: 0 5px 0 0;
   padding: 40px 0;
@@ -863,6 +864,7 @@ span.field-desc{
   margin: 40px 0 0;
   width: 281px;
 }
+.login-with-facebook.onsignup .login-facebook-link{ margin: 20px 0 0; }
 .login-footer{
   background: #f8f8f8;
   border-top: 1px solid #ccc;

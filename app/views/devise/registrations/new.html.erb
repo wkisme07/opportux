@@ -9,6 +9,16 @@
     <% end %>
   </div>
 
+  <%- if devise_mapping.omniauthable? %>
+    <div class="login-with-facebook onsignup">
+      <fieldset>
+        <legend align="center">Recomended</legend>
+
+        <%= link_to '', omniauth_authorize_path(resource_name, 'facebook'), :class => 'login-facebook-link' %>
+      </fieldset>
+    </div>
+  <% end %>
+
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :remote => true, :class => 'form') do |f| %>
 
     <div class="field-group">
@@ -44,3 +54,7 @@
 </div>
 
 
+<style type="text/css">
+  .login-with-facebook.onsignup{ padding: 20px 10px; }
+  .login-with-facebook.onsignup .login-facebook-link{ margin: 20px 0 0; }
+</style>

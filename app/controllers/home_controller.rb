@@ -29,7 +29,7 @@ class HomeController < ApplicationController
   # business
   def business
     if params[:tag]
-      @posts = Post.all_published.where("category_id = 1").tagged_with(params[:tag], :on => :tags, :any => true)
+      @posts = Post.all_published.where("category_id = 1").tagged_with(tags, :on => :tags, :any => true)
     else
       @posts = Post.all_published.where("category_id = 1")
     end
@@ -40,7 +40,7 @@ class HomeController < ApplicationController
   # people
   def people
     if params[:tag]
-      @posts = Post.all_published.where("category_id = 2").tagged_with(params[:tag], :on => :tags, :any => true)
+      @posts = Post.all_published.where("category_id = 2").tagged_with(tags, :on => :tags, :any => true)
     else
       @posts = Post.all_published.where("category_id = 2")
     end
@@ -51,7 +51,7 @@ class HomeController < ApplicationController
   # project
   def project
     if params[:tag]
-      @posts = Post.all_published.where("category_id = 3").tagged_with(params[:tag], :on => :tags, :any => true)
+      @posts = Post.all_published.where("category_id = 3").tagged_with(tags, :on => :tags, :any => true)
     else
       @posts = Post.all_published.where("category_id = 3")
     end
@@ -81,6 +81,13 @@ class HomeController < ApplicationController
         flash[:alert] = "You are not authorize to access this page."
         redirect_to root_path
       end
+    end
+
+    # tags
+    def tags
+      t = params[:tag]
+      t += "/Reseller" if t.include?('Agen')
+      !t.blank? ? t.split(/\/|,| /) : []
     end
 
 end

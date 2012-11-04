@@ -8,10 +8,10 @@
     <meta property='og:site_name' content='Opportux' />
     <meta property='og:title' content='<%= @post.title %>' />
     <meta property='og:url' content='<%= detail_url(@post.slug || 'new') %>' />
-    <meta property='og:type' content='image' />
+    <meta property='og:type' content='website' />
     <meta property='fb:admins' content='1679013992' />
     <meta property='og:image' content='http://opportux.com/<%= @post.main_image.image_url %>' />
-    <meta property='og:description' content='<%= @post.description %>' />
+    <meta property='og:description' content='<%= truncate(strip_tags(@post.description), length: 300) %>' />
   <% else %>
     <%= raw fb_meta %>
   <% end %>
