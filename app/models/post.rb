@@ -20,7 +20,7 @@ class Post < ActiveRecord::Base
   before_save :complete_data
 
 
-  scope :by_tags, lambda{|tags| tagged_with(tags, :on => :tags, :wild => true, :any => true) }
+  scope :by_tags, lambda{|tags| tagged_with(tags, :wild => true, :any => true) }
   scope :all_published, where('status = 1').order('renew DESC, created_at DESC')
 
 
