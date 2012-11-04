@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
   # front-page
   def index
-    ps = params[:tag] ? Post.all_published.tagged_with(params[:tag], :wild => true) : Post.search(params[:search])
+    ps = params[:tag] ? Post.all_published.tagged_with(tags, :wild => true) : Post.search(params[:search])
     @posts  = ps.paginate(:page => params[:page])
   end
 
@@ -85,9 +85,9 @@ class HomeController < ApplicationController
 
     # tags
     def tags
-      t = params[:tag]
-      t += "/Reseller" if t.include?('Agen')
-      !t.blank? ? t.split(/\/|,|\+| /) : []
+      t = params[:tag].try(:downcase)
+      t += "/reseller" if t.include?('agen')
+      !t.blank? ? t.split(/\/|,|\+| /) << t : []
     end
 
 end
