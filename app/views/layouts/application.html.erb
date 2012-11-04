@@ -11,7 +11,7 @@
     <meta property='og:type' content='website' />
     <meta property='fb:admins' content='1679013992' />
     <meta property='og:image' content='http://opportux.com/<%= @post.main_image.image_url %>' />
-    <meta property='og:description' content='<%= truncate(strip_tags(@post.description), length: 300) %>' />
+    <meta property='og:description' content='<%= truncate(strip_tags(@post.description), :length => 300) %>' />
   <% else %>
     <%= raw fb_meta %>
   <% end %>
