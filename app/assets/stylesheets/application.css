@@ -842,7 +842,7 @@ span.field-desc{
   padding: 40px 20px;
   width: 280px;
 }
-.login-with-facebook.onsignup{ padding: 20px 10px; }
+.login-with-facebook.onsignup{ padding: 0px; }
 .login-form-container.not-xhr .login-with-facebook{
   border-radius: 0 5px 0 0;
   padding: 40px 0;
@@ -864,7 +864,7 @@ span.field-desc{
   margin: 40px 0 0;
   width: 281px;
 }
-.login-with-facebook.onsignup .login-facebook-link{ margin: 20px 0 0; }
+.login-with-facebook.onsignup .login-facebook-link{ margin: 5px 0 0; }
 .login-footer{
   background: #f8f8f8;
   border-top: 1px solid #ccc;
@@ -1576,4 +1576,8 @@ body.wysiwyg, div.wysiwyg iframe{
 
 @media screen and (max-width: 59em){
   .header-wrapper, .search-fix{ position: relative; }
+}
+
+@media screen and (max-height: 34em){
+  #facebox{ position: absolute !important; }
 }
