@@ -17,6 +17,7 @@
         <%= link_to '', omniauth_authorize_path(resource_name, 'facebook'), :class => 'login-facebook-link' %>
       </fieldset>
     </div>
+    <div class="clear"></div>
   <% end %>
 
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :remote => true, :class => 'form') do |f| %>
