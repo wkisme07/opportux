@@ -19,6 +19,11 @@ class Post < ActiveRecord::Base
 
   before_save :complete_data
 
+
+  scope :by_tags, lambda{|tags| tagged_with(tags, :on => :tags, :wild => true, :any => true) }
+  scope :all_published, where('status = 1').order('renew DESC, created_at DESC')
+
+
   def require_main_image
     errors.add(:base, "You must provide at least one image") if images.blank?
   end
@@ -28,11 +33,6 @@ class Post < ActiveRecord::Base
     self.status = 0 if self.status.blank?
     self.slug = Digest::SHA1.hexdigest(Time.now.to_s).slice(0, 8) if self.slug.blank?
     self.renew = self.created_at if self.renew.blank?
-  end
-
-  # all published posts
-  def self.all_published
-    where('status = 1').order('renew DESC, created_at DESC')
   end
 
   def self.search(params)

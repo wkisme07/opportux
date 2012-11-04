@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
   # front-page
   def index
-    ps = params[:tag] ? Post.all_published.tagged_with(tags, :on => :tags, :wild => true, :any => true) : Post.search(params[:search])
+    ps = params[:tag] ? Post.by_tags(tags).all_published : Post.search(params[:search])
     @posts  = ps.paginate(:page => params[:page])
   end
 
@@ -29,7 +29,7 @@ class HomeController < ApplicationController
   # business
   def business
     if params[:tag]
-      @posts = Post.all_published.where("category_id = 1").tagged_with(tags, :on => :tags, :wild => true, :any => true)
+      @posts = Post.by_tags(tags).all_published.where("category_id = 1")
     else
       @posts = Post.all_published.where("category_id = 1")
     end
@@ -40,7 +40,7 @@ class HomeController < ApplicationController
   # people
   def people
     if params[:tag]
-      @posts = Post.all_published.where("category_id = 2").tagged_with(tags, :on => :tags, :wild => true, :any => true)
+      @posts = Post.by_tags(tags).all_published.where("category_id = 2")
     else
       @posts = Post.all_published.where("category_id = 2")
     end
@@ -51,7 +51,7 @@ class HomeController < ApplicationController
   # project
   def project
     if params[:tag]
-      @posts = Post.all_published.where("category_id = 3").tagged_with(tags, :on => :tags, :wild => true, :any => true)
+      @posts = Post.by_tags(tags).all_published.where("category_id = 3")
     else
       @posts = Post.all_published.where("category_id = 3")
     end
