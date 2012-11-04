@@ -87,7 +87,7 @@ class HomeController < ApplicationController
     def tags
       t = params[:tag]
       t += "/Reseller" if t.include?('Agen')
-      !t.blank? ? t.split(/\/|,| /) : []
+      !t.blank? ? t.split(/\/|,|\+| /) : []
     end
 
 end
